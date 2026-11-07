@@ -1,0 +1,23 @@
+# Core data + numerics
+duckdb
+pandas
+numpy
+pyarrow
+matplotlib
+networkx
+
+# Vector search + retrieval (DDIA Ch 4, AIE Ch 6)
+hnswlib
+rank-bm25
+
+# Clients for the Docker services (Postgres, Redpanda/Kafka, S3-compatible store)
+psycopg[binary]
+confluent-kafka
+boto3
+requests
+
+# Local LLMs
+ollama
+
+# Testing
+pytest

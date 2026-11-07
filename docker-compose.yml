@@ -1,0 +1,84 @@
+# Lab services for sysdesign-labs.
+#   Start:            docker compose up -d
+#   Stop (keep data): docker compose stop
+#   Wipe all data:    docker compose down -v
+# Every port is bound to 127.0.0.1, so nothing is reachable from your network.
+name: sysdesign-labs
+
+services:
+  postgres:
+    image: postgres:17
+    container_name: lab-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-lab}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-lab}
+      POSTGRES_DB: ${POSTGRES_DB:-lab}
+    # wal_level=logical is needed later for change data capture (DDIA Ch 12)
+    command: ["postgres", "-c", "wal_level=logical", "-c", "max_wal_senders=10", "-c", "max_replication_slots=10"]
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER:-lab} -d $${POSTGRES_DB:-lab}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  # Kafka-compatible broker (single node, dev mode, no auth)
+  redpanda:
+    image: docker.redpanda.com/redpandadata/redpanda:v26.2.6
+    container_name: lab-redpanda
+    restart: unless-stopped
+    command:
+      - redpanda
+      - start
+      - --mode=dev-container
+      - --smp=1
+      - --memory=1G
+      - --default-log-level=warn
+      - --kafka-addr=internal://0.0.0.0:9092,external://0.0.0.0:19092
+      - --advertise-kafka-addr=internal://redpanda:9092,external://127.0.0.1:19092
+      - --schema-registry-addr=internal://0.0.0.0:8081,external://0.0.0.0:18081
+    ports:
+      - "127.0.0.1:19092:19092"   # Kafka API (use this from your laptop)
+      - "127.0.0.1:18081:18081"   # Schema Registry (DDIA Ch 5)
+      - "127.0.0.1:19644:9644"    # Admin API
+    volumes:
+      - redpanda-data:/var/lib/redpanda/data
+
+  # S3-compatible object store. Replaces MinIO, whose community edition
+  # stopped shipping Docker images in Oct 2025 and was archived in 2026.
+  rustfs:
+    image: rustfs/rustfs:latest
+    container_name: lab-rustfs
+    restart: unless-stopped
+    environment:
+      - RUSTFS_ACCESS_KEY=${RUSTFS_ACCESS_KEY:-labaccesskey}
+      - RUSTFS_SECRET_KEY=${RUSTFS_SECRET_KEY:-labsecretkey123}
+      - RUSTFS_ADDRESS=:9000
+      - RUSTFS_CONSOLE_ADDRESS=:9001
+      - RUSTFS_CONSOLE_ENABLE=true
+    command: /data
+    ports:
+      - "127.0.0.1:9000:9000"     # S3 API
+      - "127.0.0.1:9001:9001"     # Web console
+    volumes:
+      - rustfs-data:/data
+
+  # Network fault injection (DDIA Ch 9). Create a proxy in front of Postgres with:
+  #   curl -X POST localhost:8474/proxies -d '{"name":"pg","listen":"0.0.0.0:21000","upstream":"postgres:5432"}'
+  # then connect your code to localhost:21000 instead of localhost:5432.
+  toxiproxy:
+    image: ghcr.io/shopify/toxiproxy:latest
+    container_name: lab-toxiproxy
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8474:8474"                 # control API
+      - "127.0.0.1:21000-21009:21000-21009"   # ports your proxies can listen on
+
+volumes:
+  pgdata:
+  redpanda-data:
+  rustfs-data:
