@@ -1,0 +1,21 @@
+title: "Trade-offs in Data Systems Architecture"
+status: ready
+summary: "The big forks in the road: operational vs analytical, source of truth vs derived, cloud vs self-hosted, one machine vs many."
+est_minutes: 25
+objectives:
+  - Tell an operational (OLTP) workload from an analytical (OLAP) one and say why they usually run on different systems
+  - Explain what a data warehouse and a data lake are for, and where ETL fits
+  - Classify any dataset in a design as a system of record or as derived data
+  - Weigh cloud services against self-hosting, and explain separation of storage and compute
+  - Give good and bad reasons to make a system distributed
+labs:
+  - file: lab1_row_vs_column.py
+    title: "Row store vs column store on the same 2 million orders"
+    expect: ["SQLite  point lookups", "DuckDB  group-by aggregate", "orders.duckdb"]
+  - file: lab2_derived.py
+    title: "A derived table goes stale, then a trigger keeps it fresh"
+    depends_on: [lab1_row_vs_column.py]
+    expect: ["rebuilt in", "after trigger:"]
+verified:
+  date: "2026-11-10"
+  notes: "Lecture and quiz checked against DDIA 2e chapter 1 (section coverage and terminology). Both labs run and their output matches the claims in the lab brief."

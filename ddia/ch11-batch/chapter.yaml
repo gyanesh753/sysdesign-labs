@@ -1,0 +1,20 @@
+title: "Batch Processing"
+status: ready
+summary: "Taking a large, fixed set of input and producing derived output, on one machine with Unix tools or on thousands with a distributed engine."
+est_minutes: 25
+objectives:
+  - Explain what makes a chain of Unix tools a good model for data processing
+  - Compare sorting with in-memory hashing for grouping, and say when each fits
+  - Describe the map, shuffle and reduce steps and how a join is done with them
+  - Explain why immutable inputs and deterministic tasks make failures cheap to handle
+  - Name the main uses of batch processing and how results are delivered to serving systems
+labs:
+  - file: lab1_log_analysis.py
+    title: "Top pages in a web log: Unix pipes, a hash table, and sort-and-merge"
+    expect: ["distinct pages", "hash table in one program", "top five"]
+  - file: lab2_mapreduce.py
+    title: "A minimal MapReduce with a join, a workflow and a failed task"
+    expect: ["Run 1", "failed halfway", "identical output"]
+verified:
+  date: "2026-11-10"
+  notes: "Topic coverage and terminology checked against DDIA 2e chapter 11. Both labs run; lab 1 asserts all three methods agree and lab 2 asserts its result against SQL."

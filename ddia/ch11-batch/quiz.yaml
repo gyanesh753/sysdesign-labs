@@ -1,0 +1,120 @@
+questions:
+  - id: batch-vs-service
+    type: single
+    prompt: "What is the main performance measure for a batch job, as opposed to an online service?"
+    options:
+      - "Number of concurrent users"
+      - "Response time of each request"
+      - "Availability during a network partition"
+      - "Throughput: how much input it processes in a given time"
+    answer: D
+    explanation: "Nobody is waiting on an individual record in a batch job. What counts is how long it takes to get through the whole input."
+    section: "Three kinds of system"
+
+  - id: unix-interface
+    type: single
+    prompt: "What lets arbitrary Unix tools be combined into a pipeline?"
+    options:
+      - "They are run by the same scheduler"
+      - "They share one simple interface: read a stream of text, write a stream of text"
+      - "They are all written in the same language"
+      - "They share a database"
+    answer: B
+    explanation: "A uniform interface means the output of any tool can be the input of any other, even tools whose authors never heard of each other."
+    section: "Batch processing with Unix tools"
+
+  - id: sort-vs-hash
+    type: single
+    prompt: "You are counting occurrences of each key. When is sorting a better choice than an in-memory hash table?"
+    options:
+      - "When there are few distinct keys"
+      - "When the distinct keys do not fit in memory, because sorting can spill to disk and merge"
+      - "Sorting is always better"
+      - "When the input is already in memory"
+    answer: B
+    explanation: "A hash table needs room for every distinct key. A sort-and-merge works with a fixed amount of memory by sorting chunks, writing them out and merging the sorted files."
+    section: "Sorting or hashing"
+
+  - id: immutable
+    type: multi
+    prompt: "Why do immutable inputs and deterministic tasks make batch jobs easy to keep reliable?"
+    options:
+      - "Tasks never fail"
+      - "A failed task can be run again and will produce the same output"
+      - "A bug in the job can be fixed and the job rerun, since the input was not damaged"
+      - "Partial output from a failed task can simply be discarded"
+    answer: [ B, C, D ]
+    explanation: "Nothing is modified in place, so there is nothing to undo. Tasks do fail, often; the point is that failure is cheap."
+    section: "Handling faults"
+
+  - id: preemption
+    type: single
+    prompt: "Why might a healthy batch task be stopped by the cluster on purpose?"
+    options:
+      - "Because batch tasks are limited to one minute"
+      - "Because its input was modified"
+      - "Because it finished early"
+      - "Because it was running on spare capacity that a higher-priority workload now needs"
+    answer: D
+    explanation: "Running low-priority batch work on capacity that can be reclaimed makes the cluster cheaper to run. It is acceptable because a batch task can always be restarted."
+    section: "Handling faults"
+
+  - id: shuffle
+    type: single
+    prompt: "In MapReduce, what does the shuffle step do?"
+    options:
+      - "Brings all key-value pairs with the same key together, by sorting, so one reducer call sees them all"
+      - "Compresses the output"
+      - "Randomizes the order of input records"
+      - "Splits the input files into chunks"
+    answer: A
+    explanation: "Despite the name, nothing is random about it. It routes each key to one place and sorts so that all values for a key are adjacent."
+    section: "MapReduce"
+
+  - id: dataflow
+    type: single
+    prompt: "What is the main advantage of a dataflow engine over classic MapReduce?"
+    options:
+      - "It only works on small data"
+      - "A job is a flexible graph of operators, so intermediate results need not be fully written to distributed storage between every step"
+      - "It cannot fail"
+      - "It does not need a cluster"
+    answer: B
+    explanation: "MapReduce forces every job into map, shuffle, reduce, with full output written between jobs. Dataflow engines sort only where needed and keep intermediate data local, recomputing it if lost."
+    section: "Dataflow engines"
+
+  - id: join
+    type: single
+    prompt: "How does a sort-merge join combine page views with user profiles when neither fits in memory?"
+    options:
+      - "Both datasets are keyed by user ID, so the shuffle brings each user's profile and views to the same place"
+      - "It queries a database once per page view"
+      - "It compares every view with every profile"
+      - "It loads all profiles into a hash table"
+    answer: A
+    explanation: "Using the join key as the shuffle key means matching records from both inputs arrive together, sorted, and can be combined in one pass."
+    section: "Joins and grouping"
+
+  - id: declarative-batch
+    type: single
+    prompt: "Why is batch work now mostly written in SQL or a DataFrame API instead of hand-written map and reduce functions?"
+    options:
+      - "DataFrames avoid the need for storage"
+      - "A declarative query lets an optimizer choose the join method and the order of operations"
+      - "SQL is the only language clusters understand"
+      - "Map and reduce functions cannot express joins"
+    answer: B
+    explanation: "It is the same argument as in chapter 3: state the result you want and let the system pick the execution plan. It is also far less code."
+    section: "Query languages and DataFrames"
+
+  - id: serving
+    type: single
+    prompt: "A batch job computes recommendations for every user. What is the recommended way to get them into the system that serves the website?"
+    options:
+      - "Keep them only in the job's memory"
+      - "Write each recommendation to the live database from inside the job, one request at a time"
+      - "Email the results to the operations team"
+      - "Have the job produce complete files, then load them in bulk and switch over in one step"
+    answer: D
+    explanation: "Per-record writes are slow, can overload the live database, and are not safe to retry. Building files and swapping them in keeps the job retryable and gives an easy way back if the new data is bad."
+    section: "Batch use cases"

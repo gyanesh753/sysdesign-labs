@@ -1,0 +1,117 @@
+questions:
+  - id: partial-failure
+    type: single
+    prompt: "What makes partial failure harder to handle than a total failure?"
+    options:
+      - "It is always caused by software bugs"
+      - "Some parts work and others do not, unpredictably, and a node often cannot tell which is the case"
+      - "It only happens on a single computer"
+      - "It always destroys data"
+    answer: B
+    explanation: "A total failure is at least unambiguous. In a distributed system the same operation can succeed one moment and silently fail the next, and the caller may not be able to tell the difference."
+    section: "Partial failure"
+
+  - id: no-reply
+    type: multi
+    prompt: "You send a request and receive no reply before your timeout. Which of these might be true?"
+    options:
+      - "The request never arrived"
+      - "The other node has crashed"
+      - "The other node processed it and the reply was lost"
+      - "The other node is paused and will process it later"
+    answer: [ A, B, C, D ]
+    explanation: "All four look exactly the same from the sender's side. That is why a timeout tells you nothing about whether the request took effect."
+    section: "Unreliable networks"
+
+  - id: timeout-tradeoff
+    type: single
+    prompt: "What is the cost of choosing a very short timeout for failure detection?"
+    options:
+      - "Healthy but slow nodes are declared dead, causing needless and possibly harmful failovers"
+      - "Dead nodes go unnoticed for a long time"
+      - "The network becomes slower"
+      - "Clocks drift faster"
+    answer: A
+    explanation: "A short timeout detects real failures quickly but raises false alarms, and a false alarm can transfer load onto other nodes at the worst moment. A long timeout has the opposite problem."
+    section: "Choosing a timeout"
+
+  - id: clock-kind
+    type: single
+    prompt: "Which clock should you use to measure how long an operation took?"
+    options:
+      - "The time-of-day clock, because it is synchronized"
+      - "Either one; they always agree"
+      - "The monotonic clock, because it never jumps backward"
+      - "The clock of the time server"
+    answer: C
+    explanation: "A time-of-day clock can be corrected in the middle of your measurement and give a wrong or even negative duration. A monotonic clock is designed for measuring intervals."
+    section: "Two kinds of clock"
+
+  - id: drift
+    type: numeric
+    prompt: "A machine's clock runs fast by 200 parts per million. If it is not corrected, how many milliseconds ahead is it after one hour?"
+    answer: 720
+    tolerance: 5
+    unit: "ms"
+    explanation: "One hour is 3,600,000 ms. 200 millionths of that is 720 ms. Over a day the same drift adds up to about 17 seconds."
+    section: "How wrong clocks get"
+
+  - id: lww-skew
+    type: single
+    prompt: "Two nodes use last write wins. Node B's clock is 5 ms behind node A's. A client writes to A and, 2 ms later, writes a newer value to B. What happens?"
+    options:
+      - "The newer value carries an earlier timestamp and is silently discarded"
+      - "The newer value wins, as intended"
+      - "The database reports a conflict"
+      - "Both values are kept"
+    answer: A
+    explanation: "The second write happened later but is stamped 3 ms earlier than the first, so last write wins keeps the old value. No error is raised anywhere."
+    section: "Timestamps for ordering events"
+
+  - id: pause
+    type: single
+    prompt: "Why is \"check the lease is still valid, then write\" unsafe?"
+    options:
+      - "The write always fails"
+      - "Checking a lease is slow"
+      - "Leases never expire"
+      - "The process can be paused for an arbitrary time between the check and the write without noticing"
+    answer: D
+    explanation: "Garbage collection, a suspended virtual machine or swapping can stop a process at any line. When it resumes it believes no time has passed, though the lease may now belong to someone else."
+    section: "Process pauses"
+
+  - id: fencing
+    type: single
+    prompt: "How does a fencing token stop a client with an expired lease from corrupting data?"
+    options:
+      - "The client checks its own token before writing"
+      - "The lock service kills the old client"
+      - "The storage system remembers the highest token it has seen and rejects writes carrying a lower one"
+      - "The token extends the lease automatically"
+    answer: C
+    explanation: "The lock service issues an ever-increasing number with each lease. The check is done by the storage being protected, because the stale client cannot know that it is stale."
+    section: "Leases and fencing tokens"
+
+  - id: majority
+    type: single
+    prompt: "A node believes it is the leader, but a majority of nodes have elected a new one. Who is right?"
+    options:
+      - "The old leader, because it was elected first"
+      - "Neither, until an operator decides"
+      - "Both are leaders until one crashes"
+      - "The majority; the old leader must step down even if it seems healthy to itself"
+    answer: D
+    explanation: "A node cannot rely on its own view of itself. Decisions belong to a quorum, and since only one majority can exist, this prevents two conflicting decisions from both being accepted."
+    section: "The majority decides"
+
+  - id: safety-liveness
+    type: single
+    prompt: "Which of these is a **safety** property?"
+    options:
+      - "Every request eventually receives a response"
+      - "All messages are eventually delivered"
+      - "No two nodes ever hold the same lock at the same time"
+      - "A leader is eventually elected"
+    answer: C
+    explanation: "Safety means nothing bad ever happens, and a violation can be pinned to a moment in time. The other three say something good eventually happens, which is liveness."
+    section: "System models and correctness"

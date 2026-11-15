@@ -1,0 +1,116 @@
+questions:
+  - id: linearizable-def
+    type: single
+    prompt: "What does linearizability guarantee?"
+    options:
+      - "Writes are never lost in a crash"
+      - "The system behaves as if there were a single copy of the data: once a write completes, every later read sees it"
+      - "Transactions behave as if they ran one at a time in some order"
+      - "All replicas eventually hold the same data"
+    answer: B
+    explanation: "It is a recency guarantee on individual reads and writes. The other three describe serializability, eventual consistency and durability."
+    section: "What it means"
+
+  - id: back-in-time
+    type: single
+    prompt: "Client A reads a value and gets the new version. Client B starts a read after A's read has finished and gets the old version. What does this show?"
+    options:
+      - "Nothing unusual; reads may always differ"
+      - "The system is not linearizable"
+      - "The system is not serializable"
+      - "The system is not durable"
+    answer: B
+    explanation: "Once any read has returned the new value, all reads that begin afterwards must return it too. A value going backward is the signature of reading from a lagging replica."
+    section: "What it means"
+
+  - id: vs-serializable
+    type: single
+    prompt: "How does serializability differ from linearizability?"
+    options:
+      - "They are the same guarantee under two names"
+      - "Linearizability applies only to read-only transactions"
+      - "Serializability concerns multi-object transactions and allows any serial order; linearizability concerns single operations and requires the latest value in real time"
+      - "Serializability is about durability"
+    answer: C
+    explanation: "One is an isolation guarantee for transactions, the other a recency guarantee for individual operations. A system can provide either one without the other."
+    section: "Linearizability is not serializability"
+
+  - id: needs-linearizability
+    type: multi
+    prompt: "Which of these need linearizability to work correctly?"
+    options:
+      - "A view counter on a video that may be slightly out of date"
+      - "A rule that a username is unique"
+      - "A lock that at most one node may hold"
+      - "Electing exactly one leader"
+    answer: [ B, C, D ]
+    explanation: "Locks, uniqueness and leader election all require every node to agree on a single up-to-date answer. An approximate view count tolerates staleness."
+    section: "Where you need it"
+
+  - id: cap
+    type: single
+    prompt: "A replica is cut off from the others by a network fault. What choice does it face?"
+    options:
+      - "It can stay both linearizable and available by answering from its local copy"
+      - "It must become the leader"
+      - "It must shut down permanently"
+      - "Either refuse requests and stay linearizable, or keep answering and risk returning stale data"
+    answer: D
+    explanation: "This is the trade-off the CAP theorem names, and it applies only while the network is partitioned. Separately, linearizability also costs response time even when nothing is broken."
+    section: "The cost"
+
+  - id: lamport
+    type: single
+    prompt: "What does a Lamport timestamp guarantee?"
+    options:
+      - "If one event could have caused another, the first has the smaller timestamp"
+      - "It equals the real time of the event"
+      - "If one timestamp is smaller than another, the first event caused the second"
+      - "It detects concurrent events"
+    answer: A
+    explanation: "The order is consistent with cause and effect. The converse does not hold: unrelated events are also given an order, and the timestamps alone cannot tell you that order is arbitrary."
+    section: "Lamport timestamps"
+
+  - id: logical-limit
+    type: single
+    prompt: "Why can't Lamport timestamps alone enforce a unique username at the moment of registration?"
+    options:
+      - "They can only order events on one node"
+      - "They are not unique"
+      - "They require synchronized clocks"
+      - "A node cannot know it holds the earliest request until it has heard from every other node"
+    answer: D
+    explanation: "Timestamps give the order afterwards. Deciding now, safely, requires knowing no earlier competing request exists, which needs agreement between nodes: consensus."
+    section: "What they cannot decide"
+
+  - id: equivalent
+    type: multi
+    prompt: "Which of these problems are equivalent to consensus, so that a solution to one gives a solution to the others?"
+    options:
+      - "Compressing a column of integers"
+      - "Atomic commit across several nodes"
+      - "A shared log that all nodes read in the same order"
+      - "A fault-tolerant compare-and-set operation"
+    answer: [ B, C, D ]
+    explanation: "Compare-and-set, shared logs, atomic commit, locks and unique constraints are all forms of the same problem. Compression has nothing to do with agreement."
+    section: "Many faces of one problem"
+
+  - id: tolerate
+    type: numeric
+    prompt: "A consensus cluster has 5 nodes. How many can fail while the cluster still makes progress?"
+    answer: 2
+    unit: "nodes"
+    explanation: "Progress needs a majority, which is 3 of 5. So 2 may fail. In general, tolerating f failures takes 2f + 1 nodes."
+    section: "What it costs"
+
+  - id: old-leader
+    type: single
+    prompt: "A leader is cut off, and the other nodes elect a new leader in a higher term. The old leader still believes it is in charge. Why can it not cause harm?"
+    options:
+      - "The new leader deletes its data"
+      - "It shuts itself down immediately"
+      - "Its clock is corrected"
+      - "Any decision needs acceptance from a majority, and every majority includes at least one node that knows of the higher term and refuses"
+    answer: D
+    explanation: "Believing you are leader cannot be prevented. What matters is that two majorities always overlap, so an out-of-date leader can never gather enough acceptances to decide anything."
+    section: "How it works in practice"

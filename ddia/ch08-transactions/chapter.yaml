@@ -1,0 +1,23 @@
+title: "Transactions"
+status: ready
+summary: "What a transaction actually promises, which race conditions each isolation level lets through, and why committing across several systems is hard."
+est_minutes: 35
+objectives:
+  - Say what each letter of ACID means in practice, and which ones are the database's job
+  - Describe dirty reads, read skew, lost updates and write skew, and name the weakest isolation level that prevents each
+  - Explain how snapshot isolation works and why it does not prevent write skew
+  - Compare the three ways of implementing serializability
+  - Explain two-phase commit and why a coordinator failure leaves participants stuck
+labs:
+  - file: lab1_isolation_anomalies.py
+    title: "Three race conditions under three isolation levels"
+    expect: ["READ SKEW", "LOST UPDATE", "WRITE SKEW", "rule broken"]
+  - file: lab2_lost_update_sqlite.py
+    title: "Losing updates on a real database, and three ways to stop"
+    expect: ["read, then write", "atomic UPDATE", "compare-and-set"]
+  - file: lab3_two_phase_commit.py
+    title: "Two-phase commit and the in-doubt state"
+    expect: ["Everyone votes yes", "BLOCKED", "reads its log"]
+verified:
+  date: "2026-11-10"
+  notes: "Topic coverage and terminology checked against DDIA 2e chapter 8. All three labs run and their output matches the lab brief."

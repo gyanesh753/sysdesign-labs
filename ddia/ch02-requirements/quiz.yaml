@@ -1,0 +1,111 @@
+questions:
+  - id: posts-per-second
+    type: numeric
+    prompt: "A network handles 500 million posts per day. Roughly how many is that per second on average? Round to the nearest hundred."
+    answer: 5800
+    tolerance: 100
+    unit: "posts per second"
+    explanation: "A day has 86,400 seconds. 500,000,000 / 86,400 is about 5,787, so roughly 5,800 per second. Being able to turn a daily figure into a per-second rate is the first step of any capacity estimate."
+    section: "A worked example: home timelines"
+
+  - id: fanout-writes
+    type: numeric
+    prompt: "With 5,800 posts per second and an average of 200 followers per author, about how many timeline inserts per second does fan-out on write need? Answer in **millions**, to one decimal place."
+    answer: 1.2
+    tolerance: 0.06
+    unit: "million inserts per second"
+    explanation: "5,800 x 200 = 1,160,000, a little over a million inserts per second. Compare that with the roughly 400 million lookups per second that merging on read needs in the same scenario."
+    section: "Fan-out on write"
+
+  - id: fanout-tradeoff
+    type: single
+    prompt: "Why is fan-out on write usually the better default for a home timeline?"
+    options:
+      - "It makes posting faster"
+      - "It removes the need to store who follows whom"
+      - "It stores less data"
+      - "Timelines are read far more often than posts are written, so doing the work once at write time saves much more work at read time"
+    answer: D
+    explanation: "It stores *more* data and makes posting slower. It wins because reads vastly outnumber writes, and a precomputed timeline turns each read into one cheap lookup."
+    section: "Fan-out on write"
+
+  - id: celebrity
+    type: single
+    prompt: "An account with 100 million followers posts. What does the hybrid design do with that post?"
+    options:
+      - "Delays it until load is low"
+      - "Inserts it into 100 million timelines immediately, like any other post"
+      - "Drops it for followers who are offline"
+      - "Stores it once and merges it into each follower's timeline when they read"
+    answer: D
+    explanation: "Pure fan-out on write would need 100 million inserts for one post. The hybrid keeps fan-out on write for ordinary accounts and handles the few very large ones at read time, where a follower merges in posts from the handful of celebrities they follow."
+    section: "The celebrity problem"
+
+  - id: mean-vs-percentile
+    type: single
+    prompt: "99% of requests take about 20 ms and 1% take about 800 ms. Which statement is true?"
+    options:
+      - "The p99 is about 20 ms"
+      - "The median is about 20 ms, but the mean is pulled noticeably higher by the slow 1%"
+      - "The mean and the median are both about 20 ms"
+      - "The mean tells you how many users had a slow request"
+    answer: B
+    explanation: "The median ignores the size of the outliers; the mean does not (here it lands near 28 ms). Neither tells you about the slow 1%. That is what p99 and above are for."
+    section: "Percentiles, not averages"
+
+  - id: tail-amplification
+    type: numeric
+    prompt: "A page load makes 20 backend calls in parallel and waits for all of them. Each call independently has a 1% chance of being slow. What percentage of page loads hit at least one slow call? Round to the nearest whole number."
+    answer: 18
+    tolerance: 1
+    unit: "%"
+    explanation: "The chance that all 20 are fast is 0.99^20, about 0.818. So about 18% of page loads include at least one slow call, even though each backend is slow only 1% of the time."
+    section: "Tail latency amplification"
+
+  - id: averaging-percentiles
+    type: single
+    prompt: "You have a p99 value from each of 50 servers and want the p99 of the whole fleet. What is the correct approach?"
+    options:
+      - "Take the largest of the 50 values"
+      - "Merge the underlying response-time histograms and compute the percentile from the combined data"
+      - "Average the 50 values"
+      - "Take the median of the 50 values"
+    answer: B
+    explanation: "A percentile depends on the whole distribution and on how many requests each server handled. None of the shortcuts gives it. Adding histograms does."
+    section: "The averaging trap"
+
+  - id: fault-vs-failure
+    type: single
+    prompt: "One of three database replicas crashes. The other two keep serving every request. In this chapter's terms, what happened?"
+    options:
+      - "A fault that the system tolerated, so there was no failure"
+      - "A single point of failure"
+      - "Neither a fault nor a failure"
+      - "A failure, but not a fault"
+    answer: A
+    explanation: "A fault is one component misbehaving. A failure is the whole system no longer providing its service. Fault tolerance means keeping the first from becoming the second."
+    section: "Reliability and fault tolerance"
+
+  - id: retry-storm
+    type: multi
+    prompt: "A service was slow for a few seconds, and minutes later it is still overloaded even though the original cause is gone. Which measures help break or prevent this?"
+    options:
+      - "Clients retry immediately so that requests are not lost"
+      - "Clients stop calling for a while after repeated failures"
+      - "The server rejects requests early when its queue is long"
+      - "Clients wait longer between retries, with random jitter"
+    answer: [ B, C, D ]
+    explanation: "This is a metastable failure held in place by retries. Load shedding, backoff with jitter, and circuit breakers all reduce the load that the retries add. Immediate retries are what cause it."
+    section: "When overload feeds itself"
+
+  - id: maintainability
+    type: single
+    prompt: "A team hides a tangle of storage details behind a small, clear interface so that the rest of the code no longer needs to know about them. Which part of maintainability does this mainly serve?"
+    options:
+      - "Elasticity"
+      - "Throughput"
+      - "Simplicity"
+      - "Operability"
+    answer: C
+    explanation: "A good abstraction removes accidental complexity, which is the heart of simplicity. Operability is about keeping the system running; evolvability, the third part, is about making change easy, and simple systems tend to be easier to change too."
+    section: "Maintainability"

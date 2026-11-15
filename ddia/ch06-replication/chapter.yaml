@@ -1,0 +1,23 @@
+title: "Replication"
+status: ready
+summary: "Keeping copies of the same data on several machines is easy until the data changes. Three ways to do it, and what each one lets go wrong."
+est_minutes: 30
+objectives:
+  - Describe single-leader replication and what can go wrong during failover
+  - Explain replication lag and the guarantees that hide it from users
+  - Say when multi-leader replication is worth its conflicts, and how conflicts can be resolved
+  - Work out whether a quorum configuration guarantees that reads see the latest write
+  - Tell whether two writes are concurrent, and explain why last write wins loses data
+labs:
+  - file: lab1_replication_lag.py
+    title: "Replication lag, reading your own writes and monotonic reads"
+    expect: ["any follower", "sticky follower", "own writes from leader"]
+  - file: lab2_quorums.py
+    title: "Quorums: when does w + r > n matter?"
+    expect: ["PART A", "PART B", "PART C"]
+  - file: lab3_concurrent_writes.py
+    title: "Last write wins, version vectors and a CRDT counter"
+    expect: ["silently discarded", "CONCURRENT", "every click counted"]
+verified:
+  date: "2026-11-10"
+  notes: "Topic coverage and terminology checked against DDIA 2e chapter 6. All three labs run and their output matches the lab brief."

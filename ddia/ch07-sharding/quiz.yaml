@@ -1,0 +1,117 @@
+questions:
+  - id: shard-vs-replica
+    type: single
+    prompt: "How do sharding and replication differ?"
+    options:
+      - "Sharding is for reads and replication is for writes"
+      - "They are two words for the same thing"
+      - "Replication keeps copies of the same data on several nodes; sharding splits the data so each record belongs to one shard, and each shard is usually replicated too"
+      - "Replication needs a shard key"
+    answer: C
+    explanation: "Replication is about redundancy, sharding about dividing a dataset that is too big or too busy for one machine. Most large systems use both together."
+    section: "Why split the data"
+
+  - id: tenant
+    type: multi
+    prompt: "Which are benefits of giving each customer organization its own shard?"
+    options:
+      - "A tenant can never outgrow a single machine"
+      - "One tenant's heavy load does not slow down the others"
+      - "A schema change can be rolled out a few tenants at a time"
+      - "One tenant's data can be backed up, restored or deleted on its own"
+    answer: [ B, C, D ]
+    explanation: "Isolation, per-tenant operations and gradual rollout are the benefits. A very large tenant outgrowing its shard is precisely the weakness of the approach."
+    section: "One shard per customer"
+
+  - id: range-strength
+    type: single
+    prompt: "What is the main advantage of key-range sharding over hash sharding?"
+    options:
+      - "It never needs rebalancing"
+      - "It works without a shard key"
+      - "Keys that are close together are stored together, so range scans touch few shards"
+      - "It always spreads load more evenly"
+    answer: C
+    explanation: "Sorted ranges keep neighbouring keys in the same shard. The price is the risk of uneven load when the access pattern follows the key order."
+    section: "Sharding by key range"
+
+  - id: timestamp-key
+    type: single
+    prompt: "Sensor readings are key-range sharded on the timestamp alone. What happens to incoming writes?"
+    options:
+      - "They all go to the shard covering the current time, which becomes a hot spot"
+      - "They spread evenly over all shards"
+      - "They go to a random shard"
+      - "They are rejected"
+    answer: A
+    explanation: "All current writes have nearly the same key. Putting the sensor ID before the timestamp spreads writes across sensors while keeping each sensor's readings in order."
+    section: "Sharding by key range"
+
+  - id: mod-n
+    type: numeric
+    prompt: "A cluster grows from 10 nodes to 11. Ideally, what percentage of the keys should have to move? Round to the nearest whole number."
+    answer: 9
+    tolerance: 1
+    unit: "%"
+    explanation: "Only the new node's fair share, one eleventh or about 9%, needs to move. With hash mod N about 91% moves, because the formula's result changes for almost every key."
+    section: "Why not hash mod N"
+
+  - id: fixed-shards
+    type: single
+    prompt: "With a fixed number of shards, far more than there are nodes, what changes when a node is added?"
+    options:
+      - "Every key is rehashed into a new shard"
+      - "The number of shards doubles"
+      - "Some whole shards are reassigned to the new node; no key changes shard"
+      - "Nothing moves until the next restart"
+    answer: C
+    explanation: "The key-to-shard mapping is permanent. Only the small shard-to-node table changes, so just the reassigned shards' data moves."
+    section: "A fixed number of shards"
+
+  - id: hot-key
+    type: single
+    prompt: "One key receives 30% of all writes. Why does a better hash function not help?"
+    options:
+      - "Hashing spreads different keys apart, but all requests for the same key still land on the same shard"
+      - "It does help; the load becomes even"
+      - "Hashing only works for numeric keys"
+      - "Hash functions are too slow"
+    answer: A
+    explanation: "The same key always hashes to the same place. Relieving it means changing the key itself, for example by adding a random suffix on write and combining the pieces on read."
+    section: "Skew and hot keys"
+
+  - id: auto-rebalance
+    type: single
+    prompt: "Why can fully automatic rebalancing combined with automatic failure detection be dangerous?"
+    options:
+      - "It prevents nodes from being added"
+      - "A slow, overloaded node may be judged dead, triggering data movement that adds load to other struggling nodes"
+      - "It moves too little data"
+      - "It disables replication"
+    answer: B
+    explanation: "Rebalancing is expensive. Triggered at the wrong moment by a false alarm, it can turn one overloaded node into a cascading failure, so many teams require a human to approve it."
+    section: "Rebalancing"
+
+  - id: local-index
+    type: single
+    prompt: "With a local secondary index on `color`, how is the query \"all red cars\" answered?"
+    options:
+      - "By scanning the primary keys in order"
+      - "By asking the single shard that holds red cars"
+      - "By sending the query to every shard and combining the results"
+      - "It cannot be answered"
+    answer: C
+    explanation: "Each shard indexes only its own records, and red cars can be in any of them. The scatter-gather query is as slow as the slowest shard, which is the tail latency effect from chapter 2."
+    section: "Secondary indexes"
+
+  - id: global-index
+    type: multi
+    prompt: "Which statements about a global secondary index are true?"
+    options:
+      - "A query on the indexed value can be served from one index shard"
+      - "A single record write may have to update several shards"
+      - "The index is often updated asynchronously and can lag behind the data"
+      - "It makes writes cheaper than a local index"
+    answer: [ A, B, C ]
+    explanation: "A global index moves the cost from reads to writes. Because the index entries are on other shards, keeping them exactly in step would need a distributed transaction, so many systems update them a moment later."
+    section: "Secondary indexes"

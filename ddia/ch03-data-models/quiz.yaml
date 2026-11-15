@@ -1,0 +1,120 @@
+questions:
+  - id: declarative
+    type: single
+    prompt: "What is the main practical benefit of a declarative query language such as SQL?"
+    options:
+      - "It guarantees the query uses one CPU core"
+      - "Queries always run faster than hand-written loops"
+      - "It removes the need for indexes"
+      - "You state the result you want, so the database is free to choose and improve how it is computed"
+    answer: D
+    explanation: "Because the query does not fix the steps, the optimizer can pick indexes, reorder joins or parallelize, and can improve over time without your query changing."
+    section: "Why the data model matters"
+
+  - id: document-fit
+    type: single
+    prompt: "Which data fits a document model best?"
+    options:
+      - "A self-contained record with nested parts that is usually loaded whole, like a profile with its list of jobs"
+      - "Bank accounts with frequent transfers between them"
+      - "A social graph where anyone can follow anyone"
+      - "A catalogue where every product links to many suppliers and every supplier to many products"
+    answer: A
+    explanation: "Documents suit tree-shaped, one-to-many data that is read as a unit. The other three are dominated by many-to-many relationships between separate records."
+    section: "One-to-many: where documents fit"
+
+  - id: locality
+    type: single
+    prompt: "When does the storage locality of a document actually help performance?"
+    options:
+      - "When you need most of the document at once and it is not very large"
+      - "Only when the document is updated field by field"
+      - "Always"
+      - "Only for analytical queries"
+    answer: A
+    explanation: "Keeping related data together saves lookups only if you want it together. Reading or rewriting a large document to touch one small field wastes the advantage."
+    section: "One-to-many: where documents fit"
+
+  - id: normalize
+    type: multi
+    prompt: "An organization's name is copied into every profile that mentions it. Which statements are true?"
+    options:
+      - "Renaming the organization requires rewriting every profile that mentions it"
+      - "The data is normalized"
+      - "Reading a profile needs no join to show the name"
+      - "If the rename is interrupted, some profiles show the old name and some the new"
+    answer: [ A, C, D ]
+    explanation: "This is denormalized data: fast to read, expensive and risky to update. Normalized data would store the name once and reference it by ID."
+    section: "Many-to-one and many-to-many: where they strain"
+
+  - id: stable-id
+    type: single
+    prompt: "Why reference an organization by an ID instead of by its name?"
+    options:
+      - "IDs take less disk space, which is the main reason"
+      - "The ID has no meaning to humans, so it never needs to change even when the name does"
+      - "Databases cannot index text"
+      - "Names cannot be stored in documents"
+    answer: B
+    explanation: "Anything meaningful to people may need to change. If only the ID is copied around, a change to the name is a single write in one place."
+    section: "Many-to-one and many-to-many: where they strain"
+
+  - id: schema-on-read
+    type: single
+    prompt: "What does schema-on-read mean?"
+    options:
+      - "The schema is stored in a separate read replica"
+      - "The structure is not enforced when data is written; the code that reads it interprets and assumes a structure"
+      - "The data has no structure at all"
+      - "The database validates every record against a schema before storing it"
+    answer: B
+    explanation: "\"Schemaless\" data still has an implicit schema in the reading code. Schema-on-write, the relational default, checks the structure at write time instead."
+    section: "Schema on read, schema on write"
+
+  - id: graph-when
+    type: single
+    prompt: "What is the clearest sign that a graph model suits your data?"
+    options:
+      - "Records are deeply nested but never refer to each other"
+      - "The dataset is very large"
+      - "Many-to-many relationships are everywhere and queries follow paths of unknown length"
+      - "All queries are simple key lookups"
+    answer: C
+    explanation: "Graphs earn their keep when connections are the point and you need to traverse a variable number of hops. Nested, self-contained records suit documents; key lookups suit almost anything."
+    section: "Graph models"
+
+  - id: variable-hops
+    type: single
+    prompt: "Why is \"find everyone born anywhere within Asia\" awkward in SQL without recursion?"
+    options:
+      - "Continents cannot be stored in tables"
+      - "SQL cannot join more than two tables"
+      - "SQL has no way to compare strings"
+      - "The number of 'within' steps from a city up to a continent is not fixed, so you cannot write a fixed number of joins"
+    answer: D
+    explanation: "A fixed query needs a fixed number of joins. Variable-depth paths need a recursive query in SQL, or the 'zero or more times' syntax of a graph query language."
+    section: "Querying a graph"
+
+  - id: event-sourcing
+    type: multi
+    prompt: "Which are real consequences of using event sourcing?"
+    options:
+      - "A new read view can be built later by replaying the event log"
+      - "Deleting one person's data on request becomes harder because the log is immutable"
+      - "Views no longer need to be kept up to date"
+      - "The log records the intent behind each change, not only the resulting state"
+    answer: [ A, B, D ]
+    explanation: "Replay and a meaningful history are the benefits; immutability versus deletion is a real cost. Views still have to be maintained as new events arrive."
+    section: "Event sourcing and CQRS"
+
+  - id: graphql
+    type: single
+    prompt: "What is GraphQL mainly for?"
+    options:
+      - "Running recursive path queries inside a graph database"
+      - "Letting a client request exactly the nested fields it needs from a server, with limits that keep queries cheap"
+      - "Storing triples"
+      - "Replacing SQL in data warehouses"
+    answer: B
+    explanation: "GraphQL is an API query language for clients such as mobile apps. It is deliberately restricted, with no arbitrary recursion, because the clients are not trusted."
+    section: "Querying a graph"

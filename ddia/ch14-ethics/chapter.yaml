@@ -1,0 +1,20 @@
+title: "Doing the Right Thing"
+status: ready
+summary: "Data systems make decisions about people and hold information about them. What can go wrong, and what engineers are responsible for."
+est_minutes: 20
+objectives:
+  - Explain how a model trained on past decisions can reproduce discrimination even without sensitive attributes
+  - Describe a feedback loop in which a system's output distorts the data it later learns from
+  - Say who should be accountable for an automated decision and what a person affected by one needs
+  - Explain why consent to data collection is often not meaningful
+  - Argue for treating personal data as a liability as well as an asset
+labs:
+  - file: lab1_feedback_loop.py
+    title: "A feedback loop between two identical districts"
+    expect: ["RULE 1", "RULE 2", "Both districts are identical"]
+  - file: lab2_proxy_bias.py
+    title: "Bias through a proxy after the sensitive column is removed"
+    expect: ["Historical decisions", "never sees the group", "Same income"]
+verified:
+  date: "2026-11-10"
+  notes: "Topic coverage checked against DDIA 2e chapter 14. Both labs run and their output matches the lab brief. The two labs are my own illustrations of the chapter's themes, not examples from the book."

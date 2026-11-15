@@ -1,0 +1,23 @@
+title: "Sharding"
+status: ready
+summary: "Splitting a dataset across machines: how to choose which record goes where, how to move data when the cluster changes, and what it does to queries."
+est_minutes: 25
+objectives:
+  - Explain when sharding is worth its complexity and how it combines with replication
+  - Compare key-range and hash sharding for range queries and for evenness of load
+  - Explain why hash mod N is a poor way to assign keys to nodes, and what to do instead
+  - Recognize a hot key and describe one way to relieve it
+  - Compare local and global secondary indexes on read cost, write cost and consistency
+labs:
+  - file: lab1_rebalancing.py
+    title: "Add a node: how much data moves under each scheme?"
+    expect: ["hash mod N", "fixed 1,024 shards", "consistent hashing"]
+  - file: lab2_skew.py
+    title: "Key range against hash, range queries, and a hot key"
+    expect: ["PART A", "PART B", "PART C"]
+  - file: lab3_secondary_indexes.py
+    title: "Local and global secondary indexes"
+    expect: ["local index", "global index", "p99"]
+verified:
+  date: "2026-11-10"
+  notes: "Topic coverage and terminology checked against DDIA 2e chapter 7. All three labs run and their output matches the lab brief."

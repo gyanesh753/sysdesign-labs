@@ -1,0 +1,23 @@
+title: "Storage and Retrieval"
+status: ready
+summary: "What a database does on disk when you write and read, and why engines built for transactions and for analytics look so different."
+est_minutes: 30
+objectives:
+  - Explain how a log-structured engine turns random writes into sequential ones, and what compaction is for
+  - Describe how a B-tree finds and updates a key, and how it survives a crash
+  - Compare LSM-trees and B-trees on writes, reads and disk space
+  - Explain why column storage compresses well and why sort order matters
+  - Describe how full-text and vector indexes find results that a key lookup cannot
+labs:
+  - file: lab1_lsm.py
+    title: "A tiny LSM-tree: SSTables, Bloom filters and compaction"
+    expect: ["SSTables searched per read", "after compaction", "space amplification"]
+  - file: lab2_column_compression.py
+    title: "Column storage, run-length encoding and sort order"
+    expect: ["Run-length encoding", "File sizes", "Bytes per column"]
+  - file: lab3_vector_index.py
+    title: "Exact search versus an approximate HNSW index"
+    expect: ["flat (exact)", "HNSW, ef=160"]
+verified:
+  date: "2026-11-10"
+  notes: "Topic coverage and terminology checked against DDIA 2e chapter 4. All three labs run and their output matches the lab brief."

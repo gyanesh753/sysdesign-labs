@@ -1,0 +1,24 @@
+title: "Defining Nonfunctional Requirements"
+status: ready
+summary: "How to say precisely what fast, reliable, scalable and maintainable mean, so they can be measured and designed for."
+est_minutes: 30
+objectives:
+  - Compare fan-out on read with fan-out on write for a feed, and estimate the load each puts on the system
+  - Describe performance with response-time percentiles instead of averages, and explain why the tail matters
+  - Distinguish a fault from a failure and name techniques for tolerating hardware, software and human faults
+  - Explain how retries can keep an overloaded system down, and what breaks the loop
+  - Compare shared-memory, shared-disk and shared-nothing scaling
+  - Name the three parts of maintainability and give an example of each
+labs:
+  - file: lab1_timelines.py
+    title: "Home timelines three ways: merge on read, fan-out on write, hybrid"
+    expect: ["fan-out per post", "C (hybrid)"]
+  - file: lab2_percentiles.py
+    title: "Percentiles, tail latency amplification, and the averaging trap"
+    expect: ["PART A", "PART B", "PART C"]
+  - file: lab3_retry_storm.py
+    title: "A five-second slowdown turns into a retry storm"
+    expect: ["policy: naive", "policy: shed"]
+verified:
+  date: "2026-11-10"
+  notes: "Lecture and quiz checked against DDIA 2e chapter 2 (section coverage, case-study figures, terminology). All three labs run and their output matches the claims in the lab brief."
