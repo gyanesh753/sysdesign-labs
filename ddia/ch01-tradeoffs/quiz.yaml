@@ -1,0 +1,120 @@
+questions:
+  - id: oltp-shape
+    type: single
+    prompt: "Which query is typical of an **operational** (OLTP) workload?"
+    options:
+      - "Count distinct users per signup channel since launch"
+      - "Fetch the order with `order_id = 91827` and mark it shipped"
+      - "Total revenue per country for each month of last year"
+      - "The 95th percentile basket size across all customers"
+    answer: B
+    explanation: "Operational requests read or write a few records found by key and must return in milliseconds. The other three scan large parts of history and return aggregates, which is analytical work."
+    section: "Two workloads, two shapes"
+
+  - id: column-store
+    type: single
+    prompt: "A query computes `SUM(price)` grouped by `country` over two million rows of a 50-column table. Why is a column store much faster at this than a row store?"
+    options:
+      - "It skips transactions, so there is no locking"
+      - "It keeps an index on every column"
+      - "It keeps all data in memory"
+      - "It only has to read the two columns the query uses, and values of one column sit together and compress well"
+    answer: D
+    explanation: "Column storage lays out each column contiguously. The aggregate reads 2 of 50 columns and nothing else, and similar values next to each other compress well. A row store has to step over all 50 fields of every row."
+    section: "Two workloads, two shapes"
+
+  - id: warehouse-why
+    type: multi
+    prompt: "Which are real reasons to copy operational data into a separate data warehouse?"
+    options:
+      - "Heavy analytical scans would otherwise slow down requests users are waiting on"
+      - "Analysts need data from many operational systems combined in one place"
+      - "Warehouses make single-row writes faster than an OLTP database"
+      - "A schema designed for transactions is often awkward for analysis"
+    answer: [ A, B, D ]
+    explanation: "Isolation from production, one place to join data from many systems, and a schema shaped for analysis are the three classic reasons. Warehouses are poor at single-row writes; they are loaded in bulk."
+    section: "Warehouses and lakes"
+
+  - id: lake-vs-warehouse
+    type: single
+    prompt: "What most clearly separates a data lake from a data warehouse?"
+    options:
+      - "A lake cannot be queried with SQL"
+      - "A lake stores files in their raw form and leaves interpretation to the reader; a warehouse imposes a relational schema when data is loaded"
+      - "A lake only stores images and video"
+      - "A lake is always in the cloud; a warehouse is always on premises"
+    answer: B
+    explanation: "A lake is a store of files in whatever format arrived, useful for work a relational model does not fit, such as training models. A warehouse cleans and structures data on the way in."
+    section: "Warehouses and lakes"
+
+  - id: htap
+    type: single
+    prompt: "Your database vendor says its HTAP product means you no longer need a data warehouse. What is the best objection?"
+    options:
+      - "Analytical queries never need fresh data"
+      - "A warehouse's main job is combining data from many separate operational systems, which one HTAP database does not do"
+      - "HTAP systems lose data on restart"
+      - "HTAP systems cannot run SQL"
+    answer: B
+    explanation: "HTAP helps when one application needs both transactional and analytical queries on the same fresh data. It does not gather the data of all your other systems in one place, which is what the warehouse is for."
+    section: "Warehouses and lakes"
+
+  - id: derived-pick
+    type: multi
+    prompt: "Which of these are **derived data**?"
+    options:
+      - "A full-text search index built from the product catalog"
+      - "A nightly `daily_revenue` summary table"
+      - "A Redis cache of user profiles loaded from Postgres"
+      - "The `orders` table where the checkout service first records each purchase"
+    answer: [ A, B, C ]
+    explanation: "A cache, a search index and a summary table can each be thrown away and rebuilt from another dataset. The `orders` table is where the fact is first recorded, so it is the system of record."
+    section: "Systems of record and derived data"
+
+  - id: derived-stale
+    type: single
+    prompt: "You update a row in the source table. A summary table built from it last night now shows a different total. What is the correct reading of the situation?"
+    options:
+      - "The update should be rolled back so the totals match"
+      - "The summary is stale derived data; the source is authoritative and the summary must be updated or rebuilt"
+      - "The two should be averaged"
+      - "The source table is corrupt"
+    answer: B
+    explanation: "When a system of record and a derived dataset disagree, the system of record is right by definition. The open design question is only how the derived copy gets brought back in step: full rebuild, incremental update, or a stream of changes."
+    section: "Systems of record and derived data"
+
+  - id: storage-compute
+    type: single
+    prompt: "What does separating storage from compute let a cloud-native database do that a traditional local-disk database cannot do easily?"
+    options:
+      - "Add or remove query machines without moving data, and scale each side independently"
+      - "Run without any caching"
+      - "Avoid all network round trips on reads"
+      - "Guarantee lower latency than local disks"
+    answer: A
+    explanation: "With data in a shared durable store, compute nodes hold no unique state, so they can come and go. The trade-off runs the other way from the wrong answers: reads cross a network and are not automatically faster, so these systems rely on local caching."
+    section: "Separating storage from compute"
+
+  - id: distributed-reasons
+    type: multi
+    prompt: "Which are sound reasons to make a system distributed?"
+    options:
+      - "It must keep working when a machine fails"
+      - "Regulation requires some data to stay in a specific country"
+      - "Distributed systems are simpler to debug than single-node ones"
+      - "Users on three continents need low latency"
+    answer: [ A, B, D ]
+    explanation: "Fault tolerance, latency and legal residency are all legitimate. Debugging gets harder, not easier: calls can fail or time out without telling you whether the work happened."
+    section: "Distributed versus single-node"
+
+  - id: erasure
+    type: single
+    prompt: "A user asks for their data to be deleted. You delete their row from the primary database. Why is the job probably not finished?"
+    options:
+      - "Deleting rows is not allowed under privacy law"
+      - "The primary database will restore the row automatically"
+      - "Copies of their data likely live on in derived systems such as caches, indexes, the warehouse and backups"
+      - "The row has to be deleted twice to take effect"
+    answer: C
+    explanation: "Every derived dataset is another copy. Erasure has to reach all of them, which is one more reason to know exactly what is derived from what, and to collect less in the first place."
+    section: "Data, law, and society"

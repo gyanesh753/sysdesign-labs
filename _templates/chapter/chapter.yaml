@@ -1,0 +1,18 @@
+title: "Chapter title as printed in the book"
+status: draft          # change to ready when lecture.md, quiz.yaml and project.md are done
+summary: "One sentence shown under the title and on the home page."
+est_minutes: 25
+objectives:
+  - First thing the reader can do after this chapter
+  - Second thing
+labs: []
+# labs:
+#   - file: lab1_example.py
+#     title: "What the lab demonstrates"
+#     needs_services: false          # true if it needs docker compose up -d
+#     needs_ollama: false            # true if it calls a local model through Ollama
+#     depends_on: []                 # other lab files in this folder that must run first
+#     expect: ["text the output must contain"]
+# verified:
+#   date: "2026-01-31"
+#   notes: "What was checked, and against what."

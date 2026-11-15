@@ -1,0 +1,233 @@
+{
+ "version": 1,
+ "engine": "kokoro-onnx v1.0",
+ "voice": "bm_george",
+ "lang": "en-gb",
+ "speed": 1,
+ "generated": "2026-11-10",
+ "sections": [
+  {
+   "id": "there-is-no-best-design",
+   "title": "There is no best design",
+   "hash": "f0190d33b0",
+   "file": "there-is-no-best-design.f0190d33b0.m4a",
+   "duration": 40.649,
+   "starts": [
+    0,
+    2.543,
+    7.359,
+    10.477,
+    17.58,
+    19.991,
+    32.797
+   ]
+  },
+  {
+   "id": "operational-versus-analytical-systems",
+   "title": "Operational versus analytical systems",
+   "hash": "72c2b3366c",
+   "file": "operational-versus-analytical-systems.72c2b3366c.m4a",
+   "duration": 3.599,
+   "starts": [
+    0
+   ]
+  },
+  {
+   "id": "two-workloads-two-shapes",
+   "title": "Two workloads, two shapes",
+   "hash": "34ceb07497",
+   "file": "two-workloads-two-shapes.34ceb07497.m4a",
+   "duration": 120.823,
+   "starts": [
+    0,
+    2.522,
+    6.808,
+    13.697,
+    20.594,
+    25.226,
+    35.177,
+    42.666,
+    45.309,
+    49.239,
+    57.849,
+    66.307,
+    71.957,
+    79.95,
+    89.45,
+    93.457,
+    101.623,
+    105.876,
+    107.501,
+    115.537
+   ]
+  },
+  {
+   "id": "warehouses-and-lakes",
+   "title": "Warehouses and lakes",
+   "hash": "af8c740f70",
+   "file": "warehouses-and-lakes.af8c740f70.m4a",
+   "duration": 96.578,
+   "starts": [
+    0,
+    2.533,
+    10.757,
+    18.81,
+    28.682,
+    33.535,
+    38.136,
+    45.75,
+    53.756,
+    57.68,
+    67.072,
+    72.359,
+    81.736,
+    83.893,
+    92.95
+   ]
+  },
+  {
+   "id": "systems-of-record-and-derived-data",
+   "title": "Systems of record and derived data",
+   "hash": "95ea9548c2",
+   "file": "systems-of-record-and-derived-data.95ea9548c2.m4a",
+   "duration": 93.078,
+   "starts": [
+    0,
+    3.666,
+    8.232,
+    13.16,
+    17.35,
+    22.803,
+    26.213,
+    34.841,
+    42.018,
+    45.445,
+    51.932,
+    66.026,
+    69.647,
+    75.592,
+    79.537,
+    81.392,
+    87.606
+   ]
+  },
+  {
+   "id": "cloud-versus-self-hosting",
+   "title": "Cloud versus self-hosting",
+   "hash": "ceec86ec89",
+   "file": "cloud-versus-self-hosting.ceec86ec89.m4a",
+   "duration": 62.531,
+   "starts": [
+    0,
+    2.868,
+    9.267,
+    15.688,
+    18.61,
+    23.7,
+    30.014,
+    36.925,
+    39.25,
+    43.651,
+    46.257,
+    51.794,
+    57.846
+   ]
+  },
+  {
+   "id": "separating-storage-from-compute",
+   "title": "Separating storage from compute",
+   "hash": "442c00b17e",
+   "file": "separating-storage-from-compute.442c00b17e.m4a",
+   "duration": 64.596,
+   "starts": [
+    0,
+    3.048,
+    7.846,
+    12.982,
+    22.605,
+    25.897,
+    35.523,
+    43.116,
+    50.358,
+    52.544,
+    60.873
+   ]
+  },
+  {
+   "id": "distributed-versus-single-node",
+   "title": "Distributed versus single-node",
+   "hash": "13c0145cc2",
+   "file": "distributed-versus-single-node.13c0145cc2.m4a",
+   "duration": 79.998,
+   "starts": [
+    0,
+    3.143,
+    8.551,
+    11.034,
+    19.002,
+    23.642,
+    27.587,
+    32.334,
+    36.681,
+    40.339,
+    42.176,
+    49.626,
+    53.894,
+    56.996,
+    63.164,
+    68.371
+   ]
+  },
+  {
+   "id": "microservices-and-serverless",
+   "title": "Microservices and serverless",
+   "hash": "8518646e7f",
+   "file": "microservices-and-serverless.8518646e7f.m4a",
+   "duration": 67.83,
+   "starts": [
+    0,
+    3.086,
+    11.854,
+    16.408,
+    22.412,
+    32.878,
+    38.61,
+    46.801,
+    50.63,
+    57.371,
+    62.451
+   ]
+  },
+  {
+   "id": "data-law-and-society",
+   "title": "Data, law, and society",
+   "hash": "c40a8ea5b3",
+   "file": "data-law-and-society.c40a8ea5b3.m4a",
+   "duration": 49.124,
+   "starts": [
+    0,
+    2.847,
+    8.145,
+    15.316,
+    28.366,
+    34.814,
+    36.336,
+    43.027
+   ]
+  },
+  {
+   "id": "what-the-labs-show",
+   "title": "What the labs show",
+   "hash": "b5f60f2a15",
+   "file": "what-the-labs-show.b5f60f2a15.m4a",
+   "duration": 31.706,
+   "starts": [
+    0,
+    2.03,
+    12.679,
+    20.177,
+    26.519
+   ]
+  }
+ ]
+}

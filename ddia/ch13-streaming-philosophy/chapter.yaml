@@ -1,0 +1,23 @@
+title: "A Philosophy of Streaming Systems"
+status: ready
+summary: "A way of assembling everything so far: one ordered record of what happened, many views derived from it, and correctness checked from end to end."
+est_minutes: 30
+objectives:
+  - Explain how deriving data from a shared log keeps several systems consistent without distributed transactions
+  - Describe how reprocessing lets a system change its data model gradually
+  - Explain the idea of unbundling a database into separately run components
+  - Apply the end-to-end argument to duplicate requests
+  - Distinguish timeliness from integrity and say which one can be relaxed
+labs:
+  - file: lab1_derived_views.py
+    title: "One event log, several views, and what replay makes possible"
+    expect: ["Three different views", "replaying the log", "mismatches found"]
+  - file: lab2_end_to_end.py
+    title: "Duplicate suppression at the wrong layer and at the right one"
+    expect: ["units moved", "request ID checked by the database"]
+  - file: lab3_audit_log.py
+    title: "A tamper-evident log"
+    expect: ["intact", "does not match its hash", "recorded elsewhere"]
+verified:
+  date: "2026-11-10"
+  notes: "Topic coverage and terminology checked against DDIA 2e chapter 13. All three labs run and their output matches the lab brief."

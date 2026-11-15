@@ -1,0 +1,25 @@
+title: "Inference Optimization"
+status: ready
+summary: "Making a model respond faster and cost less: what to measure, what the hardware limits, and the techniques at the level of the model and of the service."
+est_minutes: 30
+objectives:
+  - Distinguish the two phases of generation and what limits each
+  - Define time to first token, time per output token, throughput and goodput, and say which matters for a given product
+  - Name the properties of an accelerator that matter for inference
+  - Describe the main ways of making a model itself faster, including the KV cache
+  - Compare static, dynamic and continuous batching
+  - Explain what prompt caching saves and when it applies
+labs:
+  - file: lab1_latency_metrics.py
+    title: "Time to first token and time per output token on a real model"
+    needs_ollama: true
+    expect: ["first token after", "the same long prompt again", "Input length drives time to first token"]
+  - file: lab2_batching.py
+    title: "One at a time, fixed batches and dynamic batching"
+    expect: ["one at a time", "dynamic batching", "goodput"]
+  - file: lab3_kv_cache.py
+    title: "The KV cache and prompt caching in numbers"
+    expect: ["PART A", "PART B", "PART C", "prefix"]
+verified:
+  date: "2026-11-14"
+  notes: "Topic coverage and terminology checked against AI Engineering chapter 9. All three labs run; lab 1 was run against a local model through Ollama and its timings depend on the model and machine. Prices in lab 3 are invented."

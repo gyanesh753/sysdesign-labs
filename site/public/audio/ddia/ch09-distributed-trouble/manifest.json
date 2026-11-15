@@ -1,0 +1,268 @@
+{
+ "version": 1,
+ "engine": "kokoro-onnx v1.0",
+ "voice": "bm_george",
+ "lang": "en-gb",
+ "speed": 1,
+ "generated": "2026-11-10",
+ "sections": [
+  {
+   "id": "partial-failure",
+   "title": "Partial failure",
+   "hash": "ad267d94c5",
+   "file": "partial-failure.ad267d94c5.m4a",
+   "duration": 54.651,
+   "starts": [
+    0,
+    1.92,
+    5.71,
+    14.166,
+    17.249,
+    21.609,
+    26.59,
+    29.573,
+    39.368,
+    43.106,
+    48.506
+   ]
+  },
+  {
+   "id": "unreliable-networks",
+   "title": "Unreliable networks",
+   "hash": "ec307362c8",
+   "file": "unreliable-networks.ec307362c8.m4a",
+   "duration": 34.876,
+   "starts": [
+    0,
+    2.287,
+    6.938,
+    22.166,
+    25.663,
+    30.137
+   ]
+  },
+  {
+   "id": "choosing-a-timeout",
+   "title": "Choosing a timeout",
+   "hash": "d71e866f94",
+   "file": "choosing-a-timeout.d71e866f94.m4a",
+   "duration": 58.588,
+   "starts": [
+    0,
+    2.2,
+    8.921,
+    15.647,
+    27.13,
+    31.982,
+    41.816,
+    46.914
+   ]
+  },
+  {
+   "id": "why-not-make-the-network-predictable",
+   "title": "Why not make the network predictable",
+   "hash": "56db0c8712",
+   "file": "why-not-make-the-network-predictable.56db0c8712.m4a",
+   "duration": 32.182,
+   "starts": [
+    0,
+    3.042,
+    11.16,
+    14.562,
+    21.274,
+    26.695
+   ]
+  },
+  {
+   "id": "unreliable-clocks",
+   "title": "Unreliable clocks",
+   "hash": "cb81f0312f",
+   "file": "unreliable-clocks.cb81f0312f.m4a",
+   "duration": 15.92,
+   "starts": [
+    0,
+    2.053,
+    8.516
+   ]
+  },
+  {
+   "id": "two-kinds-of-clock",
+   "title": "Two kinds of clock",
+   "hash": "523b76a453",
+   "file": "two-kinds-of-clock.523b76a453.m4a",
+   "duration": 34.836,
+   "starts": [
+    0,
+    1.992,
+    5.422,
+    10.927,
+    14.243,
+    21.082,
+    26.529
+   ]
+  },
+  {
+   "id": "how-wrong-clocks-get",
+   "title": "How wrong clocks get",
+   "hash": "4a39d24ce1",
+   "file": "how-wrong-clocks-get.4a39d24ce1.m4a",
+   "duration": 34.013,
+   "starts": [
+    0,
+    2.308,
+    6.759,
+    13.317,
+    17.087,
+    20.153,
+    25.532
+   ]
+  },
+  {
+   "id": "timestamps-for-ordering-events",
+   "title": "Timestamps for ordering events",
+   "hash": "dc968b79e2",
+   "file": "timestamps-for-ordering-events.dc968b79e2.m4a",
+   "duration": 67.489,
+   "starts": [
+    0,
+    2.836,
+    11.016,
+    15.679,
+    25.953,
+    28.04,
+    30.389,
+    34.88,
+    44.041,
+    49.604,
+    60.198
+   ]
+  },
+  {
+   "id": "process-pauses",
+   "title": "Process pauses",
+   "hash": "8e7d80319d",
+   "file": "process-pauses.8e7d80319d.m4a",
+   "duration": 61.675,
+   "starts": [
+    0,
+    2.08,
+    8.688,
+    12.008,
+    15.652,
+    19.551,
+    22.325,
+    27.532,
+    35.003,
+    43.346,
+    46.41,
+    48.12,
+    53.485
+   ]
+  },
+  {
+   "id": "knowledge-truth-and-lies",
+   "title": "Knowledge, truth and lies",
+   "hash": "c9cf167cab",
+   "file": "knowledge-truth-and-lies.c9cf167cab.m4a",
+   "duration": 12.376,
+   "starts": [
+    0,
+    2.736,
+    7.387
+   ]
+  },
+  {
+   "id": "the-majority-decides",
+   "title": "The majority decides",
+   "hash": "43ecdee907",
+   "file": "the-majority-decides.43ecdee907.m4a",
+   "duration": 35.254,
+   "starts": [
+    0,
+    2.549,
+    6.674,
+    13.952,
+    17.682,
+    22.116,
+    28.949
+   ]
+  },
+  {
+   "id": "leases-and-fencing-tokens",
+   "title": "Leases and fencing tokens",
+   "hash": "2c5c8efb51",
+   "file": "leases-and-fencing-tokens.2c5c8efb51.m4a",
+   "duration": 53.296,
+   "starts": [
+    0,
+    2.978,
+    5.945,
+    17.247,
+    20.719,
+    23.398,
+    30.029,
+    38.959,
+    43.715
+   ]
+  },
+  {
+   "id": "byzantine-faults",
+   "title": "Byzantine faults",
+   "hash": "c18be43701",
+   "file": "byzantine-faults.c18be43701.m4a",
+   "duration": 35.31,
+   "starts": [
+    0,
+    2.165,
+    8.281,
+    13.595,
+    21.502
+   ]
+  },
+  {
+   "id": "system-models-and-correctness",
+   "title": "System models and correctness",
+   "hash": "00cefb53d8",
+   "file": "system-models-and-correctness.00cefb53d8.m4a",
+   "duration": 58.45,
+   "starts": [
+    0,
+    3.082,
+    7.229,
+    22.544,
+    30.741,
+    34.292,
+    40.533,
+    47.948
+   ]
+  },
+  {
+   "id": "testing-for-the-unexpected",
+   "title": "Testing for the unexpected",
+   "hash": "6dc42ee1a7",
+   "file": "testing-for-the-unexpected.6dc42ee1a7.m4a",
+   "duration": 37.934,
+   "starts": [
+    0,
+    2.718,
+    8.259,
+    9.985,
+    17.225,
+    25.286
+   ]
+  },
+  {
+   "id": "what-the-labs-show",
+   "title": "What the labs show",
+   "hash": "23ed05a641",
+   "file": "what-the-labs-show.23ed05a641.m4a",
+   "duration": 29.029,
+   "starts": [
+    0,
+    2.03,
+    12.36,
+    22.823
+   ]
+  }
+ ]
+}

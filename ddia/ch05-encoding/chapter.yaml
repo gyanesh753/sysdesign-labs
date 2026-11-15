@@ -1,0 +1,21 @@
+title: "Encoding and Evolution"
+status: ready
+summary: "How data is turned into bytes, and how to change its shape while old and new code are both still running."
+est_minutes: 25
+objectives:
+  - Define backward and forward compatibility and say which one each kind of change needs
+  - Compare JSON with schema-based binary encodings, and field tags with schema-ordered encoding
+  - State the rules for changing a schema without breaking readers
+  - Explain why a remote call is not like a local function call
+  - Describe how compatibility matters differently for databases, services, workflows and message brokers
+labs:
+  - file: lab1_encodings.py
+    title: "One record as JSON, as tagged binary and as schema-ordered binary"
+    expect: ["JSON text", "binary with field tags", "varint"]
+  - file: lab2_schema_evolution.py
+    title: "Old and new code reading each other's data"
+    depends_on: [lab1_encodings.py]
+    expect: ["BACKWARD", "FORWARD", "silently lost", "resolved by name"]
+verified:
+  date: "2026-11-10"
+  notes: "Topic coverage and terminology checked against DDIA 2e chapter 5. Both labs run; the codecs round-trip and the output matches the lab brief."

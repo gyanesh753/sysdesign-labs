@@ -1,0 +1,25 @@
+title: "RAG and Agents"
+status: ready
+summary: "Two ways to give a model what it lacks: retrieve the information it needs for each question, and give it tools so it can act."
+est_minutes: 35
+objectives:
+  - Describe the parts of a retrieval-augmented system and why retrieval beats pasting everything into the prompt
+  - Compare term-based and embedding-based retrieval, and know how they are combined
+  - Choose a chunking strategy and name three other ways to improve retrieval
+  - Explain what an agent is, the kinds of tools it can use, and how planning and reflection work
+  - List the ways agents fail and explain why errors compound over long tasks
+  - Describe how memory extends what a model can keep track of
+labs:
+  - file: lab1_retrieval.py
+    title: "Keyword search, embedding search and the two combined"
+    needs_ollama: true
+    expect: ["term-based (BM25)", "embedding-based", "hybrid"]
+  - file: lab2_chunking.py
+    title: "Chunk size and overlap"
+    expect: ["chunk size", "finds interval AND consequence", "Overlap repairs"]
+  - file: lab3_agent_loop.py
+    title: "An agent loop, and how its errors compound"
+    expect: ["PART A", "PART B", "PART C", "needs human approval"]
+verified:
+  date: "2026-11-14"
+  notes: "Topic coverage and terminology checked against AI Engineering chapter 6. All three labs run; lab 1 was run against a local embedding model through Ollama, and its numbers depend on the model and the small corpus."

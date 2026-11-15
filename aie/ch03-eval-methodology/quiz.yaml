@@ -1,0 +1,116 @@
+questions:
+  - id: why-hard
+    type: single
+    prompt: "Why is evaluating a foundation model harder than evaluating a classifier?"
+    options:
+      - "Classifiers cannot be evaluated either"
+      - "Their output is open-ended, so there are many acceptable answers and no fixed list of correct ones to compare against"
+      - "Foundation models are always correct"
+      - "Foundation models have no measurable output"
+    answer: B
+    explanation: "A classifier picks from known labels. A generative model can say anything, and correct answers can be worded in countless ways."
+    section: "Why evaluation is the hard part"
+
+  - id: perplexity-meaning
+    type: single
+    prompt: "A model has a perplexity of 4 on some text. What is a reasonable reading of that?"
+    options:
+      - "It needs 4 seconds per token"
+      - "On average it is as uncertain as if choosing among 4 equally likely tokens at each step"
+      - "It gets 4% of tokens right"
+      - "The text has 4 tokens"
+    answer: B
+    explanation: "Perplexity is the effective number of choices the model is weighing. Lower means the model predicts the text better."
+    section: "Perplexity"
+
+  - id: perplexity-numeric
+    type: numeric
+    prompt: "A source produces one of 32 tokens, each equally likely. What is the perplexity of a model that predicts this source perfectly?"
+    answer: 32
+    unit: ""
+    explanation: "With 32 equally likely outcomes the entropy is 5 bits, and perplexity is 2 to the power of the entropy, which is 32. Nothing can do better on a truly uniform source."
+    section: "Perplexity"
+
+  - id: perplexity-use
+    type: single
+    prompt: "A benchmark question has unusually low perplexity under a model, much lower than similar new questions. What does that suggest?"
+    options:
+      - "The question is gibberish"
+      - "The model's vocabulary is too large"
+      - "The question is too long"
+      - "The model has probably seen that text during training"
+    answer: D
+    explanation: "Text a model has memorized is highly predictable to it. This is one method for detecting that benchmark data leaked into training."
+    section: "Perplexity"
+
+  - id: functional
+    type: single
+    prompt: "For generated code, which evaluation is the most trustworthy when it is available?"
+    options:
+      - "Asking the model whether its code is correct"
+      - "Measuring the length of the code"
+      - "Counting words shared with a reference solution"
+      - "Running the code against test cases"
+    answer: D
+    explanation: "Functional correctness tests what actually matters: whether the output does the job. Two correct programs can share almost no text."
+    section: "Functional correctness"
+
+  - id: lexical
+    type: single
+    prompt: "What is the main weakness of lexical similarity as a measure of correctness?"
+    options:
+      - "It rewards shared words, so a wrong answer that reuses the reference's wording can outscore a correct answer phrased differently"
+      - "It requires an embedding model"
+      - "It is too expensive to compute"
+      - "It only works on code"
+    answer: A
+    explanation: "Overlap in words is not overlap in meaning. Changing one key word or adding a negation barely moves the score while reversing the answer."
+    section: "Similarity to reference data"
+
+  - id: embedding
+    type: single
+    prompt: "What property makes an embedding model good?"
+    options:
+      - "It only works on English"
+      - "Items with similar meanings end up close together and unrelated items far apart"
+      - "Every text maps to the same vector"
+      - "It produces the longest vectors"
+    answer: B
+    explanation: "An embedding is useful to the extent that distance in the vector space reflects similarity in meaning. That one property supports search, clustering and semantic comparison."
+    section: "Embeddings"
+
+  - id: judge-scale
+    type: single
+    prompt: "Which scoring scheme tends to make a model judge most reliable?"
+    options:
+      - "A score between 1 and 1,000"
+      - "A free-text essay"
+      - "A small set of discrete options, such as yes or no, or 1 to 5, with examples"
+      - "A score between 0 and 1 to three decimal places"
+    answer: C
+    explanation: "Models, like people, are inconsistent with fine-grained scales. A few clearly defined categories, illustrated with examples, give more repeatable results."
+    section: "How to set it up"
+
+  - id: judge-bias
+    type: multi
+    prompt: "Which biases are known problems for model judges?"
+    options:
+      - "Favouring the response shown first in a comparison"
+      - "Favouring responses produced by the same model as the judge"
+      - "Favouring longer responses regardless of quality"
+      - "Refusing to give any score"
+    answer: [ A, B, C ]
+    explanation: "Self-bias, position bias and verbosity bias are the common ones. They can be reduced by using a different model as judge, randomizing order, and instructing the judge to ignore length."
+    section: "Limitations"
+
+  - id: ranking-limit
+    type: single
+    prompt: "A model is ranked first on a public comparison leaderboard. What does that tell you?"
+    options:
+      - "It will be best on your private data"
+      - "It is the cheapest model"
+      - "It is good enough for your application"
+      - "Voters preferred its answers to other models' answers on the prompts they happened to try"
+    answer: D
+    explanation: "A ranking is relative and reflects the voters and prompts involved. Whether the model meets your quality bar, on your data and at your budget, has to be tested separately."
+    section: "What it cannot tell you"

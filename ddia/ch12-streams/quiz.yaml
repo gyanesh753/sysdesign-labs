@@ -1,0 +1,116 @@
+questions:
+  - id: overload
+    type: multi
+    prompt: "Producers are sending faster than consumers can process. What can a messaging system do?"
+    options:
+      - "Drop messages"
+      - "Buffer them in a queue"
+      - "Process them before they are sent"
+      - "Slow the producers down (backpressure)"
+    answer: [ A, B, D ]
+    explanation: "Those are the only three choices. Which one a system makes, and what happens when its buffer fills up, tells you a great deal about it."
+    section: "Two questions to ask"
+
+  - id: redelivery
+    type: single
+    prompt: "A traditional broker shares messages among several consumers and redelivers unacknowledged ones. What follows from that?"
+    options:
+      - "Only one consumer can ever connect"
+      - "Messages are kept forever"
+      - "A message may be processed more than once, and messages may be processed out of order"
+      - "Messages are never duplicated"
+    answer: C
+    explanation: "A redelivered message may already have been partly or fully processed, and it reaches another consumer after later messages have gone through."
+    section: "Traditional message brokers"
+
+  - id: log-order
+    type: single
+    prompt: "In a log-based broker, where is message ordering guaranteed?"
+    options:
+      - "Nowhere"
+      - "Across the whole topic"
+      - "Only for messages without a key"
+      - "Within a single partition"
+    answer: D
+    explanation: "Each partition is an ordered log read sequentially. Different partitions are independent, so if order matters for some messages, give them the same key so they share a partition."
+    section: "Log-based brokers"
+
+  - id: offset-numeric
+    type: numeric
+    prompt: "A consumer's last committed offset is 950, meaning it will resume from message 950. It had finished processing every message up to and including offset 986 when it crashed. How many messages will it process a second time after restarting?"
+    answer: 37
+    unit: "messages"
+    explanation: "It resumes at 950 and has already handled 950 through 986, which is 37 messages. This is why consumers of a log need their processing to be safe to repeat."
+    section: "Log-based brokers"
+
+  - id: replay
+    type: single
+    prompt: "Why can a brand-new consumer of a log-based broker process months of history, when a traditional queue cannot offer that?"
+    options:
+      - "The queue encrypts old messages"
+      - "Logs have no retention limit"
+      - "Reading from a log does not delete messages; a consumer simply starts from an earlier offset"
+      - "The log is stored in memory"
+    answer: C
+    explanation: "A log is retained for a configured period regardless of who has read it. A traditional queue deletes each message once it has been acknowledged."
+    section: "Log-based brokers"
+
+  - id: dual-writes
+    type: single
+    prompt: "An application updates a database and then a search index as two separate writes. What can go wrong even if neither system fails?"
+    options:
+      - "The search index is deleted"
+      - "Two concurrent updates can reach the two systems in different orders, leaving them permanently inconsistent"
+      - "The database becomes read-only"
+      - "Nothing"
+    answer: B
+    explanation: "Each system applies last-writer-wins on its own, and the two orders need not agree. Add partial failure, where one write succeeds and the other does not, and dual writes are unreliable twice over."
+    section: "Keeping systems in sync"
+
+  - id: cdc
+    type: single
+    prompt: "How does change data capture keep a search index consistent with a database?"
+    options:
+      - "It writes to both in a distributed transaction"
+      - "It rebuilds the index from scratch every minute"
+      - "The index consumes the database's own log of changes and applies them in the order the database committed them"
+      - "It makes the index the system of record"
+    answer: C
+    explanation: "There is one source of truth and one order of changes. The index may be slightly behind, but applying the same changes in the same order cannot produce a different result."
+    section: "Change data capture"
+
+  - id: event-time
+    type: single
+    prompt: "A click happens at 10:07:45 and reaches the stream processor at 10:09:10. Using one-minute tumbling windows on event time, which window does it belong to?"
+    options:
+      - "10:09 to 10:10"
+      - "Neither; it is too late"
+      - "Both"
+      - "10:07 to 10:08"
+    answer: D
+    explanation: "Event time is when it happened. Whether the processor still has that window open when the event arrives is a separate question, decided by how long it waits for stragglers."
+    section: "Reasoning about time"
+
+  - id: straggler
+    type: single
+    prompt: "What is the trade-off in deciding how long to wait before closing an event-time window?"
+    options:
+      - "Waiting longer makes clocks more accurate"
+      - "Waiting longer counts more late events but delays every result; waiting less is faster but drops or must later correct more events"
+      - "Waiting longer uses less memory"
+      - "Waiting has no effect on results"
+    answer: B
+    explanation: "You can never know for certain that all events have arrived. The waiting period sets where you sit between completeness and timeliness."
+    section: "Reasoning about time"
+
+  - id: exactly-once
+    type: single
+    prompt: "A stream processor restarts from a checkpoint and reprocesses some events. How can the result still be correct?"
+    options:
+      - "By processing each event twice on purpose"
+      - "It cannot; duplicates are unavoidable in the output"
+      - "By using a faster network"
+      - "By making the processing idempotent, or by committing output and input position atomically, so reprocessing has no additional effect"
+    answer: D
+    explanation: "Exactly-once refers to the effect, not to how many times the code ran. Events may be handled more than once as long as the visible outcome is as if each were handled once."
+    section: "Fault tolerance"

@@ -1,0 +1,317 @@
+{
+ "version": 1,
+ "engine": "kokoro-onnx v1.0",
+ "voice": "bm_george",
+ "lang": "en-gb",
+ "speed": 1,
+ "generated": "2026-11-14",
+ "sections": [
+  {
+   "id": "from-a-model-call-to-a-system",
+   "title": "From a model call to a system",
+   "hash": "6f1e0aa7fa",
+   "file": "from-a-model-call-to-a-system.6f1e0aa7fa.m4a",
+   "duration": 38.417,
+   "starts": [
+    0,
+    2.858,
+    9.665,
+    12.574,
+    25.441,
+    27.026,
+    31.6
+   ]
+  },
+  {
+   "id": "building-up-the-architecture",
+   "title": "Building up the architecture",
+   "hash": "96317eba7a",
+   "file": "building-up-the-architecture.96317eba7a.m4a",
+   "duration": 2.637,
+   "starts": [
+    0
+   ]
+  },
+  {
+   "id": "enhance-the-context",
+   "title": "Enhance the context",
+   "hash": "921b5c042e",
+   "file": "enhance-the-context.921b5c042e.m4a",
+   "duration": 18.563,
+   "starts": [
+    0,
+    2.356,
+    11.129,
+    14.052
+   ]
+  },
+  {
+   "id": "add-guardrails",
+   "title": "Add guardrails",
+   "hash": "44ab4d7ad9",
+   "file": "add-guardrails.44ab4d7ad9.m4a",
+   "duration": 89.367,
+   "starts": [
+    0,
+    1.993,
+    5.974,
+    7.899,
+    11.216,
+    21.973,
+    33.091,
+    37.443,
+    40.325,
+    42.506,
+    48.556,
+    56.28,
+    60.147,
+    64.649,
+    66.715,
+    69.974,
+    71.91,
+    77.662,
+    85.851
+   ]
+  },
+  {
+   "id": "add-a-router-and-a-gateway",
+   "title": "Add a router and a gateway",
+   "hash": "8094fc4181",
+   "file": "add-a-router-and-a-gateway.8094fc4181.m4a",
+   "duration": 63.072,
+   "starts": [
+    0,
+    2.736,
+    6.615,
+    15.172,
+    27.04,
+    33.119,
+    39.538,
+    43.052,
+    50.844,
+    58.82
+   ]
+  },
+  {
+   "id": "add-caches",
+   "title": "Add caches",
+   "hash": "203f120391",
+   "file": "add-caches.203f120391.m4a",
+   "duration": 69.541,
+   "starts": [
+    0,
+    1.903,
+    4.024,
+    8.356,
+    15.465,
+    20.848,
+    29.674,
+    33.46,
+    35.278,
+    45.692,
+    54.178,
+    57.319,
+    63.339
+   ]
+  },
+  {
+   "id": "add-agent-patterns",
+   "title": "Add agent patterns",
+   "hash": "db3c853df2",
+   "file": "add-agent-patterns.db3c853df2.m4a",
+   "duration": 18.769,
+   "starts": [
+    0,
+    2.261,
+    8.524
+   ]
+  },
+  {
+   "id": "monitoring-and-observability",
+   "title": "Monitoring and observability",
+   "hash": "3d573ff984",
+   "file": "monitoring-and-observability.3d573ff984.m4a",
+   "duration": 44.732,
+   "starts": [
+    0,
+    3.167,
+    9.53,
+    14.433,
+    31.666,
+    35.748,
+    39.469,
+    41.209
+   ]
+  },
+  {
+   "id": "what-to-track",
+   "title": "What to track",
+   "hash": "980d991ba2",
+   "file": "what-to-track.980d991ba2.m4a",
+   "duration": 37.091,
+   "starts": [
+    0,
+    1.708,
+    5.688,
+    12.334,
+    17.146,
+    21.374,
+    25.25,
+    28.123
+   ]
+  },
+  {
+   "id": "logs-and-traces",
+   "title": "Logs and traces",
+   "hash": "c19c97b43d",
+   "file": "logs-and-traces.c19c97b43d.m4a",
+   "duration": 29.687,
+   "starts": [
+    0,
+    2.26,
+    6.69,
+    17.247
+   ]
+  },
+  {
+   "id": "drift",
+   "title": "Drift",
+   "hash": "5472b8d740",
+   "file": "drift.5472b8d740.m4a",
+   "duration": 27.662,
+   "starts": [
+    0,
+    1.346,
+    5.226,
+    7.785,
+    11.78,
+    17.074,
+    19.288
+   ]
+  },
+  {
+   "id": "orchestration",
+   "title": "Orchestration",
+   "hash": "5e3d3a7c9e",
+   "file": "orchestration.5e3d3a7c9e.m4a",
+   "duration": 44.782,
+   "starts": [
+    0,
+    1.878,
+    10.794,
+    20.451,
+    22.348,
+    24.763,
+    33.85
+   ]
+  },
+  {
+   "id": "user-feedback",
+   "title": "User feedback",
+   "hash": "42355173b3",
+   "file": "user-feedback.42355173b3.m4a",
+   "duration": 2.026,
+   "starts": [
+    0
+   ]
+  },
+  {
+   "id": "why-it-matters",
+   "title": "Why it matters",
+   "hash": "b8368232f7",
+   "file": "why-it-matters.b8368232f7.m4a",
+   "duration": 19.624,
+   "starts": [
+    0,
+    1.902,
+    5.218,
+    9.293
+   ]
+  },
+  {
+   "id": "explicit-and-implicit-feedback",
+   "title": "Explicit and implicit feedback",
+   "hash": "c61bddd5e1",
+   "file": "explicit-and-implicit-feedback.c61bddd5e1.m4a",
+   "duration": 21.573,
+   "starts": [
+    0,
+    2.905,
+    9.269,
+    13.481,
+    17.133
+   ]
+  },
+  {
+   "id": "reading-conversations",
+   "title": "Reading conversations",
+   "hash": "b1f73895c6",
+   "file": "reading-conversations.b1f73895c6.m4a",
+   "duration": 51.35,
+   "starts": [
+    0,
+    2.378,
+    5.416,
+    10.389,
+    17.248,
+    26.702,
+    31.261,
+    38.216,
+    47.291
+   ]
+  },
+  {
+   "id": "designing-feedback-collection",
+   "title": "Designing feedback collection",
+   "hash": "b0868bebc1",
+   "file": "designing-feedback-collection.b0868bebc1.m4a",
+   "duration": 27.687,
+   "starts": [
+    0,
+    2.685,
+    15.989,
+    19.01,
+    22.209
+   ]
+  },
+  {
+   "id": "the-limits-of-feedback",
+   "title": "The limits of feedback",
+   "hash": "2772edabab",
+   "file": "the-limits-of-feedback.2772edabab.m4a",
+   "duration": 95.296,
+   "starts": [
+    0,
+    2.486,
+    7.653,
+    14.833,
+    22.241,
+    25.184,
+    29.128,
+    33.254,
+    40.605,
+    48.561,
+    54.355,
+    60.082,
+    66.597,
+    75.878,
+    80.405,
+    81.372,
+    88.993
+   ]
+  },
+  {
+   "id": "what-the-labs-show",
+   "title": "What the labs show",
+   "hash": "37700eb415",
+   "file": "what-the-labs-show.37700eb415.m4a",
+   "duration": 32.581,
+   "starts": [
+    0,
+    2.03,
+    13.51,
+    23.151
+   ]
+  }
+ ]
+}

@@ -1,0 +1,116 @@
+questions:
+  - id: async-loss
+    type: single
+    prompt: "A client's write is confirmed by an asynchronously replicated leader, and the leader crashes a moment later. What may have happened to the write?"
+    options:
+      - "It may be lost, because the followers might not have received it before the crash"
+      - "It is rolled back and the client is told"
+      - "It is duplicated on every follower"
+      - "It is always safe, because it was confirmed"
+    answer: A
+    explanation: "Asynchronous means the leader does not wait for followers. If it fails before sending the change, the promoted follower never had it, and the client was already told it succeeded."
+    section: "Synchronous or asynchronous"
+
+  - id: all-sync
+    type: single
+    prompt: "Why not make every follower synchronous?"
+    options:
+      - "One slow or unreachable follower would then block every write"
+      - "It uses more disk space"
+      - "Synchronous followers cannot serve reads"
+      - "It makes reads stale"
+    answer: A
+    explanation: "Waiting for all followers means the system is only as available as its least available node. So at most one or two followers are synchronous."
+    section: "Synchronous or asynchronous"
+
+  - id: split-brain
+    type: single
+    prompt: "What is split brain?"
+    options:
+      - "A follower that has fallen far behind"
+      - "A leader with no followers"
+      - "A read that returns two values"
+      - "Two nodes both believing they are the leader and both accepting writes"
+    answer: D
+    explanation: "With two leaders in a single-leader system, each accepts writes the other does not know about, and the data diverges. It is one of the main hazards of automatic failover."
+    section: "Adding followers and surviving failures"
+
+  - id: logical-log
+    type: single
+    prompt: "Why do most systems replicate a logical, row-based log instead of the SQL statements?"
+    options:
+      - "Statements with nondeterministic parts, such as the current time, can produce different results on each replica"
+      - "Statements are too long"
+      - "Followers cannot parse SQL"
+      - "Row-based logs are always smaller"
+    answer: A
+    explanation: "Re-running a statement is only safe if it is deterministic. A log of the actual row changes has no such problem and is also independent of the storage engine's format."
+    section: "What travels in the log"
+
+  - id: read-your-writes
+    type: single
+    prompt: "A user updates their profile and, on reload, sees the old version. Which guarantee is missing?"
+    options:
+      - "Consistent prefix reads"
+      - "Durability"
+      - "Read-your-writes consistency"
+      - "Monotonic reads"
+    answer: C
+    explanation: "The reload was served by a follower that had not yet received the user's own write. Reading a user's own recently changed data from the leader fixes it."
+    section: "Reading your own writes"
+
+  - id: monotonic
+    type: single
+    prompt: "Always routing a given user to the same replica provides which guarantee?"
+    options:
+      - "No replication lag"
+      - "Read-your-writes consistency"
+      - "Linearizability"
+      - "Monotonic reads"
+    answer: D
+    explanation: "One replica only moves forward, so the user never sees older data than before. It does not help with reading their own writes, since that replica may still be behind the leader."
+    section: "Monotonic reads"
+
+  - id: quorum-numeric
+    type: numeric
+    prompt: "A leaderless database has n = 5 replicas and requires w = 4 acknowledgements for a write. What is the smallest r that guarantees a read overlaps the latest successful write?"
+    answer: 2
+    unit: "replicas"
+    explanation: "You need w + r > n, so 4 + r > 5, and the smallest whole number is 2. With r = 1 the read could land on the one replica that missed the write."
+    section: "Leaderless replication"
+
+  - id: read-repair
+    type: single
+    prompt: "Why is read repair not enough on its own to keep replicas up to date?"
+    options:
+      - "It only fixes values that are actually read, so rarely read data can stay stale without a background process"
+      - "It deletes data"
+      - "It requires all replicas to be online"
+      - "It only works with a leader"
+    answer: A
+    explanation: "Read repair happens as a side effect of reads. Anti-entropy, a background comparison of replicas, covers the data nobody happens to read."
+    section: "Leaderless replication"
+
+  - id: lww
+    type: single
+    prompt: "What is the main problem with resolving conflicts by last write wins?"
+    options:
+      - "It needs a leader"
+      - "Replicas end up disagreeing"
+      - "All but one of the concurrent writes are silently discarded, even though each was reported as successful"
+      - "It is too slow"
+    answer: C
+    explanation: "Replicas do converge, which is why it is popular. The cost is data loss: writes that were acknowledged simply vanish, and the choice of winner depends on clocks that cannot be trusted across machines."
+    section: "Handling write conflicts"
+
+  - id: concurrent
+    type: single
+    prompt: "When are two writes **concurrent** in the sense that matters for conflict detection?"
+    options:
+      - "When they arrive at the same replica"
+      - "When they are sent by the same client"
+      - "When their timestamps are within one millisecond"
+      - "When neither writer had seen the other's write, regardless of clock time"
+    answer: D
+    explanation: "Concurrency is about knowledge, not time. If B's author had seen A, then B happens after A and may overwrite it. If neither knew of the other, overwriting loses data."
+    section: "Detecting concurrent writes"

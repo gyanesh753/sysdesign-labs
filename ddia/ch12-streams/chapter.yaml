@@ -1,0 +1,23 @@
+title: "Stream Processing"
+status: ready
+summary: "Processing events as they happen: how they travel, how databases and streams relate, and what time means when events arrive late."
+est_minutes: 30
+objectives:
+  - Compare a traditional message queue with a log-based broker on ordering, redelivery and replay
+  - Explain why writing to two systems separately goes wrong, and how change data capture avoids it
+  - Distinguish event time from processing time and explain what a late event does to a window
+  - Name the main window types and the main kinds of stream join
+  - Explain how a stream processor can give exactly-once results despite redelivery
+labs:
+  - file: lab1_log_broker.py
+    title: "A log-based broker: offsets, redelivery, replay and compaction"
+    expect: ["PART A", "PART C", "PART D", "error +0"]
+  - file: lab2_windows.py
+    title: "Clicks per minute by processing time and by event time"
+    expect: ["clicks per minute", "events dropped"]
+  - file: lab3_cdc.py
+    title: "Dual writes against change data capture"
+    expect: ["PART A", "PART B", "match the database exactly"]
+verified:
+  date: "2026-11-10"
+  notes: "Topic coverage and terminology checked against DDIA 2e chapter 12. All three labs run; lab 3 asserts that the derived cache and index equal the database."

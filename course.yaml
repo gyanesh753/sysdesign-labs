@@ -1,0 +1,25 @@
+# The books on the shelf. Each id is a top-level folder holding chNN-slug chapter folders.
+# accent: the book's colour in light and dark mode. To show your own cover image, put it at
+# site/public/covers/<id>.jpg (or .png / .webp); that folder is not committed.
+title: Booktern
+
+# Voice for the generated lecture audio (npm run audio). Kokoro voice ids: bm_george, af_heart, am_michael, ...
+audio:
+  voice: bm_george
+  lang: en-gb
+  speed: 1
+
+# Words the voice mispronounces, and what to say instead. Example:  HTAP: "H tap"
+pronunciations: {}
+
+books:
+  - id: ddia
+    title: Designing Data-Intensive Applications (2nd edition)
+    authors: Martin Kleppmann and Chris Riccomini
+    tagline: How data systems store, move and agree on data, and what each design gives up.
+    accent: { light: "#8a2f24", dark: "#e59a86" }
+  - id: aie
+    title: AI Engineering
+    authors: Chip Huyen
+    tagline: Building dependable applications on top of foundation models.
+    accent: { light: "#1d5c63", dark: "#86cdd4" }

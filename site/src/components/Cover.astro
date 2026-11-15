@@ -1,0 +1,26 @@
+---
+// A book cover. If the owner supplied an image (site/public/covers/<id>.*), show it.
+// Otherwise draw an original typographic cover: cloth colour from the book's accent, title, author,
+// and one tick per chapter that the page script fills in as chapters are completed.
+import type { Book } from '../lib/content.ts';
+
+interface Props { book: Book }
+const { book } = Astro.props;
+const colour = book.accent?.light ?? '#8a2f24';
+const edition = /\(([^)]+)\)\s*$/.exec(book.title)?.[1];
+const title = book.title.replace(/\s*\([^)]+\)\s*$/, '');
+const ready = book.chapters.filter((c) => c.meta.status === 'ready');
+---
+{book.cover ? (
+  <img class="cover cover-image" src={book.cover} alt={`Cover of ${book.title}`} />
+) : (
+  <div class="cover cover-drawn" style={`--cover: ${colour}`} role="img" aria-label={`Cover of ${book.title} by ${book.authors}`}>
+    <span class="cover-kicker">{edition ?? `${book.chapters.length} chapters`}</span>
+    <span class="cover-title">{title}</span>
+    <span class="cover-ticks" aria-hidden="true">
+      {book.chapters.map((c) => <i data-tick={c.meta.status === 'ready' ? c.id : undefined} class={c.meta.status === 'ready' ? '' : 'is-draft'} />)}
+    </span>
+    <span class="cover-author">{book.authors}</span>
+    <span class="cover-count">{ready.length} chapters</span>
+  </div>
+)}

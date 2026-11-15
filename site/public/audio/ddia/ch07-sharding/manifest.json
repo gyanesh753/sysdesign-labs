@@ -1,0 +1,207 @@
+{
+ "version": 1,
+ "engine": "kokoro-onnx v1.0",
+ "voice": "bm_george",
+ "lang": "en-gb",
+ "speed": 1,
+ "generated": "2026-11-10",
+ "sections": [
+  {
+   "id": "why-split-the-data",
+   "title": "Why split the data",
+   "hash": "54dd830b04",
+   "file": "why-split-the-data.54dd830b04.m4a",
+   "duration": 63.723,
+   "starts": [
+    0,
+    2.181,
+    17.364,
+    22.478,
+    24.987,
+    31.206,
+    37.551,
+    44.549,
+    51.554,
+    59.841
+   ]
+  },
+  {
+   "id": "one-shard-per-customer",
+   "title": "One shard per customer",
+   "hash": "87bfa53cbe",
+   "file": "one-shard-per-customer.87bfa53cbe.m4a",
+   "duration": 33.179,
+   "starts": [
+    0,
+    2.524,
+    5.001,
+    13.017,
+    25.846
+   ]
+  },
+  {
+   "id": "sharding-by-key-range",
+   "title": "Sharding by key range",
+   "hash": "75877c5ce0",
+   "file": "sharding-by-key-range.75877c5ce0.m4a",
+   "duration": 58.285,
+   "starts": [
+    0,
+    2.3,
+    12.98,
+    16.203,
+    18.756,
+    26.756,
+    34.631,
+    40.135,
+    47.146
+   ]
+  },
+  {
+   "id": "sharding-by-hash-of-key",
+   "title": "Sharding by hash of key",
+   "hash": "43148daf0b",
+   "file": "sharding-by-hash-of-key.43148daf0b.m4a",
+   "duration": 24.917,
+   "starts": [
+    0,
+    2.535,
+    8.234,
+    15.019,
+    20.221
+   ]
+  },
+  {
+   "id": "why-not-hash-mod-n",
+   "title": "Why not hash mod N",
+   "hash": "d3229511d4",
+   "file": "why-not-hash-mod-n.d3229511d4.m4a",
+   "duration": 27.025,
+   "starts": [
+    0,
+    2.506,
+    7.22,
+    10.457,
+    15.445
+   ]
+  },
+  {
+   "id": "a-fixed-number-of-shards",
+   "title": "A fixed number of shards",
+   "hash": "b9ada63e03",
+   "file": "a-fixed-number-of-shards.b9ada63e03.m4a",
+   "duration": 37.548,
+   "starts": [
+    0,
+    2.455,
+    5.54,
+    8.396,
+    14.892,
+    17.341,
+    20.586,
+    24.499,
+    29.796
+   ]
+  },
+  {
+   "id": "hash-ranges-and-consistent-hashing",
+   "title": "Hash ranges and consistent hashing",
+   "hash": "6641785fc9",
+   "file": "hash-ranges-and-consistent-hashing.6641785fc9.m4a",
+   "duration": 61.589,
+   "starts": [
+    0,
+    3.399,
+    23.878,
+    32.76,
+    36.976,
+    41.559,
+    45.743,
+    48.589,
+    56.126
+   ]
+  },
+  {
+   "id": "skew-and-hot-keys",
+   "title": "Skew and hot keys",
+   "hash": "ed071dee9a",
+   "file": "skew-and-hot-keys.ed071dee9a.m4a",
+   "duration": 47.303,
+   "starts": [
+    0,
+    2.236,
+    4.63,
+    7.106,
+    18.618,
+    23.445,
+    25.829,
+    34.729,
+    42.465
+   ]
+  },
+  {
+   "id": "rebalancing",
+   "title": "Rebalancing",
+   "hash": "ae3a1d7488",
+   "file": "rebalancing.ae3a1d7488.m4a",
+   "duration": 42.409,
+   "starts": [
+    0,
+    1.858,
+    5.442,
+    16.449,
+    20.336,
+    38.111
+   ]
+  },
+  {
+   "id": "request-routing",
+   "title": "Request routing",
+   "hash": "542e536610",
+   "file": "request-routing.542e536610.m4a",
+   "duration": 40.384,
+   "starts": [
+    0,
+    2.131,
+    5.664,
+    20.436,
+    26.802,
+    35.288
+   ]
+  },
+  {
+   "id": "secondary-indexes",
+   "title": "Secondary indexes",
+   "hash": "1d7ddc9a73",
+   "file": "secondary-indexes.1d7ddc9a73.m4a",
+   "duration": 74.11,
+   "starts": [
+    0,
+    2.423,
+    6.702,
+    12.543,
+    14.6,
+    19.445,
+    24.953,
+    35.697,
+    41.494,
+    46.378,
+    60.8,
+    67.018
+   ]
+  },
+  {
+   "id": "what-the-labs-show",
+   "title": "What the labs show",
+   "hash": "dfd9f9dd86",
+   "file": "what-the-labs-show.dfd9f9dd86.m4a",
+   "duration": 24.134,
+   "starts": [
+    0,
+    2.03,
+    8.857,
+    17.497
+   ]
+  }
+ ]
+}

@@ -1,0 +1,120 @@
+questions:
+  - id: log-vs-2pc
+    type: single
+    prompt: "Several systems are kept in step by having each consume one ordered log of changes. How does this differ from updating them all in a distributed transaction?"
+    options:
+      - "The log approach makes every system update at exactly the same moment"
+      - "There is no difference"
+      - "A slow or failed consumer falls behind and catches up later, without blocking the others; the cost is that derived systems are briefly out of date"
+      - "The log approach cannot tolerate any failures"
+    answer: C
+    explanation: "A distributed transaction couples the systems: one problem stalls everyone. Asynchronous derivation contains the fault locally and trades away immediate visibility of changes."
+    section: "One log, many consumers"
+
+  - id: total-order-limit
+    type: multi
+    prompt: "In which situations is it hard to put all events into one total order?"
+    options:
+      - "The event rate exceeds what one node can handle"
+      - "A single leader handles every write"
+      - "Devices make changes while offline"
+      - "Several regions each accept writes independently"
+    answer: [ A, C, D ]
+    explanation: "A single leader is the easy case. Once writes originate in several places that are not coordinating, there is no single sequence, and dependent events may arrive out of order."
+    section: "Where a single order runs out"
+
+  - id: reprocess
+    type: single
+    prompt: "How does keeping the original input and being able to reprocess it help when changing a data model?"
+    options:
+      - "It makes the old view update faster"
+      - "The new view can be built beside the old one, compared, and adopted gradually, with the old one kept as a fallback"
+      - "It removes the need to test the new model"
+      - "It prevents the schema from ever changing"
+    answer: B
+    explanation: "Because the new view is derived from the same input, nothing is modified in place. You can switch a few readers, compare results, and go back if something is wrong."
+    section: "Batch and stream are the same idea"
+
+  - id: index-creation
+    type: single
+    prompt: "What does creating a new index in a database have in common with adding a new consumer to a change stream?"
+    options:
+      - "Both start from a consistent snapshot of existing data and then keep up by applying later changes"
+      - "Nothing"
+      - "Both require stopping all writes"
+      - "Both delete the original data"
+    answer: A
+    explanation: "An index is derived data. The database builds it from a snapshot and then follows changes, the same bootstrapping pattern used by a change data capture consumer."
+    section: "A database does many jobs"
+
+  - id: unbundle
+    type: single
+    prompt: "When composing several specialized data systems, which half of the problem is harder?"
+    options:
+      - "Offering one query interface across them"
+      - "Keeping them all consistent as data changes"
+      - "Installing them"
+      - "Choosing their names"
+    answer: B
+    explanation: "Unifying reads is mostly a matter of a query layer. Unifying writes means every change reaches every system reliably and in order, which is where a shared log earns its place."
+    section: "Composing specialized systems"
+
+  - id: read-write-path
+    type: single
+    prompt: "What does a cache, an index or a precomputed timeline do to the boundary between the write path and the read path?"
+    options:
+      - "Nothing"
+      - "It moves work to read time so that writes are cheaper"
+      - "It removes the need for a write path"
+      - "It moves work to write time so that reads are cheaper"
+    answer: D
+    explanation: "Each one precomputes something when data changes so that less remains to do when a request arrives. Choosing where that boundary sits is a central design decision."
+    section: "The write path and the read path"
+
+  - id: end-to-end
+    type: single
+    prompt: "A user's payment request is retried on a new connection after the response to the first attempt was lost. Which measure reliably prevents a double charge?"
+    options:
+      - "Running the charge in a database transaction"
+      - "The network layer's removal of duplicate packets"
+      - "A unique request identifier created by the client and checked by the system that performs the charge"
+      - "A faster network"
+    answer: C
+    explanation: "Packet deduplication does not span connections, and a transaction that runs twice commits twice. Only an identifier that travels end to end lets the final system recognize the repeat."
+    section: "The end-to-end argument"
+
+  - id: uniqueness-log
+    type: single
+    prompt: "How can a partitioned log enforce that a username is claimed only once, without a distributed transaction?"
+    options:
+      - "By using timestamps from each client"
+      - "By accepting all requests and deleting duplicates weekly"
+      - "By letting every node decide independently"
+      - "By routing all requests for the same username to the same partition, where one consumer handles them in order and the first valid one wins"
+    answer: D
+    explanation: "A uniqueness rule needs one place where conflicting requests meet. Partitioning by the contested value and processing sequentially provides exactly that."
+    section: "Enforcing constraints without distributed transactions"
+
+  - id: timeliness-integrity
+    type: single
+    prompt: "Which statement about timeliness and integrity is correct?"
+    options:
+      - "They are two names for the same property"
+      - "A timeliness violation is temporary and resolves by waiting; an integrity violation is permanent until it is found and repaired"
+      - "A timeliness violation is permanent; an integrity violation fixes itself"
+      - "Integrity matters less than timeliness"
+    answer: B
+    explanation: "Seeing slightly old data is recoverable. Lost or contradictory data is not. That is why log-based designs relax timeliness and protect integrity."
+    section: "Timeliness and integrity"
+
+  - id: verify
+    type: multi
+    prompt: "Which of these help detect data that has been corrupted or altered?"
+    options:
+      - "Deriving a view again from its log and comparing it with the stored view"
+      - "Assuming that a mature database never has bugs"
+      - "Checking integrity from the original input through to the final output, not only within one component"
+      - "Having each log entry include a hash of the previous entry"
+    answer: [ A, C, D ]
+    explanation: "Re-derivation, end-to-end checks and hash chains all make problems visible. Assuming correctness is what leaves corruption undiscovered for months."
+    section: "Trust, but verify"

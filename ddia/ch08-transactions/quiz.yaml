@@ -1,0 +1,120 @@
+questions:
+  - id: atomicity
+    type: single
+    prompt: "In ACID, what does atomicity guarantee?"
+    options:
+      - "Two transactions never run at the same time"
+      - "Committed data survives a crash"
+      - "If a transaction fails partway, all of its writes are undone, so it can safely be retried"
+      - "The data always satisfies the application's rules"
+    answer: C
+    explanation: "Atomicity is about faults: all or nothing. Concurrency is isolation, survival is durability, and obeying the application's rules is consistency."
+    section: "ACID, one letter at a time"
+
+  - id: consistency-owner
+    type: single
+    prompt: "Which ACID property is mainly the application's responsibility and not the database's?"
+    options:
+      - "Atomicity"
+      - "Isolation"
+      - "Consistency"
+      - "Durability"
+    answer: C
+    explanation: "Consistency means the data obeys your application's invariants. The database can enforce a few constraints, but it cannot know all your rules; it provides atomicity and isolation so that you can maintain them."
+    section: "ACID, one letter at a time"
+
+  - id: read-committed
+    type: multi
+    prompt: "Which problems does read committed isolation prevent?"
+    options:
+      - "Seeing different committed states at different points in one transaction"
+      - "Lost updates from read-modify-write cycles"
+      - "Overwriting another transaction's uncommitted writes"
+      - "Reading another transaction's uncommitted writes"
+    answer: [ C, D ]
+    explanation: "Read committed stops dirty reads and dirty writes only. Read skew and lost updates are both still possible."
+    section: "Read committed"
+
+  - id: snapshot
+    type: single
+    prompt: "How does snapshot isolation let a long-running report see consistent data while writes continue?"
+    options:
+      - "It keeps several versions of each row and shows the report only the versions committed before it started"
+      - "It copies the whole database for each report"
+      - "It locks every table the report reads"
+      - "It pauses all writes until the report finishes"
+    answer: A
+    explanation: "This is multiversion concurrency control. Because the reader looks at old versions, readers never block writers and writers never block readers."
+    section: "Snapshot isolation"
+
+  - id: lost-update
+    type: multi
+    prompt: "Two clients each read a counter, add one, and write it back. Which of these prevent a lost update?"
+    options:
+      - "Sending a single atomic statement that increments the value in the database"
+      - "Locking the row when reading it for update"
+      - "Reading the value twice before writing"
+      - "Writing only if the value is unchanged since it was read, and retrying otherwise"
+    answer: [ A, B, D ]
+    explanation: "Atomic operations, compare-and-set and explicit locks all close the gap between the read and the write. Reading twice changes nothing: another client can still write in between."
+    section: "Lost updates"
+
+  - id: write-skew
+    type: single
+    prompt: "What distinguishes write skew from a lost update?"
+    options:
+      - "Write skew only happens with one transaction"
+      - "In write skew the two transactions write to different rows, so no write overwrites another, yet together they break a rule both had checked"
+      - "Write skew is prevented by read committed"
+      - "Write skew involves uncommitted data"
+    answer: B
+    explanation: "A lost update is two writes to the same row. Write skew is two decisions based on the same reads, written to different rows, which is why detecting overwritten rows does not catch it."
+    section: "Write skew and phantoms"
+
+  - id: skew-level
+    type: single
+    prompt: "What is the weakest isolation level that prevents write skew?"
+    options:
+      - "Serializable"
+      - "Snapshot isolation"
+      - "None can prevent it"
+      - "Read committed"
+    answer: A
+    explanation: "Each transaction's snapshot is consistent, so snapshot isolation sees nothing wrong. Only serializable isolation guarantees the result matches some one-at-a-time order."
+    section: "Write skew and phantoms"
+
+  - id: serial-execution
+    type: single
+    prompt: "Why do databases that run transactions strictly one at a time require each transaction to be submitted as a stored procedure?"
+    options:
+      - "Stored procedures are easier to write"
+      - "So the single execution thread never sits idle waiting for the application to send the next statement"
+      - "Because SQL cannot express transactions"
+      - "To allow transactions to span many shards"
+    answer: B
+    explanation: "With only one thread, any waiting on network round trips blocks every other transaction. Sending the whole transaction as one piece of code keeps each one short."
+    section: "Actual serial execution"
+
+  - id: ssi
+    type: single
+    prompt: "When does serializable snapshot isolation perform badly?"
+    options:
+      - "When the data fits in memory"
+      - "When transactions are short and rarely conflict"
+      - "When there are more reads than writes"
+      - "When many transactions conflict, because a large share of them are aborted and have to be retried"
+    answer: D
+    explanation: "It is optimistic: it lets transactions proceed and aborts at commit if a conflict is found. That is cheap when conflicts are rare and wasteful when they are common."
+    section: "Serializable snapshot isolation"
+
+  - id: in-doubt
+    type: single
+    prompt: "In two-phase commit, a participant has voted yes and the coordinator then crashes. What must the participant do?"
+    options:
+      - "Abort, to be safe"
+      - "Wait, keeping its locks, until the coordinator recovers and announces the decision"
+      - "Ask the client what to do"
+      - "Commit, since it voted yes"
+    answer: B
+    explanation: "It promised to commit if told to, but does not know how the others voted. Deciding alone could leave some participants committed and others aborted, so it stays in doubt and its locked rows stay unavailable."
+    section: "In doubt"

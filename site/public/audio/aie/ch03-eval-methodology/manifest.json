@@ -1,0 +1,264 @@
+{
+ "version": 1,
+ "engine": "kokoro-onnx v1.0",
+ "voice": "bm_george",
+ "lang": "en-gb",
+ "speed": 1,
+ "generated": "2026-11-14",
+ "sections": [
+  {
+   "id": "why-evaluation-is-the-hard-part",
+   "title": "Why evaluation is the hard part",
+   "hash": "d9bc72d365",
+   "file": "why-evaluation-is-the-hard-part.d9bc72d365.m4a",
+   "duration": 64.999,
+   "starts": [
+    0,
+    3.323,
+    11.006,
+    18.654,
+    22.881,
+    25.613,
+    33.405,
+    40.138,
+    43.235,
+    48.651,
+    52.679,
+    59.019,
+    61.658
+   ]
+  },
+  {
+   "id": "language-modelling-metrics",
+   "title": "Language modelling metrics",
+   "hash": "c15bd74638",
+   "file": "language-modelling-metrics.c15bd74638.m4a",
+   "duration": 15.047,
+   "starts": [
+    0,
+    2.77,
+    5.995
+   ]
+  },
+  {
+   "id": "entropy-and-cross-entropy",
+   "title": "Entropy and cross entropy",
+   "hash": "f1777b94fc",
+   "file": "entropy-and-cross-entropy.f1777b94fc.m4a",
+   "duration": 39.274,
+   "starts": [
+    0,
+    3.043,
+    11.864,
+    17.116,
+    22.062,
+    27.955,
+    33.063
+   ]
+  },
+  {
+   "id": "perplexity",
+   "title": "Perplexity",
+   "hash": "f225d0ab34",
+   "file": "perplexity.f225d0ab34.m4a",
+   "duration": 70.074,
+   "starts": [
+    0,
+    1.81,
+    5.896,
+    11.508,
+    19.757,
+    21.74,
+    25.005,
+    28.364,
+    32.539,
+    41.036,
+    46.366,
+    50.107,
+    61.252
+   ]
+  },
+  {
+   "id": "exact-evaluation",
+   "title": "Exact evaluation",
+   "hash": "e0415bf079",
+   "file": "exact-evaluation.e0415bf079.m4a",
+   "duration": 9.791,
+   "starts": [
+    0,
+    2.443,
+    7.048
+   ]
+  },
+  {
+   "id": "functional-correctness",
+   "title": "Functional correctness",
+   "hash": "4c8bf2701c",
+   "file": "functional-correctness.4c8bf2701c.m4a",
+   "duration": 22.56,
+   "starts": [
+    0,
+    2.158,
+    5.798,
+    9.456,
+    13.152,
+    16.487
+   ]
+  },
+  {
+   "id": "similarity-to-reference-data",
+   "title": "Similarity to reference data",
+   "hash": "d7281dffeb",
+   "file": "similarity-to-reference-data.d7281dffeb.m4a",
+   "duration": 62.897,
+   "starts": [
+    0,
+    3.11,
+    10.997,
+    20.231,
+    23.142,
+    26.766,
+    35.896,
+    42.906,
+    45.885,
+    55.045
+   ]
+  },
+  {
+   "id": "embeddings",
+   "title": "Embeddings",
+   "hash": "0d139a2af7",
+   "file": "embeddings.0d139a2af7.m4a",
+   "duration": 47.086,
+   "starts": [
+    0,
+    1.753,
+    6.492,
+    17.942,
+    33.34,
+    39.364
+   ]
+  },
+  {
+   "id": "ai-as-a-judge",
+   "title": "AI as a judge",
+   "hash": "477c3d866e",
+   "file": "ai-as-a-judge.477c3d866e.m4a",
+   "duration": 2.335,
+   "starts": [
+    0
+   ]
+  },
+  {
+   "id": "why-use-a-model-to-judge",
+   "title": "Why use a model to judge",
+   "hash": "966376f44f",
+   "file": "why-use-a-model-to-judge.966376f44f.m4a",
+   "duration": 30.4,
+   "starts": [
+    0,
+    2.693,
+    9.097,
+    19.991,
+    25.043
+   ]
+  },
+  {
+   "id": "how-to-set-it-up",
+   "title": "How to set it up",
+   "hash": "e4e6d51c9e",
+   "file": "how-to-set-it-up.e4e6d51c9e.m4a",
+   "duration": 45.015,
+   "starts": [
+    0,
+    1.891,
+    4.721,
+    7.303,
+    15.193,
+    21.347,
+    25.07,
+    29.658,
+    40.029
+   ]
+  },
+  {
+   "id": "limitations",
+   "title": "Limitations",
+   "hash": "40d042edf1",
+   "file": "limitations.40d042edf1.m4a",
+   "duration": 100.27,
+   "starts": [
+    0,
+    1.934,
+    6.703,
+    12.849,
+    16.415,
+    23.463,
+    30.744,
+    37.683,
+    41.774,
+    46.532,
+    49.752,
+    61.051,
+    65.406,
+    73.622,
+    79.475,
+    82.866,
+    89.557
+   ]
+  },
+  {
+   "id": "ranking-models-by-comparison",
+   "title": "Ranking models by comparison",
+   "hash": "25919b3cf3",
+   "file": "ranking-models-by-comparison.25919b3cf3.m4a",
+   "duration": 3.094,
+   "starts": [
+    0
+   ]
+  },
+  {
+   "id": "how-it-works",
+   "title": "How it works",
+   "hash": "2fc6fdfb9e",
+   "file": "how-it-works.2fc6fdfb9e.m4a",
+   "duration": 25.512,
+   "starts": [
+    0,
+    1.753,
+    7.848,
+    19.157
+   ]
+  },
+  {
+   "id": "what-it-cannot-tell-you",
+   "title": "What it cannot tell you",
+   "hash": "e7bc727831",
+   "file": "what-it-cannot-tell-you.e7bc727831.m4a",
+   "duration": 48.24,
+   "starts": [
+    0,
+    2.129,
+    11.787,
+    17.571,
+    26.451,
+    31.515,
+    39.651,
+    44.242
+   ]
+  },
+  {
+   "id": "what-the-labs-show",
+   "title": "What the labs show",
+   "hash": "2a9ff84bfc",
+   "file": "what-the-labs-show.2a9ff84bfc.m4a",
+   "duration": 29.991,
+   "starts": [
+    0,
+    2.03,
+    11.382,
+    20.489
+   ]
+  }
+ ]
+}

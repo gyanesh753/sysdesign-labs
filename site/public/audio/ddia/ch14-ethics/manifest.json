@@ -1,0 +1,244 @@
+{
+ "version": 1,
+ "engine": "kokoro-onnx v1.0",
+ "voice": "bm_george",
+ "lang": "en-gb",
+ "speed": 1,
+ "generated": "2026-11-10",
+ "sections": [
+  {
+   "id": "why-this-chapter-is-here",
+   "title": "Why this chapter is here",
+   "hash": "bf1b22843a",
+   "file": "why-this-chapter-is-here.bf1b22843a.m4a",
+   "duration": 45.309,
+   "starts": [
+    0,
+    2.425,
+    9.18,
+    17.32,
+    25.526,
+    28.94,
+    31.918
+   ]
+  },
+  {
+   "id": "predictive-analytics",
+   "title": "Predictive analytics",
+   "hash": "5d6c1ea7e7",
+   "file": "predictive-analytics.5d6c1ea7e7.m4a",
+   "duration": 42.776,
+   "starts": [
+    0,
+    2.414,
+    9.003,
+    13.073,
+    16.528,
+    22.713,
+    36.097
+   ]
+  },
+  {
+   "id": "bias-and-discrimination",
+   "title": "Bias and discrimination",
+   "hash": "07b2a5ad91",
+   "file": "bias-and-discrimination.07b2a5ad91.m4a",
+   "duration": 65.281,
+   "starts": [
+    0,
+    2.527,
+    5.537,
+    17.042,
+    23.678,
+    30.72,
+    35.56,
+    46.44,
+    53.345,
+    56.226,
+    62.436
+   ]
+  },
+  {
+   "id": "responsibility-and-accountability",
+   "title": "Responsibility and accountability",
+   "hash": "b9e6684d76",
+   "file": "responsibility-and-accountability.b9e6684d76.m4a",
+   "duration": 55.455,
+   "starts": [
+    0,
+    3.39,
+    8.941,
+    15.307,
+    19.195,
+    22.174,
+    28.649,
+    33.089,
+    37.996,
+    45.953,
+    49.066
+   ]
+  },
+  {
+   "id": "feedback-loops",
+   "title": "Feedback loops",
+   "hash": "265d50d7ce",
+   "file": "feedback-loops.265d50d7ce.m4a",
+   "duration": 105.825,
+   "starts": [
+    0,
+    1.978,
+    8.274,
+    11.484,
+    20.748,
+    23.092,
+    32.032,
+    34.785,
+    38.877,
+    43.866,
+    57.13,
+    61.08,
+    68.567,
+    74.246,
+    82.186,
+    85.889,
+    91.902,
+    95.95
+   ]
+  },
+  {
+   "id": "privacy-and-tracking",
+   "title": "Privacy and tracking",
+   "hash": "d4e98b8807",
+   "file": "privacy-and-tracking.d4e98b8807.m4a",
+   "duration": 2.373,
+   "starts": [
+    0
+   ]
+  },
+  {
+   "id": "surveillance",
+   "title": "Surveillance",
+   "hash": "8a93e091e9",
+   "file": "surveillance.8a93e091e9.m4a",
+   "duration": 50.705,
+   "starts": [
+    0,
+    1.64,
+    5.207,
+    13.048,
+    22.255,
+    32.245,
+    41.41
+   ]
+  },
+  {
+   "id": "consent-and-freedom-of-choice",
+   "title": "Consent and freedom of choice",
+   "hash": "8279e93d75",
+   "file": "consent-and-freedom-of-choice.8279e93d75.m4a",
+   "duration": 44.064,
+   "starts": [
+    0,
+    2.973,
+    7.075,
+    15.269,
+    17.418,
+    26.441,
+    34.99
+   ]
+  },
+  {
+   "id": "privacy-and-use-of-data",
+   "title": "Privacy and use of data",
+   "hash": "7d08111f99",
+   "file": "privacy-and-use-of-data.7d08111f99.m4a",
+   "duration": 32.07,
+   "starts": [
+    0,
+    2.855,
+    6.271,
+    10.172,
+    17.185,
+    28.625
+   ]
+  },
+  {
+   "id": "data-as-assets-and-power",
+   "title": "Data as assets and power",
+   "hash": "a99d7fd5c8",
+   "file": "data-as-assets-and-power.a99d7fd5c8.m4a",
+   "duration": 46.405,
+   "starts": [
+    0,
+    2.926,
+    8.842,
+    13.799,
+    19.581,
+    25.879,
+    34.167,
+    36.228
+   ]
+  },
+  {
+   "id": "looking-ahead",
+   "title": "Looking ahead",
+   "hash": "39d136e447",
+   "file": "looking-ahead.39d136e447.m4a",
+   "duration": 1.905,
+   "starts": [
+    0
+   ]
+  },
+  {
+   "id": "remembering-the-industrial-revolution",
+   "title": "Remembering the Industrial Revolution",
+   "hash": "3b976172dd",
+   "file": "remembering-the-industrial-revolution.3b976172dd.m4a",
+   "duration": 44.395,
+   "starts": [
+    0,
+    3.358,
+    5.849,
+    13.325,
+    20.575,
+    26.771,
+    35.625
+   ]
+  },
+  {
+   "id": "legislation-and-self-regulation",
+   "title": "Legislation and self-regulation",
+   "hash": "34f4d00546",
+   "file": "legislation-and-self-regulation.34f4d00546.m4a",
+   "duration": 70.978,
+   "starts": [
+    0,
+    3.343,
+    14.1,
+    21.753,
+    26.631,
+    29.819,
+    32.13,
+    33.466,
+    37.713,
+    43.544,
+    47.833,
+    53.882,
+    60.887,
+    65.597
+   ]
+  },
+  {
+   "id": "what-the-labs-show",
+   "title": "What the labs show",
+   "hash": "0b2d957838",
+   "file": "what-the-labs-show.0b2d957838.m4a",
+   "duration": 19.319,
+   "starts": [
+    0,
+    2.03,
+    9.387
+   ]
+  }
+ ]
+}

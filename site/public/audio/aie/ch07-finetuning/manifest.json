@@ -1,0 +1,267 @@
+{
+ "version": 1,
+ "engine": "kokoro-onnx v1.0",
+ "voice": "bm_george",
+ "lang": "en-gb",
+ "speed": 1,
+ "generated": "2026-11-14",
+ "sections": [
+  {
+   "id": "changing-the-model",
+   "title": "Changing the model",
+   "hash": "ce8bdba1c1",
+   "file": "changing-the-model.ce8bdba1c1.m4a",
+   "duration": 37.793,
+   "starts": [
+    0,
+    2.221,
+    14.586,
+    16.95,
+    25.954,
+    29.996,
+    34.232
+   ]
+  },
+  {
+   "id": "when-to-finetune",
+   "title": "When to finetune",
+   "hash": "8610e2b2c4",
+   "file": "when-to-finetune.8610e2b2c4.m4a",
+   "duration": 2.081,
+   "starts": [
+    0
+   ]
+  },
+  {
+   "id": "reasons-to-finetune",
+   "title": "Reasons to finetune",
+   "hash": "51178cf208",
+   "file": "reasons-to-finetune.51178cf208.m4a",
+   "duration": 54.243,
+   "starts": [
+    0,
+    2.518,
+    11.384,
+    17.59,
+    27.441,
+    37.998,
+    45.497
+   ]
+  },
+  {
+   "id": "reasons-not-to",
+   "title": "Reasons not to",
+   "hash": "3632f8ed83",
+   "file": "reasons-not-to.3632f8ed83.m4a",
+   "duration": 37.85,
+   "starts": [
+    0,
+    2.212,
+    9.297,
+    15.408,
+    22.579,
+    31.373
+   ]
+  },
+  {
+   "id": "finetuning-or-retrieval",
+   "title": "Finetuning or retrieval",
+   "hash": "32cfa06883",
+   "file": "finetuning-or-retrieval.32cfa06883.m4a",
+   "duration": 77.874,
+   "starts": [
+    0,
+    2.665,
+    7.682,
+    16.651,
+    18.632,
+    28.215,
+    30.206,
+    34.648,
+    36.244,
+    47.901,
+    55.207,
+    59.829,
+    60.796,
+    64.122,
+    69.897
+   ]
+  },
+  {
+   "id": "why-memory-is-the-bottleneck",
+   "title": "Why memory is the bottleneck",
+   "hash": "f926c0f094",
+   "file": "why-memory-is-the-bottleneck.f926c0f094.m4a",
+   "duration": 2.837,
+   "starts": [
+    0
+   ]
+  },
+  {
+   "id": "what-training-has-to-store",
+   "title": "What training has to store",
+   "hash": "63bd08cd6c",
+   "file": "what-training-has-to-store.63bd08cd6c.m4a",
+   "duration": 37.926,
+   "starts": [
+    0,
+    2.557,
+    9.947,
+    11.722,
+    23.442,
+    27.958,
+    32.223
+   ]
+  },
+  {
+   "id": "memory-arithmetic",
+   "title": "Memory arithmetic",
+   "hash": "d6a734a59b",
+   "file": "memory-arithmetic.d6a734a59b.m4a",
+   "duration": 27.535,
+   "starts": [
+    0,
+    2.359,
+    8.378,
+    13.217,
+    18.7
+   ]
+  },
+  {
+   "id": "how-numbers-are-stored",
+   "title": "How numbers are stored",
+   "hash": "8583c8665b",
+   "file": "how-numbers-are-stored.8583c8665b.m4a",
+   "duration": 19.416,
+   "starts": [
+    0,
+    2.464,
+    8.744,
+    12.791
+   ]
+  },
+  {
+   "id": "quantization",
+   "title": "Quantization",
+   "hash": "f9d72aa39e",
+   "file": "quantization.f9d72aa39e.m4a",
+   "duration": 59.064,
+   "starts": [
+    0,
+    1.96,
+    8.18,
+    20.177,
+    22.282,
+    30.869,
+    42.275,
+    44.494,
+    50.495
+   ]
+  },
+  {
+   "id": "finetuning-techniques",
+   "title": "Finetuning techniques",
+   "hash": "6f682557f3",
+   "file": "finetuning-techniques.6f682557f3.m4a",
+   "duration": 2.216,
+   "starts": [
+    0
+   ]
+  },
+  {
+   "id": "full-partial-and-parameter-efficient",
+   "title": "Full, partial and parameter-efficient",
+   "hash": "725cbe7e21",
+   "file": "full-partial-and-parameter-efficient.725cbe7e21.m4a",
+   "duration": 51.793,
+   "starts": [
+    0,
+    3.234,
+    6.54,
+    11.028,
+    18.272,
+    28.044,
+    35.515,
+    37.718,
+    43.653
+   ]
+  },
+  {
+   "id": "lora",
+   "title": "LoRA",
+   "hash": "12f126e75e",
+   "file": "lora.12f126e75e.m4a",
+   "duration": 105.03,
+   "starts": [
+    0,
+    1.597,
+    6.528,
+    18.602,
+    25.029,
+    28.354,
+    39.433,
+    50.197,
+    54.62,
+    59.264,
+    66.205,
+    71.687,
+    76.674,
+    79.808,
+    89.543
+   ]
+  },
+  {
+   "id": "model-merging",
+   "title": "Model merging",
+   "hash": "a9c0f7f6e6",
+   "file": "model-merging.a9c0f7f6e6.m4a",
+   "duration": 39.796,
+   "starts": [
+    0,
+    1.885,
+    7.24,
+    10.95,
+    23.451,
+    27.029
+   ]
+  },
+  {
+   "id": "finetuning-in-practice",
+   "title": "Finetuning in practice",
+   "hash": "7a9721bc65",
+   "file": "finetuning-in-practice.7a9721bc65.m4a",
+   "duration": 79.223,
+   "starts": [
+    0,
+    2.56,
+    10.703,
+    15.589,
+    20.826,
+    30.2,
+    32.289,
+    35.789,
+    40.354,
+    43.278,
+    47.43,
+    51.421,
+    55.67,
+    63.085,
+    66.154,
+    73.355
+   ]
+  },
+  {
+   "id": "what-the-labs-show",
+   "title": "What the labs show",
+   "hash": "4ff9a18627",
+   "file": "what-the-labs-show.4ff9a18627.m4a",
+   "duration": 26.785,
+   "starts": [
+    0,
+    2.03,
+    9.726,
+    17.703
+   ]
+  }
+ ]
+}

@@ -1,0 +1,26 @@
+title: "Prompt Engineering"
+status: ready
+summary: "How to instruct a model so that it does what you need, how to keep prompts manageable, and how to defend a prompt against people trying to subvert it."
+est_minutes: 30
+objectives:
+  - Explain in-context learning and choose between zero-shot and few-shot prompting
+  - Describe the roles of the system prompt, the user prompt and the chat template
+  - Apply the main practices for writing prompts and say what each one costs
+  - Manage prompts as versioned, tested parts of a system
+  - Recognize prompt extraction, jailbreaking and prompt injection, and layer defences against them
+labs:
+  - file: lab1_few_shot.py
+    title: "A vague prompt, a clear prompt, and a clear prompt with examples"
+    needs_ollama: true
+    expect: ["usable output", "clear instructions", "clear + 4 examples"]
+  - file: lab2_structured_output.py
+    title: "Getting JSON you can parse"
+    needs_ollama: true
+    expect: ["parses as JSON", "format described + repair in code", "SHAPE"]
+  - file: lab3_prompt_attacks.py
+    title: "Testing your own prompt against extraction and injection"
+    needs_ollama: true
+    expect: ["plain system prompt", "hardened prompt + tags", "code leaked"]
+verified:
+  date: "2026-11-11"
+  notes: "Topic coverage and terminology checked against AI Engineering chapter 5. All three labs were run against a local model through Ollama; their numbers depend on the model. The helper llm.py is shared by the three labs."

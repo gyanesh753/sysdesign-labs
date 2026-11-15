@@ -1,0 +1,224 @@
+{
+ "version": 1,
+ "engine": "kokoro-onnx v1.0",
+ "voice": "bm_george",
+ "lang": "en-gb",
+ "speed": 1,
+ "generated": "2026-11-10",
+ "sections": [
+  {
+   "id": "why-keep-copies",
+   "title": "Why keep copies",
+   "hash": "527488cd81",
+   "file": "why-keep-copies.527488cd81.m4a",
+   "duration": 34.568,
+   "starts": [
+    0,
+    1.967,
+    6.732,
+    17.153,
+    21.632,
+    25.988
+   ]
+  },
+  {
+   "id": "single-leader-replication",
+   "title": "Single-leader replication",
+   "hash": "041b7bc291",
+   "file": "single-leader-replication.041b7bc291.m4a",
+   "duration": 19.579,
+   "starts": [
+    0,
+    2.782,
+    5.142,
+    6.865,
+    15.868
+   ]
+  },
+  {
+   "id": "synchronous-or-asynchronous",
+   "title": "Synchronous or asynchronous",
+   "hash": "5a4f976574",
+   "file": "synchronous-or-asynchronous.5a4f976574.m4a",
+   "duration": 43.504,
+   "starts": [
+    0,
+    2.794,
+    9.383,
+    11.382,
+    18.569,
+    21.08,
+    32.37
+   ]
+  },
+  {
+   "id": "adding-followers-and-surviving-failures",
+   "title": "Adding followers and surviving failures",
+   "hash": "b9981e5be1",
+   "file": "adding-followers-and-surviving-failures.b9981e5be1.m4a",
+   "duration": 66.121,
+   "starts": [
+    0,
+    3.524,
+    14.808,
+    22.639,
+    30.924,
+    33.04,
+    38.725,
+    44.636,
+    50.054,
+    53.682,
+    57.271,
+    59.8
+   ]
+  },
+  {
+   "id": "what-travels-in-the-log",
+   "title": "What travels in the log",
+   "hash": "2d7fde4e79",
+   "file": "what-travels-in-the-log.2d7fde4e79.m4a",
+   "duration": 36.469,
+   "starts": [
+    0,
+    2.701,
+    13.177,
+    20.571,
+    27.965
+   ]
+  },
+  {
+   "id": "replication-lag",
+   "title": "Replication lag",
+   "hash": "5024c0a794",
+   "file": "replication-lag.5024c0a794.m4a",
+   "duration": 23.369,
+   "starts": [
+    0,
+    2.38,
+    7.981,
+    13.623
+   ]
+  },
+  {
+   "id": "reading-your-own-writes",
+   "title": "Reading your own writes",
+   "hash": "9dc5bda9d0",
+   "file": "reading-your-own-writes.9dc5bda9d0.m4a",
+   "duration": 26.074,
+   "starts": [
+    0,
+    2.475,
+    5.968,
+    12.74,
+    16.952
+   ]
+  },
+  {
+   "id": "monotonic-reads",
+   "title": "Monotonic reads",
+   "hash": "9b6b7a2e67",
+   "file": "monotonic-reads.9b6b7a2e67.m4a",
+   "duration": 56.395,
+   "starts": [
+    0,
+    2.048,
+    4.224,
+    11.637,
+    19.144,
+    25.029,
+    33.706,
+    39.622,
+    44.16,
+    45.127,
+    49.002
+   ]
+  },
+  {
+   "id": "multi-leader-replication",
+   "title": "Multi-leader replication",
+   "hash": "6d6aada5a2",
+   "file": "multi-leader-replication.6d6aada5a2.m4a",
+   "duration": 54.588,
+   "starts": [
+    0,
+    2.762,
+    6.327,
+    11.568,
+    22.762,
+    26.05,
+    31.529,
+    36.699,
+    45.305
+   ]
+  },
+  {
+   "id": "handling-write-conflicts",
+   "title": "Handling write conflicts",
+   "hash": "0af5f23282",
+   "file": "handling-write-conflicts.0af5f23282.m4a",
+   "duration": 55.486,
+   "starts": [
+    0,
+    2.423,
+    7.053,
+    10.797,
+    15.885,
+    26.213,
+    34.464,
+    48.569
+   ]
+  },
+  {
+   "id": "leaderless-replication",
+   "title": "Leaderless replication",
+   "hash": "414b43ed1b",
+   "file": "leaderless-replication.414b43ed1b.m4a",
+   "duration": 88.276,
+   "starts": [
+    0,
+    2.356,
+    4.971,
+    12.389,
+    16.349,
+    25.13,
+    31.537,
+    32.456,
+    35.722,
+    44.878,
+    51.831,
+    69.122,
+    71.727,
+    83.448
+   ]
+  },
+  {
+   "id": "detecting-concurrent-writes",
+   "title": "Detecting concurrent writes",
+   "hash": "99b4dca200",
+   "file": "detecting-concurrent-writes.99b4dca200.m4a",
+   "duration": 43.65,
+   "starts": [
+    0,
+    2.645,
+    7.356,
+    11.598,
+    19.629,
+    30.319,
+    32.592
+   ]
+  },
+  {
+   "id": "what-the-labs-show",
+   "title": "What the labs show",
+   "hash": "305d3c5563",
+   "file": "what-the-labs-show.305d3c5563.m4a",
+   "duration": 27.542,
+   "starts": [
+    0,
+    2.03,
+    12.361,
+    19.272
+   ]
+  }
+ ]
+}

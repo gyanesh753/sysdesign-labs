@@ -1,0 +1,298 @@
+{
+ "version": 1,
+ "engine": "kokoro-onnx v1.0",
+ "voice": "bm_george",
+ "lang": "en-gb",
+ "speed": 1,
+ "generated": "2026-11-14",
+ "sections": [
+  {
+   "id": "what-a-prompt-is",
+   "title": "What a prompt is",
+   "hash": "a6fd7c0e33",
+   "file": "what-a-prompt-is.a6fd7c0e33.m4a",
+   "duration": 43.5,
+   "starts": [
+    0,
+    1.991,
+    5.311,
+    14.543,
+    17.912,
+    23.97,
+    27.955,
+    38.701
+   ]
+  },
+  {
+   "id": "in-context-learning",
+   "title": "In-context learning",
+   "hash": "6605d48d76",
+   "file": "in-context-learning.6605d48d76.m4a",
+   "duration": 47.806,
+   "starts": [
+    0,
+    2.237,
+    9.309,
+    11.816,
+    16.615,
+    22.771,
+    25.991,
+    32.792,
+    40.827
+   ]
+  },
+  {
+   "id": "system-and-user-prompts",
+   "title": "System and user prompts",
+   "hash": "5d3b0bdf2a",
+   "file": "system-and-user-prompts.5d3b0bdf2a.m4a",
+   "duration": 59.686,
+   "starts": [
+    0,
+    2.638,
+    6.342,
+    15.918,
+    20.744,
+    31.665,
+    36.591,
+    42.049,
+    44.97,
+    50.804
+   ]
+  },
+  {
+   "id": "context-length-and-where-to-put-things",
+   "title": "Context length and where to put things",
+   "hash": "a22a9647cc",
+   "file": "context-length-and-where-to-put-things.a22a9647cc.m4a",
+   "duration": 32.59,
+   "starts": [
+    0,
+    3.311,
+    10.821,
+    15.284,
+    23.251
+   ]
+  },
+  {
+   "id": "writing-good-prompts",
+   "title": "Writing good prompts",
+   "hash": "ae1e6e4d36",
+   "file": "writing-good-prompts.ae1e6e4d36.m4a",
+   "duration": 2.175,
+   "starts": [
+    0
+   ]
+  },
+  {
+   "id": "be-clear-and-explicit",
+   "title": "Be clear and explicit",
+   "hash": "7488d22234",
+   "file": "be-clear-and-explicit.7488d22234.m4a",
+   "duration": 21.756,
+   "starts": [
+    0,
+    2.544,
+    9.148,
+    13.04,
+    17.103
+   ]
+  },
+  {
+   "id": "give-it-a-persona",
+   "title": "Give it a persona",
+   "hash": "8fb503a84b",
+   "file": "give-it-a-persona.8fb503a84b.m4a",
+   "duration": 18.133,
+   "starts": [
+    0,
+    2.123,
+    6.381,
+    13.045
+   ]
+  },
+  {
+   "id": "provide-examples",
+   "title": "Provide examples",
+   "hash": "31e7e17b08",
+   "file": "provide-examples.31e7e17b08.m4a",
+   "duration": 18.46,
+   "starts": [
+    0,
+    2.304,
+    9.751,
+    14.083
+   ]
+  },
+  {
+   "id": "specify-the-output-format",
+   "title": "Specify the output format",
+   "hash": "f5e4879ba9",
+   "file": "specify-the-output-format.f5e4879ba9.m4a",
+   "duration": 29.582,
+   "starts": [
+    0,
+    2.736,
+    13.475,
+    19.046
+   ]
+  },
+  {
+   "id": "provide-sufficient-context",
+   "title": "Provide sufficient context",
+   "hash": "3b2b661473",
+   "file": "provide-sufficient-context.3b2b661473.m4a",
+   "duration": 30.483,
+   "starts": [
+    0,
+    2.677,
+    10.464,
+    16.665,
+    24.231
+   ]
+  },
+  {
+   "id": "break-complex-tasks-into-subtasks",
+   "title": "Break complex tasks into subtasks",
+   "hash": "b6299900ea",
+   "file": "break-complex-tasks-into-subtasks.b6299900ea.m4a",
+   "duration": 34.685,
+   "starts": [
+    0,
+    3.296,
+    13.595,
+    18.288,
+    22.764,
+    26.144,
+    29.068
+   ]
+  },
+  {
+   "id": "give-the-model-time-to-think",
+   "title": "Give the model time to think",
+   "hash": "5253815946",
+   "file": "give-the-model-time-to-think.5253815946.m4a",
+   "duration": 29.444,
+   "starts": [
+    0,
+    2.729,
+    11.765,
+    14.952,
+    19.041
+   ]
+  },
+  {
+   "id": "iterate",
+   "title": "Iterate",
+   "hash": "ce8f296b9b",
+   "file": "iterate.ce8f296b9b.m4a",
+   "duration": 17.929,
+   "starts": [
+    0,
+    1.545,
+    7.681,
+    14.222
+   ]
+  },
+  {
+   "id": "tools-and-organization",
+   "title": "Tools and organization",
+   "hash": "72aff42c3d",
+   "file": "tools-and-organization.72aff42c3d.m4a",
+   "duration": 44.338,
+   "starts": [
+    0,
+    2.824,
+    7.105,
+    17.833,
+    24.864,
+    27.825,
+    35.096
+   ]
+  },
+  {
+   "id": "defensive-prompt-engineering",
+   "title": "Defensive prompt engineering",
+   "hash": "cec3cce8b2",
+   "file": "defensive-prompt-engineering.cec3cce8b2.m4a",
+   "duration": 10.044,
+   "starts": [
+    0,
+    2.943,
+    7.864
+   ]
+  },
+  {
+   "id": "kinds-of-attack",
+   "title": "Kinds of attack",
+   "hash": "e0dbb9ff46",
+   "file": "kinds-of-attack.e0dbb9ff46.m4a",
+   "duration": 55.114,
+   "starts": [
+    0,
+    2.173,
+    10.395,
+    16.174,
+    21.86,
+    26.055,
+    33.663,
+    47.257
+   ]
+  },
+  {
+   "id": "why-it-matters",
+   "title": "Why it matters",
+   "hash": "db0a267262",
+   "file": "why-it-matters.db0a267262.m4a",
+   "duration": 22.907,
+   "starts": [
+    0,
+    1.902,
+    5.649,
+    9.246,
+    17.357
+   ]
+  },
+  {
+   "id": "defences",
+   "title": "Defences",
+   "hash": "7bdc6915a7",
+   "file": "defences.7bdc6915a7.m4a",
+   "duration": 111.191,
+   "starts": [
+    0,
+    1.763,
+    5.537,
+    9.659,
+    17.421,
+    22.184,
+    34.202,
+    40.397,
+    44.101,
+    47.354,
+    54.542,
+    55.834,
+    66.673,
+    71.051,
+    77.505,
+    83.538,
+    88.984,
+    96.18,
+    101.403
+   ]
+  },
+  {
+   "id": "what-the-labs-show",
+   "title": "What the labs show",
+   "hash": "ef6a3aaefe",
+   "file": "what-the-labs-show.ef6a3aaefe.m4a",
+   "duration": 26.35,
+   "starts": [
+    0,
+    2.03,
+    10.921,
+    17.769
+   ]
+  }
+ ]
+}

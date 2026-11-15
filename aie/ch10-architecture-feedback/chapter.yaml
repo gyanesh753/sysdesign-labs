@@ -1,0 +1,25 @@
+title: "AI Engineering Architecture and User Feedback"
+status: ready
+summary: "Assembling a production system around a model one component at a time, keeping watch over it, and learning from what users do."
+est_minutes: 30
+objectives:
+  - Describe the components commonly added around a model and the order in which they earn their place
+  - Explain what input and output guardrails protect against and what they cost
+  - Explain what a router and a gateway do
+  - Compare exact and semantic caching and name the risk of each
+  - Distinguish monitoring from observability and list what to track
+  - Extract implicit feedback from conversations and name the biases in user feedback
+labs:
+  - file: lab1_gateway.py
+    title: "A guardrail, a router, a cache and a fallback"
+    expect: ["PART A", "PART B", "PART C", "sent to the model"]
+  - file: lab2_semantic_cache.py
+    title: "A semantic cache and its threshold"
+    needs_ollama: true
+    expect: ["cache threshold", "look-alike", "wrong hit"]
+  - file: lab3_feedback_signals.py
+    title: "Implicit feedback, position bias and a feedback loop"
+    expect: ["PART A", "PART B", "PART C", "implicit satisfaction"]
+verified:
+  date: "2026-11-14"
+  notes: "Topic coverage and terminology checked against AI Engineering chapter 10. All three labs run; lab 2 was run against a local embedding model through Ollama and its figures depend on the model. Prices and rates in lab 1 are invented."

@@ -1,0 +1,120 @@
+questions:
+  - id: lm-def
+    type: single
+    prompt: "What does a language model fundamentally output?"
+    options:
+      - "A probability for each possible continuation of the text it was given"
+      - "The single correct answer retrieved from a database"
+      - "A parse tree of the input sentence"
+      - "A label chosen from a fixed list of categories"
+    answer: A
+    explanation: "A language model assigns probabilities to what could come next. Generation is repeatedly picking from those probabilities, which is why the same prompt can give different answers."
+    section: "What a language model does"
+
+  - id: autoregressive
+    type: single
+    prompt: "How does an autoregressive language model produce a paragraph of text?"
+    options:
+      - "It fills in blanks using the text on both sides"
+      - "It predicts one token, appends it to the input, and repeats"
+      - "It copies the nearest matching paragraph from its training data"
+      - "It predicts all the tokens of the paragraph at once"
+    answer: B
+    explanation: "Each new token is predicted from everything before it, including the tokens the model itself just produced. Filling blanks from both sides is the masked style."
+    section: "What a language model does"
+
+  - id: tokens-why
+    type: single
+    prompt: "Why do models use subword tokens instead of whole words?"
+    options:
+      - "Whole words cannot be stored as numbers"
+      - "Subword tokens are always shorter than characters"
+      - "Subwords keep the vocabulary manageable while still letting the model handle words it has never seen, by building them from known pieces"
+      - "It makes every language use the same number of tokens"
+    answer: C
+    explanation: "Characters give very long sequences; whole words give a huge vocabulary and fail on new words. Subword tokens sit between the two."
+    section: "Tokens"
+
+  - id: tokens-cost
+    type: multi
+    prompt: "Which of these are measured in tokens?"
+    options:
+      - "The price of using a model through an API"
+      - "The length limit of a model's answer"
+      - "How much text a model can take in at once"
+      - "The number of GPUs in the provider's data centre"
+    answer: [ A, B, C ]
+    explanation: "Context limits, output limits and pricing are all counted in tokens, which is why it helps to know roughly how many tokens your text turns into."
+    section: "Tokens"
+
+  - id: self-supervision
+    type: single
+    prompt: "What makes self-supervision so important for language models?"
+    options:
+      - "It makes models smaller"
+      - "It removes the need for any data"
+      - "The training labels come from the text itself, so the model can learn from far more data than could ever be labelled by hand"
+      - "It guarantees the model never produces false statements"
+    answer: C
+    explanation: "Hiding the next token and asking the model to predict it turns any text into training examples for free. That is what allowed training at the scale of the internet."
+    section: "Self-supervision"
+
+  - id: foundation
+    type: single
+    prompt: "What distinguishes a foundation model from a traditional task-specific model?"
+    options:
+      - "It never needs to be evaluated"
+      - "It is trained on broad data and can be adapted to many tasks, instead of being built for one"
+      - "It only works on text"
+      - "It is always open source"
+    answer: B
+    explanation: "The shift is from one model per task to one general-purpose model that many applications build on, increasingly across several kinds of data."
+    section: "Beyond text"
+
+  - id: role-of-ai
+    type: single
+    prompt: "A product cannot function at all without its AI component. What does that imply?"
+    options:
+      - "The AI is critical to the product, so it has to be accurate and dependable to a much higher standard than an optional feature would"
+      - "The product should be proactive"
+      - "The AI component can be unreliable, since users expect mistakes"
+      - "The product needs no evaluation"
+    answer: A
+    explanation: "When AI is critical, its failures are the product's failures. A complementary feature that users can ignore leaves more room for error."
+    section: "Should you build it"
+
+  - id: defensibility
+    type: single
+    prompt: "Why is a product that is only a thin layer over someone else's model hard to defend?"
+    options:
+      - "It cannot use an API"
+      - "Thin layers are slow"
+      - "It cannot be evaluated"
+      - "The model provider or a competitor can reproduce the same functionality quickly"
+    answer: D
+    explanation: "If the value is all in the underlying model, anyone with access to that model can copy the product. Advantages that last usually come from data, distribution or deep integration with customers' work."
+    section: "Should you build it"
+
+  - id: last-mile
+    type: single
+    prompt: "A team builds an impressive demo in two weeks and estimates the product will be ready in another two. What is the usual flaw in that estimate?"
+    options:
+      - "Early progress is fast, but each further gain in reliability takes more effort than the one before, so the remaining work is much larger than it looks"
+      - "Demos are usually slower to build than products"
+      - "Models get worse over time"
+      - "Products do not need to handle unusual inputs"
+    answer: A
+    explanation: "Getting something that works most of the time is quick. Handling edge cases, reducing false statements and controlling cost and latency is where most of the time goes."
+    section: "The last mile"
+
+  - id: vs-ml
+    type: multi
+    prompt: "In which ways does AI engineering differ in emphasis from traditional ML engineering?"
+    options:
+      - "It never involves data"
+      - "Efficient inference matters more because the models are large"
+      - "Evaluation is harder because outputs are open-ended"
+      - "It focuses more on adapting an existing model than on training one"
+    answer: [ B, C, D ]
+    explanation: "Adaptation, harder evaluation and inference cost are the three shifts. Data still matters, especially once you move on to finetuning."
+    section: "How it differs from ML engineering"

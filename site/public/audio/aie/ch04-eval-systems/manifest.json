@@ -1,0 +1,264 @@
+{
+ "version": 1,
+ "engine": "kokoro-onnx v1.0",
+ "voice": "bm_george",
+ "lang": "en-gb",
+ "speed": 1,
+ "generated": "2026-11-14",
+ "sections": [
+  {
+   "id": "from-methods-to-decisions",
+   "title": "From methods to decisions",
+   "hash": "a1a6a44a93",
+   "file": "from-methods-to-decisions.a1a6a44a93.m4a",
+   "duration": 38.391,
+   "starts": [
+    0,
+    2.749,
+    7.201,
+    18.515,
+    23.608,
+    27.67,
+    31.759
+   ]
+  },
+  {
+   "id": "evaluation-criteria",
+   "title": "Evaluation criteria",
+   "hash": "65fe196740",
+   "file": "evaluation-criteria.65fe196740.m4a",
+   "duration": 8.985,
+   "starts": [
+    0,
+    2.772
+   ]
+  },
+  {
+   "id": "domain-specific-capability",
+   "title": "Domain-specific capability",
+   "hash": "6abb8b632b",
+   "file": "domain-specific-capability.6abb8b632b.m4a",
+   "duration": 24.07,
+   "starts": [
+    0,
+    3.012,
+    7.059,
+    13.485
+   ]
+  },
+  {
+   "id": "generation-capability",
+   "title": "Generation capability",
+   "hash": "cbaaf8ce18",
+   "file": "generation-capability.cbaaf8ce18.m4a",
+   "duration": 76.126,
+   "starts": [
+    0,
+    2.889,
+    9.228,
+    15.729,
+    19.155,
+    21.353,
+    25.765,
+    30.018,
+    34.987,
+    40.396,
+    47.223,
+    65.236,
+    72.648
+   ]
+  },
+  {
+   "id": "instruction-following-capability",
+   "title": "Instruction-following capability",
+   "hash": "e4d6974a92",
+   "file": "instruction-following-capability.e4d6974a92.m4a",
+   "duration": 32.802,
+   "starts": [
+    0,
+    3.223,
+    5.852,
+    16.27,
+    21.007,
+    24.261
+   ]
+  },
+  {
+   "id": "cost-and-latency",
+   "title": "Cost and latency",
+   "hash": "3c03675659",
+   "file": "cost-and-latency.3c03675659.m4a",
+   "duration": 32.814,
+   "starts": [
+    0,
+    2.275,
+    7.63,
+    16.356,
+    24.457
+   ]
+  },
+  {
+   "id": "model-selection",
+   "title": "Model selection",
+   "hash": "db602dcb35",
+   "file": "model-selection.db602dcb35.m4a",
+   "duration": 1.904,
+   "starts": [
+    0
+   ]
+  },
+  {
+   "id": "the-workflow",
+   "title": "The workflow",
+   "hash": "8d77c67064",
+   "file": "the-workflow.8d77c67064.m4a",
+   "duration": 51.791,
+   "starts": [
+    0,
+    1.696,
+    7.763,
+    15.468,
+    22.035,
+    29.442,
+    35.97,
+    40.732,
+    44.607
+   ]
+  },
+  {
+   "id": "use-an-api-or-host-it-yourself",
+   "title": "Use an API or host it yourself",
+   "hash": "bb335bdb80",
+   "file": "use-an-api-or-host-it-yourself.bb335bdb80.m4a",
+   "duration": 91.126,
+   "starts": [
+    0,
+    3.522,
+    13.121,
+    15.062,
+    22.543,
+    29.592,
+    35.545,
+    42.72,
+    48.995,
+    54.592,
+    58.924,
+    63.578,
+    70.203,
+    73.127,
+    79.988,
+    82.262
+   ]
+  },
+  {
+   "id": "reading-public-benchmarks",
+   "title": "Reading public benchmarks",
+   "hash": "1ef9b0c735",
+   "file": "reading-public-benchmarks.1ef9b0c735.m4a",
+   "duration": 112.698,
+   "starts": [
+    0,
+    2.499,
+    8.159,
+    10.62,
+    16.567,
+    19.798,
+    21.624,
+    26.871,
+    30.363,
+    36.533,
+    44.595,
+    47.341,
+    54.007,
+    57.59,
+    72.063,
+    77.127,
+    82.957,
+    90.954,
+    95.024,
+    101.221
+   ]
+  },
+  {
+   "id": "designing-an-evaluation-pipeline",
+   "title": "Designing an evaluation pipeline",
+   "hash": "7fb1701d68",
+   "file": "designing-an-evaluation-pipeline.7fb1701d68.m4a",
+   "duration": 3.362,
+   "starts": [
+    0
+   ]
+  },
+  {
+   "id": "evaluate-every-component",
+   "title": "Evaluate every component",
+   "hash": "d51ab7ad7c",
+   "file": "evaluate-every-component.d51ab7ad7c.m4a",
+   "duration": 30.203,
+   "starts": [
+    0,
+    2.655,
+    9.378,
+    13.497,
+    17.785,
+    24.387
+   ]
+  },
+  {
+   "id": "write-the-guideline",
+   "title": "Write the guideline",
+   "hash": "f469224935",
+   "file": "write-the-guideline.f469224935.m4a",
+   "duration": 49.011,
+   "starts": [
+    0,
+    2.015,
+    6.29,
+    11.502,
+    13.174,
+    17.867,
+    24.873,
+    30.078,
+    44.422
+   ]
+  },
+  {
+   "id": "choose-methods-and-data",
+   "title": "Choose methods and data",
+   "hash": "7215562edf",
+   "file": "choose-methods-and-data.7215562edf.m4a",
+   "duration": 80.6,
+   "starts": [
+    0,
+    2.778,
+    5.736,
+    15.582,
+    22.697,
+    29.415,
+    33.319,
+    43.83,
+    46.089,
+    53.266,
+    60.427,
+    65.391,
+    67.989,
+    71.2,
+    74.703,
+    76.571
+   ]
+  },
+  {
+   "id": "what-the-labs-show",
+   "title": "What the labs show",
+   "hash": "fdd7201a2b",
+   "file": "what-the-labs-show.fdd7201a2b.m4a",
+   "duration": 33.694,
+   "starts": [
+    0,
+    2.03,
+    13.083,
+    23.538
+   ]
+  }
+ ]
+}

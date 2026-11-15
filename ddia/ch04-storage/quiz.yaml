@@ -1,0 +1,116 @@
+questions:
+  - id: index-cost
+    type: single
+    prompt: "Why don't databases index every column by default?"
+    options:
+      - "Indexes make reads slower"
+      - "A table can have at most one index"
+      - "Indexes only work on numeric columns"
+      - "Each index must be updated on every write, so indexes speed up some reads at the cost of slower writes and more space"
+    answer: D
+    explanation: "An index is extra data derived from the primary data. Keeping it up to date costs work on every write, so you choose the indexes your queries actually need."
+    section: "Why look inside the engine"
+
+  - id: sstable
+    type: single
+    prompt: "What makes an SSTable different from a plain append-only log file?"
+    options:
+      - "It can only hold one value per file"
+      - "It is updated in place"
+      - "It is stored in memory"
+      - "Its key-value pairs are sorted by key and the file is never modified after it is written"
+    answer: D
+    explanation: "Sorting is what makes lookups cheap with a sparse index and lets several files be merged in one sequential pass. Immutability keeps writing and crash recovery simple."
+    section: "SSTables and the LSM-tree"
+
+  - id: lsm-read
+    type: single
+    prompt: "In what order does an LSM-tree look for a key?"
+    options:
+      - "All SSTables in parallel, returning the largest value"
+      - "The memtable, then SSTables from newest to oldest, stopping at the first match"
+      - "Only the largest SSTable"
+      - "Oldest SSTable first, then newer ones, then the memtable"
+    answer: B
+    explanation: "The newest data is in the memtable, and newer files override older ones, so the first match found in that order is the current value."
+    section: "SSTables and the LSM-tree"
+
+  - id: bloom
+    type: single
+    prompt: "A Bloom filter says a key is \"possibly present\" in an SSTable. What can you conclude?"
+    options:
+      - "The key is definitely not there"
+      - "The filter is corrupt"
+      - "The key is definitely in that file"
+      - "The key may or may not be there, so the file has to be checked"
+    answer: D
+    explanation: "A Bloom filter can give false positives but never false negatives. Only \"definitely absent\" is certain, and that answer is what lets the engine skip files."
+    section: "Bloom filters"
+
+  - id: compaction
+    type: multi
+    prompt: "What does compaction do in a log-structured engine?"
+    options:
+      - "Updates keys in place inside existing files"
+      - "Removes tombstones once the data they hide is gone"
+      - "Merges SSTables so there are fewer files to search"
+      - "Discards values that have been overwritten"
+    answer: [ B, C, D ]
+    explanation: "Compaction writes new merged files and deletes the old ones. Nothing is updated in place; that is the defining property of the design."
+    section: "Compaction"
+
+  - id: btree-crash
+    type: single
+    prompt: "A B-tree page split has to modify several pages. How does the database avoid a corrupt tree if it crashes halfway?"
+    options:
+      - "It keeps two copies of the whole tree"
+      - "It appends the change to a write-ahead log first and replays the log after a crash"
+      - "It rebuilds the index from scratch on every restart"
+      - "Splits are never interrupted"
+    answer: B
+    explanation: "The write-ahead log is an append-only record of intended changes. After a crash the database uses it to bring the pages back to a consistent state."
+    section: "B-trees"
+
+  - id: lsm-vs-btree
+    type: multi
+    prompt: "Which statements about LSM-trees compared with B-trees are generally true?"
+    options:
+      - "LSM-trees need background compaction, which can interfere with foreground requests"
+      - "B-trees keep each key in exactly one place, which makes read performance more predictable"
+      - "LSM-trees turn random writes into sequential ones and usually sustain higher write throughput"
+      - "B-trees never need a log because they update in place"
+    answer: [ A, B, C ]
+    explanation: "Those three are the core trade-off. B-trees do need a write-ahead log, precisely because in-place updates are dangerous if interrupted."
+    section: "Comparing the two"
+
+  - id: column-runs
+    type: numeric
+    prompt: "A table of 500,000 rows has a `country` column with 6 distinct values. The rows are sorted by country. How many (value, count) pairs does run-length encoding need for that column?"
+    answer: 6
+    unit: "runs"
+    explanation: "Once sorted, each country forms one long run, so six pairs describe all 500,000 values. Unsorted, the same column needs hundreds of thousands of runs."
+    section: "Compression and sort order"
+
+  - id: column-writes
+    type: single
+    prompt: "Why do column stores handle inserts in batches instead of one row at a time?"
+    options:
+      - "Batches are required by SQL"
+      - "Inserting one row into sorted, compressed column files would mean rewriting them, so rows are collected and written as new files"
+      - "Analytical data never changes"
+      - "Columns cannot store new values"
+    answer: B
+    explanation: "Sorted compressed files cannot be edited in the middle cheaply. New rows are buffered and periodically written out as new files, in the same spirit as an LSM-tree."
+    section: "Compression and sort order"
+
+  - id: approximate
+    type: single
+    prompt: "What do you give up by using an approximate vector index such as HNSW instead of a flat index?"
+    options:
+      - "Nothing; it is exact and faster"
+      - "The ability to search by meaning"
+      - "The ability to add new vectors"
+      - "A guarantee of finding the true nearest neighbours every time, in exchange for much faster queries"
+    answer: D
+    explanation: "A flat index compares against every vector and is exact. HNSW searches a small part of a graph, so it may occasionally miss a true neighbour; a search parameter lets you trade speed for recall."
+    section: "Full-text and vector search"

@@ -1,0 +1,120 @@
+questions:
+  - id: data-limits
+    type: single
+    prompt: "A general-purpose model performs poorly on a language with very little text on the web. What is the most direct explanation?"
+    options:
+      - "The model has too many parameters"
+      - "The model saw little of that language during training"
+      - "The language has too many characters"
+      - "The temperature is set too high"
+    answer: B
+    explanation: "A model is only as good as its training data. Low-resource languages are under-represented, so quality drops, and the same content also tends to need more tokens."
+    section: "Training data"
+
+  - id: attention
+    type: single
+    prompt: "What does the attention mechanism let a model do when producing a token?"
+    options:
+      - "Retrieve documents from the web"
+      - "Skip the feedforward layers"
+      - "Look directly at every earlier token and weigh how relevant each one is"
+      - "Process only the most recent token"
+    answer: C
+    explanation: "Earlier architectures compressed everything read so far into one summary. Attention gives direct, weighted access to all previous tokens."
+    section: "The transformer and attention"
+
+  - id: generation-slow
+    type: single
+    prompt: "Why are long outputs slow even though a transformer processes its input in parallel?"
+    options:
+      - "Output tokens are generated one at a time, each depending on the ones before"
+      - "The model has to be reloaded for each sentence"
+      - "The output layer is larger than the input layer"
+      - "Long outputs use a higher temperature"
+    answer: A
+    explanation: "Reading the prompt is parallel. Writing is sequential: each new token requires another pass that takes all previous tokens into account."
+    section: "The transformer and attention"
+
+  - id: context-length
+    type: single
+    prompt: "What is a model's context length?"
+    options:
+      - "The maximum number of tokens it can take in at once"
+      - "The amount of text it was trained on"
+      - "The number of parameters it has"
+      - "The longest word in its vocabulary"
+    answer: A
+    explanation: "Parameters, training tokens and training compute describe how the model was built. Context length limits how much you can give it in one request."
+    section: "Three numbers for size"
+
+  - id: post-training
+    type: single
+    prompt: "Why does a model that has only been pre-trained make a poor assistant?"
+    options:
+      - "It cannot produce fluent text"
+      - "It always answers too briefly"
+      - "It has no vocabulary"
+      - "It was trained to continue text, not to answer requests, and it reproduces whatever kinds of text its data contained"
+    answer: D
+    explanation: "Pre-training optimizes for completion. Supervised finetuning teaches it to respond to requests, and preference finetuning steers which responses it gives."
+    section: "Post-training"
+
+  - id: preference
+    type: single
+    prompt: "In preference finetuning with a reward model, what is the reward model trained on?"
+    options:
+      - "Random scores"
+      - "The model's own log probabilities"
+      - "The length of each response"
+      - "People's choices between pairs of responses to the same prompt"
+    answer: D
+    explanation: "Comparing two responses is easier for people than scoring one in isolation. The reward model learns to predict those preferences, and the main model is tuned to score well on it."
+    section: "Preference finetuning"
+
+  - id: temperature
+    type: single
+    prompt: "You are extracting invoice numbers from documents and want the same output every time. Which temperature is appropriate?"
+    options:
+      - "A high temperature, for accuracy"
+      - "It makes no difference"
+      - "A temperature of exactly one"
+      - "A temperature at or near zero"
+    answer: D
+    explanation: "A low temperature concentrates probability on the most likely tokens, which suits tasks with a single right answer. Higher temperatures suit tasks where variety is wanted."
+    section: "Temperature, top-k and top-p"
+
+  - id: top-p
+    type: single
+    prompt: "How does top-p sampling differ from top-k?"
+    options:
+      - "Top-p ignores probabilities"
+      - "They are identical"
+      - "Top-p always keeps exactly p tokens"
+      - "Top-p keeps the smallest set of tokens whose probabilities reach p, so the number kept varies with how confident the model is"
+    answer: D
+    explanation: "Top-k keeps a fixed count. Top-p may keep one token when the model is sure and dozens when it is not, which often suits natural language better."
+    section: "Temperature, top-k and top-p"
+
+  - id: test-time
+    type: single
+    prompt: "Generating several answers and choosing among them helps most when which condition holds?"
+    options:
+      - "The model is consistently wrong in the same way"
+      - "Latency matters more than quality"
+      - "The temperature is zero"
+      - "There is a reliable way to tell a good answer from a bad one, such as tests or agreement between independent attempts"
+    answer: D
+    explanation: "Selection needs a signal. If the model leans towards the same wrong answer, voting amplifies the error, and at temperature zero every attempt is identical."
+    section: "Test time compute"
+
+  - id: hallucination
+    type: multi
+    prompt: "Which of these reduce the rate of confidently false statements?"
+    options:
+      - "Raising the temperature"
+      - "Putting the relevant facts into the prompt"
+      - "Asking the model to say when it does not know"
+      - "Checking the output against a source"
+    answer: [ B, C, D ]
+    explanation: "Giving the model the facts, permission to abstain, and verification all help, though none removes the problem. A higher temperature makes unlikely, and often wrong, tokens more probable."
+    section: "Hallucination"

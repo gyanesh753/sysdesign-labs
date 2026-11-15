@@ -1,0 +1,117 @@
+questions:
+  - id: edd
+    type: single
+    prompt: "What does evaluation-driven development ask you to do?"
+    options:
+      - "Replace all evaluation with user feedback"
+      - "Define how you will measure success before you build the application"
+      - "Evaluate only after the product has launched"
+      - "Choose the model with the highest leaderboard rank"
+    answer: B
+    explanation: "Like writing a test first, deciding the criteria up front tells you what to build and gives you a way to know whether each change helps."
+    section: "From methods to decisions"
+
+  - id: local-global
+    type: single
+    prompt: "A summary states something that contradicts the document it summarizes. Which kind of failure is this?"
+    options:
+      - "An instruction-following success"
+      - "A latency failure"
+      - "Global factual inconsistency"
+      - "Local factual inconsistency"
+    answer: D
+    explanation: "Local consistency is consistency with the given context. Global consistency is consistency with general knowledge about the world, and is harder to check because the evidence has to be found first."
+    section: "Generation capability"
+
+  - id: self-check
+    type: single
+    prompt: "One way to detect made-up answers is to ask the same question several times. What is the reasoning?"
+    options:
+      - "The model learns from each attempt"
+      - "The first answer is always wrong"
+      - "Repeated questions lower the temperature"
+      - "If the responses contradict each other, the model is probably not drawing on something it reliably knows"
+    answer: D
+    explanation: "Consistent answers across samples suggest the model has stable knowledge of the point. Contradictory ones suggest it is producing plausible text without that basis."
+    section: "Generation capability"
+
+  - id: instruction
+    type: single
+    prompt: "A model gives accurate answers but often ignores the instruction to reply in JSON. Which criterion is it failing?"
+    options:
+      - "Instruction-following capability"
+      - "Domain-specific capability"
+      - "Cost"
+      - "Global factual consistency"
+    answer: A
+    explanation: "Knowing the right answer and respecting stated constraints are separate skills. Applications that parse the output depend on the second."
+    section: "Instruction-following capability"
+
+  - id: hard-soft
+    type: single
+    prompt: "In model selection, why separate hard requirements from other attributes first?"
+    options:
+      - "It makes the leaderboard shorter"
+      - "Hard requirements only apply to open models"
+      - "Hard requirements are the easiest to improve with prompting"
+      - "A model that fails one, such as a licence or privacy rule, is out regardless of its quality, so there is no point comparing it further"
+    answer: D
+    explanation: "Things you cannot change, like a licence, eliminate candidates outright. Attributes you can influence, like accuracy or latency, are where trade-offs are made."
+    section: "The workflow"
+
+  - id: api-vs-host
+    type: multi
+    prompt: "Which are reasons to host a model yourself instead of using a commercial API?"
+    options:
+      - "Policy forbids sending the data to an outside provider"
+      - "You need the model to stay exactly the same over time"
+      - "You want to avoid all engineering effort"
+      - "Your volume is high enough that a fixed hardware cost beats per-token pricing"
+    answer: [ A, B, D ]
+    explanation: "Privacy, control and cost at scale favour hosting. Hosting takes considerably more engineering effort, which is the main argument for an API."
+    section: "Use an API or host it yourself"
+
+  - id: breakeven
+    type: numeric
+    prompt: "An API costs 2 dollars per million tokens and a request uses 1,000 tokens. Self-hosting costs a fixed 6,000 dollars a month. Above how many requests per month is self-hosting cheaper? Answer in millions."
+    answer: 3
+    tolerance: 0.05
+    unit: "million requests per month"
+    explanation: "Each request costs 0.002 dollars through the API. 6,000 divided by 0.002 is 3,000,000 requests a month. Below that the API is cheaper."
+    section: "Use an API or host it yourself"
+
+  - id: contamination
+    type: single
+    prompt: "What is data contamination in the context of benchmarks?"
+    options:
+      - "The benchmark is too difficult"
+      - "The benchmark contains spelling mistakes"
+      - "The model was trained on the benchmark's own questions, so its score reflects memorization"
+      - "Two models share the same score"
+    answer: C
+    explanation: "Published benchmarks get scraped into training data. A model that has seen the test can score highly without having the ability the test is meant to measure."
+    section: "Reading public benchmarks"
+
+  - id: simpson
+    type: single
+    prompt: "System B scores higher than system A on easy questions and on hard questions, but lower overall. How is that possible?"
+    options:
+      - "It is not possible; there must be an arithmetic error"
+      - "A has a better tokenizer"
+      - "B was tested twice"
+      - "B was tested on a much larger share of hard questions, which drags its average down"
+    answer: D
+    explanation: "An overall average depends on the mix of cases as well as on performance within each. This is why results should be reported by slice, with the number of examples in each."
+    section: "Choose methods and data"
+
+  - id: sample-size
+    type: single
+    prompt: "Your test set has 50 examples and model B beats model A by 4 points. What should you conclude?"
+    options:
+      - "B is definitely better"
+      - "A is definitely better"
+      - "The difference may well be chance; a set this small cannot reliably detect a gap that size"
+      - "The test set is too large"
+    answer: C
+    explanation: "With 50 examples a score can easily swing by ten points from one sample to another. Resampling the test set shows how wide the uncertainty is, and detecting small gaps takes thousands of examples."
+    section: "Choose methods and data"

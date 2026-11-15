@@ -1,0 +1,120 @@
+questions:
+  - id: stakes
+    type: single
+    prompt: "Why does predicting something about a person call for more care than predicting the weather, even with similar methods?"
+    options:
+      - "People's data is smaller"
+      - "Weather data is more accurate"
+      - "The mathematics is harder"
+      - "Acting on a wrong prediction can deny someone credit, work or housing, and they may be unable to challenge it"
+    answer: D
+    explanation: "The technique is the same. What differs is the consequence of acting on it, and how hard that consequence is for the affected person to undo."
+    section: "Predictive analytics"
+
+  - id: learned-bias
+    type: single
+    prompt: "A model is trained on ten years of hiring decisions that favoured one group. What will it most likely do?"
+    options:
+      - "Ignore the historical data"
+      - "Reproduce the bias, because it learns to imitate the patterns in its training data"
+      - "Favour the other group"
+      - "Correct the bias, because algorithms are objective"
+    answer: B
+    explanation: "A model has no notion of fairness beyond what is in its data and its objective. Imitating biased decisions accurately means being biased, with an appearance of neutrality added."
+    section: "Bias and discrimination"
+
+  - id: proxy
+    type: single
+    prompt: "The team removes the ethnicity column before training. Why might the model still treat ethnic groups differently?"
+    options:
+      - "It cannot; the information is gone"
+      - "Removing a column corrupts the dataset"
+      - "Other attributes, such as postcode, correlate with ethnicity and act as stand-ins"
+      - "The model guesses at random"
+    answer: C
+    explanation: "Sensitive attributes leave traces in many other fields. A model will use whatever combination best predicts the historical outcome, and if that outcome was biased, the stand-ins carry the bias."
+    section: "Bias and discrimination"
+
+  - id: accuracy-trap
+    type: single
+    prompt: "A model's decisions agree with past human decisions 94% of the time. What does that tell you about whether it is fair?"
+    options:
+      - "It is unfair, since it is not 100%"
+      - "Nothing by itself; if the past decisions were biased, high agreement means the bias was copied well"
+      - "Fairness and agreement are the same measure"
+      - "It is fair, since 94% is high"
+    answer: B
+    explanation: "Agreement with history measures faithfulness to history. Whether history is a standard worth copying is a separate question that the number cannot answer."
+    section: "Bias and discrimination"
+
+  - id: accountability
+    type: multi
+    prompt: "What should hold for an automated decision that significantly affects a person?"
+    options:
+      - "Some person or organization remains answerable for it"
+      - "The decision is final because a computer made it"
+      - "The affected person can learn the reasons and challenge the decision"
+      - "Errors in the underlying data can be corrected"
+    answer: [ A, C, D ]
+    explanation: "Automation moves a decision without removing responsibility for it. Reasons, a route of appeal and correctable data are the minimum for accountability."
+    section: "Responsibility and accountability"
+
+  - id: feedback-loop
+    type: single
+    prompt: "Inspectors are sent to the district with more recorded violations. Both districts in fact have the same violation rate. Why does one end up with nearly all the inspectors?"
+    options:
+      - "Random chance evens out over time"
+      - "That district really has more violations"
+      - "Violations are recorded only where inspectors look, so more inspectors yield more records, which attract more inspectors"
+      - "The inspectors prefer that district"
+    answer: C
+    explanation: "The records measure the system's own attention as much as the underlying reality. Allocating by raw counts feeds that back in. Measuring violations per inspection breaks the loop."
+    section: "Feedback loops"
+
+  - id: consent
+    type: multi
+    prompt: "Why is \"users agreed to the terms\" often a weak justification for data collection?"
+    options:
+      - "Few people can tell from the terms what is collected and what will be inferred"
+      - "Terms of service are never legally binding"
+      - "Declining may not be realistic when a service is effectively required"
+      - "A person's data also exposes others who agreed to nothing"
+    answer: [ A, C, D ]
+    explanation: "Meaningful consent needs understanding and a real option to refuse. The legal status of terms varies and is a different matter."
+    section: "Consent and freedom of choice"
+
+  - id: privacy-meaning
+    type: single
+    prompt: "Which description of privacy matches this chapter?"
+    options:
+      - "Using encryption"
+      - "Keeping everything about yourself secret"
+      - "Having nothing to hide"
+      - "Being able to decide which things to reveal to whom"
+    answer: D
+    explanation: "Privacy is about choice and context. When a company collects behavioural data, that choice passes from the individual to the company."
+    section: "Privacy and use of data"
+
+  - id: liability
+    type: single
+    prompt: "Why is it reasonable to treat stored personal data as a liability as well as an asset?"
+    options:
+      - "Data loses accuracy within a day"
+      - "Regulators prohibit storing any data"
+      - "Storage is expensive"
+      - "Anything stored can be breached, demanded by authorities, or pass to a new owner with other intentions"
+    answer: D
+    explanation: "You cannot predict who will hold the data later or under which laws. Holding less reduces every one of those risks together."
+    section: "Data as assets and power"
+
+  - id: practice
+    type: multi
+    prompt: "Which practices follow from the principles of purpose limitation and data minimization?"
+    options:
+      - "Keep every event forever in case it becomes useful"
+      - "Delete data once that purpose has been served"
+      - "Collect only what a stated purpose needs"
+      - "Let people see and correct the data held about them"
+    answer: [ B, C, D ]
+    explanation: "Collecting everything just in case is the habit these principles are meant to replace. The other three are how they look in an actual system."
+    section: "Legislation and self-regulation"

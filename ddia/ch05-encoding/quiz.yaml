@@ -1,0 +1,120 @@
+questions:
+  - id: forward-def
+    type: single
+    prompt: "What is **forward** compatibility?"
+    options:
+      - "Data can be read in any programming language"
+      - "Code and data are always upgraded together"
+      - "Old code can read data written by new code"
+      - "New code can read data written by old code"
+    answer: C
+    explanation: "Forward compatibility is the harder direction: old code must cope with data from a future it knows nothing about, usually by ignoring what it does not understand."
+    section: "Change is the normal state"
+
+  - id: rolling
+    type: single
+    prompt: "Why does a rolling upgrade need both kinds of compatibility at once?"
+    options:
+      - "Because rolling upgrades change the encoding format"
+      - "Because clients are upgraded before servers"
+      - "Because the database is offline during the upgrade"
+      - "Because old and new versions of the code run at the same time and read each other's data"
+    answer: D
+    explanation: "During the rollout a record written by a new node may be read by an old node and the reverse, so both directions must work."
+    section: "Change is the normal state"
+
+  - id: language-specific
+    type: multi
+    prompt: "Why are a language's built-in serialization formats a poor choice for long-lived data?"
+    options:
+      - "Versioning and compatibility are usually an afterthought"
+      - "They cannot represent strings"
+      - "Decoding can often be abused to run arbitrary code"
+      - "They tie the data to one programming language"
+    answer: [ A, C, D ]
+    explanation: "Lock-in, security and weak versioning are the standard objections. They can represent strings perfectly well."
+    section: "Language-specific formats"
+
+  - id: json-weakness
+    type: single
+    prompt: "Which is a real weakness of JSON as an encoding?"
+    options:
+      - "It cannot nest objects"
+      - "It requires a schema"
+      - "It does not distinguish integers from floating-point numbers, and very large integers can lose precision"
+      - "It cannot be read by humans"
+    answer: C
+    explanation: "Number handling is the classic problem, along with no native binary strings and field names repeated in every record. A schema is optional, which is a weakness of its own."
+    section: "JSON, XML and CSV"
+
+  - id: tag-rules
+    type: multi
+    prompt: "In a tag-based binary format, which schema changes are safe?"
+    options:
+      - "Reusing the tag number of a deleted field for a new field"
+      - "Adding an optional field with a new tag number"
+      - "Renaming a field while keeping its tag number"
+      - "Adding a new required field"
+    answer: [ B, C ]
+    explanation: "Names are not in the encoded data, so renaming is free, and unknown tags are skipped. Reusing a tag makes old data decode as the wrong field, and a required field makes all old data invalid."
+    section: "Binary formats with field tags"
+
+  - id: unknown-tag
+    type: single
+    prompt: "Old code meets a tag number it does not recognize. How can it skip the field safely?"
+    options:
+      - "The encoding says what kind of value follows and how long it is, so the decoder can step over it"
+      - "It guesses the length from the field name"
+      - "It cannot; decoding fails"
+      - "It asks the sender what the field means"
+    answer: A
+    explanation: "Each field is prefixed with its tag and a type marker that determines its length. That is what makes forward compatibility possible."
+    section: "Binary formats with field tags"
+
+  - id: writer-reader
+    type: single
+    prompt: "An encoding puts no tags or field names in the data. What must the reader have to decode a record correctly?"
+    options:
+      - "Nothing extra"
+      - "The exact schema the writer used, which is then matched to the reader's own schema by field name"
+      - "Only its own schema"
+      - "The source code of the writer"
+    answer: B
+    explanation: "Without tags, position is the only clue, so the bytes are meaningless without the writer's schema. The library then resolves differences between writer's and reader's schema by name, using defaults for missing fields."
+    section: "The writer's schema and the reader's schema"
+
+  - id: rewrite-trap
+    type: single
+    prompt: "Old code reads a record that new code wrote, changes one field, and saves it. What can go wrong?"
+    options:
+      - "If it rebuilds the record from only the fields it knows, the fields added by the new code are erased"
+      - "Nothing, old code never writes"
+      - "The record is duplicated"
+      - "The database rejects the write"
+    answer: A
+    explanation: "Being able to read new data is not enough. Old code must also preserve fields it does not understand when it writes the record back."
+    section: "Through a database"
+
+  - id: rpc
+    type: multi
+    prompt: "In which ways does a network call differ from a local function call?"
+    options:
+      - "It always returns the same result as a local call would"
+      - "It may time out without telling you whether the request was carried out"
+      - "Retrying it can cause the action to happen twice unless the operation is idempotent"
+      - "Its duration is much longer and much more variable"
+    answer: [ B, C, D ]
+    explanation: "Unknown outcomes, the danger of retries, and variable latency are exactly what the function-call appearance hides."
+    section: "Through services"
+
+  - id: server-first
+    type: single
+    prompt: "Servers are upgraded before clients. Which compatibility does the server's API need?"
+    options:
+      - "Forward compatibility on requests and backward compatibility on responses"
+      - "Backward compatibility on requests and forward compatibility on responses"
+      - "None, because clients upgrade automatically"
+      - "Only compatibility of the database schema"
+    answer: B
+    explanation: "The new server must still accept requests from old clients (backward), and old clients must cope with responses from the new server (forward)."
+    section: "Through services"

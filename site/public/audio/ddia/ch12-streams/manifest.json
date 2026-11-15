@@ -1,0 +1,263 @@
+{
+ "version": 1,
+ "engine": "kokoro-onnx v1.0",
+ "voice": "bm_george",
+ "lang": "en-gb",
+ "speed": 1,
+ "generated": "2026-11-10",
+ "sections": [
+  {
+   "id": "input-that-never-ends",
+   "title": "Input that never ends",
+   "hash": "0d3eaae33b",
+   "file": "input-that-never-ends.0d3eaae33b.m4a",
+   "duration": 45.108,
+   "starts": [
+    0,
+    2.449,
+    6.585,
+    9.392,
+    13.904,
+    22.934,
+    25.68,
+    29.163,
+    36.199,
+    40.711
+   ]
+  },
+  {
+   "id": "getting-events-from-producers-to-consumers",
+   "title": "Getting events from producers to consumers",
+   "hash": "1805a3467d",
+   "file": "getting-events-from-producers-to-consumers.1805a3467d.m4a",
+   "duration": 3.727,
+   "starts": [
+    0
+   ]
+  },
+  {
+   "id": "two-questions-to-ask",
+   "title": "Two questions to ask",
+   "hash": "79df84b0c5",
+   "file": "two-questions-to-ask.79df84b0c5.m4a",
+   "duration": 31.831,
+   "starts": [
+    0,
+    2.431,
+    7.912,
+    12.848,
+    20.949,
+    24.526
+   ]
+  },
+  {
+   "id": "traditional-message-brokers",
+   "title": "Traditional message brokers",
+   "hash": "e56de02a47",
+   "file": "traditional-message-brokers.e56de02a47.m4a",
+   "duration": 57.432,
+   "starts": [
+    0,
+    2.856,
+    8.335,
+    17.076,
+    19.642,
+    25.444,
+    30.134,
+    35.725,
+    43.732,
+    45.905,
+    53.974
+   ]
+  },
+  {
+   "id": "log-based-brokers",
+   "title": "Log-based brokers",
+   "hash": "065b8b6a75",
+   "file": "log-based-brokers.065b8b6a75.m4a",
+   "duration": 81.528,
+   "starts": [
+    0,
+    2.304,
+    5.573,
+    10.843,
+    15.199,
+    19.478,
+    30.03,
+    37.362,
+    42.04,
+    46.229,
+    52.213,
+    59.966,
+    62.609,
+    71.365,
+    75.726
+   ]
+  },
+  {
+   "id": "databases-and-streams",
+   "title": "Databases and streams",
+   "hash": "b1c29a6e12",
+   "file": "databases-and-streams.b1c29a6e12.m4a",
+   "duration": 2.805,
+   "starts": [
+    0
+   ]
+  },
+  {
+   "id": "keeping-systems-in-sync",
+   "title": "Keeping systems in sync",
+   "hash": "228b389b32",
+   "file": "keeping-systems-in-sync.228b389b32.m4a",
+   "duration": 37.094,
+   "starts": [
+    0,
+    2.803,
+    9.975,
+    16.634,
+    18.723,
+    29.078,
+    33.386
+   ]
+  },
+  {
+   "id": "change-data-capture",
+   "title": "Change data capture",
+   "hash": "fe6aa9b831",
+   "file": "change-data-capture.fe6aa9b831.m4a",
+   "duration": 69.342,
+   "starts": [
+    0,
+    2.588,
+    7.792,
+    17.593,
+    25.606,
+    29.845,
+    53.676
+   ]
+  },
+  {
+   "id": "events-as-the-source-of-truth",
+   "title": "Events as the source of truth",
+   "hash": "c943c7b4ac",
+   "file": "events-as-the-source-of-truth.c943c7b4ac.m4a",
+   "duration": 53.672,
+   "starts": [
+    0,
+    2.871,
+    9.265,
+    16.73,
+    26.044,
+    35.703,
+    46.001
+   ]
+  },
+  {
+   "id": "processing-streams",
+   "title": "Processing streams",
+   "hash": "2e061849ae",
+   "file": "processing-streams.2e061849ae.m4a",
+   "duration": 22.371,
+   "starts": [
+    0,
+    2.156,
+    6.81
+   ]
+  },
+  {
+   "id": "reasoning-about-time",
+   "title": "Reasoning about time",
+   "hash": "ea40eca101",
+   "file": "reasoning-about-time.ea40eca101.m4a",
+   "duration": 78.409,
+   "starts": [
+    0,
+    2.455,
+    8.996,
+    15.274,
+    20.514,
+    27.362,
+    36.302,
+    38.976,
+    44.074,
+    48.553,
+    53.4,
+    59.874,
+    64.596,
+    70.243
+   ]
+  },
+  {
+   "id": "types-of-windows",
+   "title": "Types of windows",
+   "hash": "9bb58b9b74",
+   "file": "types-of-windows.9bb58b9b74.m4a",
+   "duration": 28.154,
+   "starts": [
+    0,
+    2.074,
+    4.872,
+    10.054,
+    12.629,
+    16.469,
+    20.832,
+    22.936
+   ]
+  },
+  {
+   "id": "joins-on-streams",
+   "title": "Joins on streams",
+   "hash": "59b97c1bda",
+   "file": "joins-on-streams.59b97c1bda.m4a",
+   "duration": 75.296,
+   "starts": [
+    0,
+    2.28,
+    6.927,
+    17.262,
+    30.362,
+    32.521,
+    40.272,
+    47.628,
+    51.736,
+    58.724,
+    62.422,
+    64.145,
+    69.91
+   ]
+  },
+  {
+   "id": "fault-tolerance",
+   "title": "Fault tolerance",
+   "hash": "999ee534e2",
+   "file": "fault-tolerance.999ee534e2.m4a",
+   "duration": 66.316,
+   "starts": [
+    0,
+    1.875,
+    5.205,
+    9.265,
+    16.855,
+    22.376,
+    27.78,
+    31.652,
+    39.786,
+    41.947,
+    50.642
+   ]
+  },
+  {
+   "id": "what-the-labs-show",
+   "title": "What the labs show",
+   "hash": "99c7c08819",
+   "file": "what-the-labs-show.99c7c08819.m4a",
+   "duration": 31.297,
+   "starts": [
+    0,
+    2.03,
+    11.968,
+    21.211
+   ]
+  }
+ ]
+}

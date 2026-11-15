@@ -1,0 +1,23 @@
+title: "Consistency and Consensus"
+status: ready
+summary: "The strongest consistency guarantee, what it costs, how to order events without trusting clocks, and how a group of nodes agrees on anything."
+est_minutes: 35
+objectives:
+  - Define linearizability and tell it apart from serializability
+  - Say which uses require linearizability and which replication methods can provide it
+  - Explain what Lamport timestamps and hybrid logical clocks guarantee, and what they cannot decide
+  - State what consensus is and why locks, unique constraints, shared logs and atomic commit are the same problem
+  - Explain how a majority vote with numbered terms prevents two leaders from both making decisions
+labs:
+  - file: lab1_linearizability.py
+    title: "A linearizability checker, and a follower that fails it"
+    expect: ["PART A", "PART B", "linearizable: False"]
+  - file: lab2_logical_clocks.py
+    title: "Lamport timestamps, vector clocks and a hybrid clock"
+    expect: ["PART A", "PART C", "never violated"]
+  - file: lab3_leader_election.py
+    title: "Electing a leader by majority while the network splits"
+    expect: ["terms with more than one leader", "must be 0", "rejected"]
+verified:
+  date: "2026-11-10"
+  notes: "Topic coverage and terminology checked against DDIA 2e chapter 10. All three labs run; the election lab asserts its two safety properties."

@@ -1,0 +1,291 @@
+{
+ "version": 1,
+ "engine": "kokoro-onnx v1.0",
+ "voice": "bm_george",
+ "lang": "en-gb",
+ "speed": 1,
+ "generated": "2026-11-14",
+ "sections": [
+  {
+   "id": "two-ways-to-give-a-model-more-to-work-with",
+   "title": "Two ways to give a model more to work with",
+   "hash": "c7cf67b99e",
+   "file": "two-ways-to-give-a-model-more-to-work-with.c7cf67b99e.m4a",
+   "duration": 38.331,
+   "starts": [
+    0,
+    3.306,
+    8.623,
+    14.315,
+    28.398
+   ]
+  },
+  {
+   "id": "retrieval-augmented-generation",
+   "title": "Retrieval-augmented generation",
+   "hash": "0c29fe9947",
+   "file": "retrieval-augmented-generation.0c29fe9947.m4a",
+   "duration": 3.096,
+   "starts": [
+    0
+   ]
+  },
+  {
+   "id": "the-architecture",
+   "title": "The architecture",
+   "hash": "eea52621d1",
+   "file": "the-architecture.eea52621d1.m4a",
+   "duration": 53.858,
+   "starts": [
+    0,
+    2.005,
+    4.992,
+    11.875,
+    16.862,
+    18.862,
+    22.863,
+    30.837,
+    35.707,
+    37.185,
+    41.406,
+    45.362
+   ]
+  },
+  {
+   "id": "term-based-retrieval",
+   "title": "Term-based retrieval",
+   "hash": "d5eb60acf7",
+   "file": "term-based-retrieval.d5eb60acf7.m4a",
+   "duration": 50.165,
+   "starts": [
+    0,
+    2.429,
+    5.455,
+    9.821,
+    17.886,
+    23.277,
+    29.969,
+    35.61,
+    42.299
+   ]
+  },
+  {
+   "id": "embedding-based-retrieval",
+   "title": "Embedding-based retrieval",
+   "hash": "dd879cc953",
+   "file": "embedding-based-retrieval.dd879cc953.m4a",
+   "duration": 50.695,
+   "starts": [
+    0,
+    2.644,
+    5.486,
+    10.812,
+    17.801,
+    30.119,
+    34.847,
+    39.641,
+    46.001
+   ]
+  },
+  {
+   "id": "comparing-and-combining",
+   "title": "Comparing and combining",
+   "hash": "ac1362f1e1",
+   "file": "comparing-and-combining.ac1362f1e1.m4a",
+   "duration": 52.289,
+   "starts": [
+    0,
+    2.687,
+    13.741,
+    16.809,
+    21.459,
+    28.823,
+    36.487,
+    40.111,
+    48.144
+   ]
+  },
+  {
+   "id": "getting-more-out-of-retrieval",
+   "title": "Getting more out of retrieval",
+   "hash": "3625a632ab",
+   "file": "getting-more-out-of-retrieval.3625a632ab.m4a",
+   "duration": 67.604,
+   "starts": [
+    0,
+    2.807,
+    7.423,
+    13.161,
+    18.513,
+    23.096,
+    25.895,
+    35.039,
+    42.58,
+    49.193,
+    60.27
+   ]
+  },
+  {
+   "id": "beyond-text",
+   "title": "Beyond text",
+   "hash": "6467c12e43",
+   "file": "beyond-text.6467c12e43.m4a",
+   "duration": 24.232,
+   "starts": [
+    0,
+    2.046,
+    5.124,
+    12.283
+   ]
+  },
+  {
+   "id": "agents",
+   "title": "Agents",
+   "hash": "0e9dbf55da",
+   "file": "agents.0e9dbf55da.m4a",
+   "duration": 1.564,
+   "starts": [
+    0
+   ]
+  },
+  {
+   "id": "what-an-agent-is",
+   "title": "What an agent is",
+   "hash": "6d2890ae4a",
+   "file": "what-an-agent-is.6d2890ae4a.m4a",
+   "duration": 41.579,
+   "starts": [
+    0,
+    2.123,
+    6.852,
+    17.937,
+    22.681,
+    30.509,
+    33.723
+   ]
+  },
+  {
+   "id": "tools",
+   "title": "Tools",
+   "hash": "cb7b352282",
+   "file": "tools.cb7b352282.m4a",
+   "duration": 52.399,
+   "starts": [
+    0,
+    1.472,
+    4.152,
+    13.264,
+    21.936,
+    27.141,
+    34.077,
+    39.099,
+    41.978,
+    44.818
+   ]
+  },
+  {
+   "id": "planning",
+   "title": "Planning",
+   "hash": "4c2c31f40f",
+   "file": "planning.4c2c31f40f.m4a",
+   "duration": 46.874,
+   "starts": [
+    0,
+    1.444,
+    5.479,
+    13.79,
+    22.726,
+    34.821,
+    38.635,
+    41.289
+   ]
+  },
+  {
+   "id": "reflection-and-error-correction",
+   "title": "Reflection and error correction",
+   "hash": "872545f4a8",
+   "file": "reflection-and-error-correction.872545f4a8.m4a",
+   "duration": 28.667,
+   "starts": [
+    0,
+    2.936,
+    5.609,
+    13.108,
+    17.809,
+    23.926
+   ]
+  },
+  {
+   "id": "tool-selection",
+   "title": "Tool selection",
+   "hash": "a1d4a34147",
+   "file": "tool-selection.a1d4a34147.m4a",
+   "duration": 26.714,
+   "starts": [
+    0,
+    1.843,
+    6.377,
+    13.463
+   ]
+  },
+  {
+   "id": "how-agents-fail",
+   "title": "How agents fail",
+   "hash": "2ef8c0eb91",
+   "file": "how-agents-fail.2ef8c0eb91.m4a",
+   "duration": 93.632,
+   "starts": [
+    0,
+    2.172,
+    12.395,
+    19.454,
+    26.749,
+    33.401,
+    35.049,
+    43.21,
+    51.866,
+    54.647,
+    62.611,
+    67.422,
+    71.096,
+    73.112,
+    79.609,
+    84.821
+   ]
+  },
+  {
+   "id": "memory",
+   "title": "Memory",
+   "hash": "7a45765b6c",
+   "file": "memory.7a45765b6c.m4a",
+   "duration": 61.985,
+   "starts": [
+    0,
+    1.478,
+    4.909,
+    7.83,
+    11.606,
+    15.539,
+    20.649,
+    30.128,
+    33.243,
+    42.809,
+    47.292,
+    56.007
+   ]
+  },
+  {
+   "id": "what-the-labs-show",
+   "title": "What the labs show",
+   "hash": "7e1face3b6",
+   "file": "what-the-labs-show.7e1face3b6.m4a",
+   "duration": 26.647,
+   "starts": [
+    0,
+    2.03,
+    9.653,
+    17.809
+   ]
+  }
+ ]
+}

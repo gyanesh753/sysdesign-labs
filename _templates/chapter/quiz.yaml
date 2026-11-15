@@ -1,0 +1,27 @@
+# Exactly 10 questions for a ready chapter. Quote any text containing a colon.
+questions:
+  - id: short-unique-id
+    type: single                     # one correct option
+    prompt: "Question text. **Markdown** and `code` work."
+    options:
+      - "First option"
+      - "Second option"
+      - "Third option"
+    answer: B
+    explanation: "Why B is right and the tempting wrong answers are wrong."
+    section: "First section"         # optional: exact text of a ## or ### heading in lecture.md
+
+  - id: another-id
+    type: multi                      # every correct option must be selected
+    prompt: "Which of these apply?"
+    options: ["One", "Two", "Three"]
+    answer: [A, C]
+    explanation: "Why."
+
+  - id: a-number
+    type: numeric
+    prompt: "A calculation. Say how to round."
+    answer: 18
+    tolerance: 1                     # accepted distance from the answer, default 0
+    unit: "%"                        # optional label after the input box
+    explanation: "The working."

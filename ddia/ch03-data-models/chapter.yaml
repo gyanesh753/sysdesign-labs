@@ -1,0 +1,20 @@
+title: "Data Models and Query Languages"
+status: ready
+summary: "Relational, document and graph models each make some questions easy and others painful. Pick by the shape of the relationships in your data."
+est_minutes: 25
+objectives:
+  - Say when a document model fits better than a relational one, and when it does not
+  - Explain the trade-off between normalized and denormalized data
+  - Recognize graph-shaped data and describe how a graph query differs from a chain of joins
+  - Explain event sourcing and CQRS and name one benefit and one cost
+  - Explain why declarative query languages leave room for the database to optimize
+labs:
+  - file: lab1_document_vs_relational.py
+    title: "The same profiles as normalized tables and as JSON documents"
+    expect: ["TASK 1", "TASK 2", "TASK 3"]
+  - file: lab2_graph_queries.py
+    title: "A property graph in two tables: recursive SQL against graph traversal"
+    expect: ["QUERY 1", "QUERY 2", "k=5"]
+verified:
+  date: "2026-11-10"
+  notes: "Topic coverage and terminology checked against DDIA 2e chapter 3. Both labs run; the two query methods in each lab are asserted to return the same result."

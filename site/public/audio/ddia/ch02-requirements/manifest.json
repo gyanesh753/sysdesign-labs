@@ -1,0 +1,296 @@
+{
+ "version": 1,
+ "engine": "kokoro-onnx v1.0",
+ "voice": "bm_george",
+ "lang": "en-gb",
+ "speed": 1,
+ "generated": "2026-11-10",
+ "sections": [
+  {
+   "id": "beyond-it-works",
+   "title": "Beyond \"it works\"",
+   "hash": "dfbb25ba7f",
+   "file": "beyond-it-works.dfbb25ba7f.m4a",
+   "duration": 29.952,
+   "starts": [
+    0,
+    2.092,
+    7.543,
+    15.721,
+    21.797
+   ]
+  },
+  {
+   "id": "a-worked-example-home-timelines",
+   "title": "A worked example: home timelines",
+   "hash": "3899d6c9f0",
+   "file": "a-worked-example-home-timelines.3899d6c9f0.m4a",
+   "duration": 40.726,
+   "starts": [
+    0,
+    3.27,
+    8.536,
+    11.433,
+    20.176,
+    25.489,
+    32.706,
+    37.904
+   ]
+  },
+  {
+   "id": "fan-out-on-read",
+   "title": "Fan-out on read",
+   "hash": "090ddc81cd",
+   "file": "fan-out-on-read.090ddc81cd.m4a",
+   "duration": 37.032,
+   "starts": [
+    0,
+    2.1,
+    4.094,
+    12.531,
+    14.443,
+    16.386,
+    25.772
+   ]
+  },
+  {
+   "id": "fan-out-on-write",
+   "title": "Fan-out on write",
+   "hash": "59d839c904",
+   "file": "fan-out-on-write.59d839c904.m4a",
+   "duration": 46.674,
+   "starts": [
+    0,
+    2.17,
+    6.383,
+    11.669,
+    14.998,
+    17.591,
+    27.027,
+    34.092,
+    42.25
+   ]
+  },
+  {
+   "id": "the-celebrity-problem",
+   "title": "The celebrity problem",
+   "hash": "9d30ced93e",
+   "file": "the-celebrity-problem.9d30ced93e.m4a",
+   "duration": 37.202,
+   "starts": [
+    0,
+    2.232,
+    4.841,
+    11.275,
+    21.383,
+    23.777,
+    28.763,
+    31.909
+   ]
+  },
+  {
+   "id": "describing-performance",
+   "title": "Describing performance",
+   "hash": "e2c6463693",
+   "file": "describing-performance.e2c6463693.m4a",
+   "duration": 24.602,
+   "starts": [
+    0,
+    2.266,
+    5.833,
+    10.761,
+    16.418,
+    17.762
+   ]
+  },
+  {
+   "id": "response-time-and-its-parts",
+   "title": "Response time and its parts",
+   "hash": "dd6be121a2",
+   "file": "response-time-and-its-parts.dd6be121a2.m4a",
+   "duration": 45.807,
+   "starts": [
+    0,
+    2.893,
+    7.034,
+    12.121,
+    17.676,
+    22.101,
+    25.761,
+    33.668,
+    35.929
+   ]
+  },
+  {
+   "id": "percentiles-not-averages",
+   "title": "Percentiles, not averages",
+   "hash": "ee6cb4b4d1",
+   "file": "percentiles-not-averages.ee6cb4b4d1.m4a",
+   "duration": 85.955,
+   "starts": [
+    0,
+    2.907,
+    8.127,
+    13.28,
+    20.782,
+    22.467,
+    24.663,
+    28.028,
+    31.397,
+    43.27,
+    46.706,
+    49.733,
+    56.871,
+    65.853,
+    69.704,
+    79.325
+   ]
+  },
+  {
+   "id": "tail-latency-amplification",
+   "title": "Tail latency amplification",
+   "hash": "47ab7ca4f5",
+   "file": "tail-latency-amplification.47ab7ca4f5.m4a",
+   "duration": 48.791,
+   "starts": [
+    0,
+    3.116,
+    13.265,
+    21.146,
+    28.577,
+    32.863,
+    36.187,
+    39.321,
+    45.817
+   ]
+  },
+  {
+   "id": "the-averaging-trap",
+   "title": "The averaging trap",
+   "hash": "a55d6d1726",
+   "file": "the-averaging-trap.a55d6d1726.m4a",
+   "duration": 73.135,
+   "starts": [
+    0,
+    2.143,
+    4.754,
+    16.44,
+    19.602,
+    28.181,
+    33.552,
+    40.867,
+    48.164,
+    52.521,
+    53.488,
+    58.964,
+    70.194
+   ]
+  },
+  {
+   "id": "reliability-and-fault-tolerance",
+   "title": "Reliability and fault tolerance",
+   "hash": "4e8e88742a",
+   "file": "reliability-and-fault-tolerance.4e8e88742a.m4a",
+   "duration": 124.484,
+   "starts": [
+    0,
+    3.173,
+    7.68,
+    10.323,
+    18.153,
+    24.214,
+    28.493,
+    33.188,
+    38.705,
+    46.198,
+    55.05,
+    62.971,
+    66.95,
+    78.95,
+    80.973,
+    89.527,
+    95.85,
+    98.581,
+    114.855
+   ]
+  },
+  {
+   "id": "when-overload-feeds-itself",
+   "title": "When overload feeds itself",
+   "hash": "449b2d2057",
+   "file": "when-overload-feeds-itself.449b2d2057.m4a",
+   "duration": 71.715,
+   "starts": [
+    0,
+    2.561,
+    6.996,
+    12.117,
+    20.849,
+    23.161,
+    26.886,
+    34.658,
+    39.682,
+    43.936,
+    46.615,
+    58.886,
+    67.001
+   ]
+  },
+  {
+   "id": "scalability",
+   "title": "Scalability",
+   "hash": "856daa09b9",
+   "file": "scalability.856daa09b9.m4a",
+   "duration": 88.692,
+   "starts": [
+    0,
+    1.923,
+    5.71,
+    12.202,
+    22.706,
+    31.952,
+    34.038,
+    38.057,
+    43.223,
+    50.423,
+    57.807,
+    68.771,
+    71.228,
+    75.775
+   ]
+  },
+  {
+   "id": "maintainability",
+   "title": "Maintainability",
+   "hash": "d53b9c6d29",
+   "file": "maintainability.d53b9c6d29.m4a",
+   "duration": 54.595,
+   "starts": [
+    0,
+    2.112,
+    9.74,
+    12.834,
+    15.963,
+    25.693,
+    28.844,
+    36.095,
+    41.997,
+    45.027,
+    47.271
+   ]
+  },
+  {
+   "id": "what-the-labs-show",
+   "title": "What the labs show",
+   "hash": "c2e6b4bc4e",
+   "file": "what-the-labs-show.c2e6b4bc4e.m4a",
+   "duration": 27.362,
+   "starts": [
+    0,
+    2.03,
+    9.758,
+    18.606
+   ]
+  }
+ ]
+}

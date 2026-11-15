@@ -1,0 +1,23 @@
+title: "The Trouble with Distributed Systems"
+status: ready
+summary: "Networks lose and delay messages, clocks disagree, and processes stop without warning. What you can and cannot know from inside one node."
+est_minutes: 30
+objectives:
+  - Explain why a timeout cannot distinguish a slow node from a dead one, and what choosing a timeout trades off
+  - Distinguish time-of-day clocks from monotonic clocks and say which to use for what
+  - Explain why ordering writes by timestamp across machines loses data
+  - Describe how a process pause breaks a lease, and how a fencing token repairs it
+  - Tell safety properties from liveness properties and name the common system models
+labs:
+  - file: lab1_timeouts.py
+    title: "Timeouts: false alarms against slow detection"
+    expect: ["heartbeat delay", "times per day", "No row is right"]
+  - file: lab2_clocks.py
+    title: "Clock corrections, clock skew and last write wins"
+    expect: ["PART A", "PART B", "PART C"]
+  - file: lab3_fencing.py
+    title: "A lease, a long pause and a fencing token"
+    expect: ["REJECTED", "fencing tokens off", "fencing tokens on"]
+verified:
+  date: "2026-11-10"
+  notes: "Topic coverage and terminology checked against DDIA 2e chapter 9. All three labs run and their output matches the lab brief."

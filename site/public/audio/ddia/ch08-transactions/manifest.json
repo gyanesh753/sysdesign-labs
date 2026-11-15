@@ -1,0 +1,271 @@
+{
+ "version": 1,
+ "engine": "kokoro-onnx v1.0",
+ "voice": "bm_george",
+ "lang": "en-gb",
+ "speed": 1,
+ "generated": "2026-11-10",
+ "sections": [
+  {
+   "id": "what-a-transaction-gives-you",
+   "title": "What a transaction gives you",
+   "hash": "c610f81d80",
+   "file": "what-a-transaction-gives-you.c610f81d80.m4a",
+   "duration": 57.856,
+   "starts": [
+    0,
+    2.636,
+    7.445,
+    11.449,
+    13.734,
+    15.469,
+    19.959,
+    24.306,
+    28.845,
+    34.907,
+    41.59,
+    44.764,
+    53.661
+   ]
+  },
+  {
+   "id": "acid-one-letter-at-a-time",
+   "title": "ACID, one letter at a time",
+   "hash": "33f29ab674",
+   "file": "acid-one-letter-at-a-time.33f29ab674.m4a",
+   "duration": 84.627,
+   "starts": [
+    0,
+    2.733,
+    5.825,
+    10.32,
+    13.876,
+    18.422,
+    21.631,
+    28.928,
+    36.126,
+    39.127,
+    42.002,
+    46.727,
+    52.504,
+    59.205,
+    64.208,
+    70.57,
+    73.852,
+    77.513
+   ]
+  },
+  {
+   "id": "weak-isolation-levels",
+   "title": "Weak isolation levels",
+   "hash": "f65cabee95",
+   "file": "weak-isolation-levels.f65cabee95.m4a",
+   "duration": 16.917,
+   "starts": [
+    0,
+    2.524,
+    10.653
+   ]
+  },
+  {
+   "id": "read-committed",
+   "title": "Read committed",
+   "hash": "7b98b3661a",
+   "file": "read-committed.7b98b3661a.m4a",
+   "duration": 25.186,
+   "starts": [
+    0,
+    1.98,
+    5.008,
+    12.369,
+    17.357,
+    20.608
+   ]
+  },
+  {
+   "id": "snapshot-isolation",
+   "title": "Snapshot isolation",
+   "hash": "0b70a89e2a",
+   "file": "snapshot-isolation.0b70a89e2a.m4a",
+   "duration": 73.009,
+   "starts": [
+    0,
+    2.437,
+    9.173,
+    16.193,
+    22.799,
+    25.134,
+    32.012,
+    34.599,
+    41.289,
+    55.165,
+    61.2,
+    63.292,
+    69.86
+   ]
+  },
+  {
+   "id": "lost-updates",
+   "title": "Lost updates",
+   "hash": "0e77f178e4",
+   "file": "lost-updates.0e77f178e4.m4a",
+   "duration": 56.059,
+   "starts": [
+    0,
+    2.034,
+    6.569,
+    13.363,
+    16.897,
+    22.002,
+    30.554,
+    39.094,
+    49.132
+   ]
+  },
+  {
+   "id": "write-skew-and-phantoms",
+   "title": "Write skew and phantoms",
+   "hash": "a079d9b1d5",
+   "file": "write-skew-and-phantoms.a079d9b1d5.m4a",
+   "duration": 121.7,
+   "starts": [
+    0,
+    2.561,
+    5.359,
+    13.99,
+    21.699,
+    30.033,
+    39.019,
+    41.772,
+    48.154,
+    57.111,
+    65.506,
+    68.758,
+    74.708,
+    81.02,
+    86.226,
+    91.753,
+    97.267,
+    101.24,
+    111.874,
+    114.744
+   ]
+  },
+  {
+   "id": "serializability",
+   "title": "Serializability",
+   "hash": "dab74be129",
+   "file": "serializability.dab74be129.m4a",
+   "duration": 18.761,
+   "starts": [
+    0,
+    2.2,
+    12.91,
+    15.859
+   ]
+  },
+  {
+   "id": "actual-serial-execution",
+   "title": "Actual serial execution",
+   "hash": "c2f3005481",
+   "file": "actual-serial-execution.c2f3005481.m4a",
+   "duration": 33.602,
+   "starts": [
+    0,
+    2.818,
+    8.333,
+    16.745,
+    26.939
+   ]
+  },
+  {
+   "id": "two-phase-locking",
+   "title": "Two-phase locking",
+   "hash": "fc92a14616",
+   "file": "two-phase-locking.fc92a14616.m4a",
+   "duration": 35.447,
+   "starts": [
+    0,
+    2.224,
+    5.485,
+    12.896,
+    18.302,
+    24.554
+   ]
+  },
+  {
+   "id": "serializable-snapshot-isolation",
+   "title": "Serializable snapshot isolation",
+   "hash": "8d5b3223f4",
+   "file": "serializable-snapshot-isolation.8d5b3223f4.m4a",
+   "duration": 34.811,
+   "starts": [
+    0,
+    3.296,
+    6.124,
+    10.209,
+    19.171,
+    24.897,
+    29.305
+   ]
+  },
+  {
+   "id": "distributed-transactions",
+   "title": "Distributed transactions",
+   "hash": "964bb51578",
+   "file": "distributed-transactions.964bb51578.m4a",
+   "duration": 16.36,
+   "starts": [
+    0,
+    2.715,
+    6.396
+   ]
+  },
+  {
+   "id": "two-phase-commit",
+   "title": "Two-phase commit",
+   "hash": "b403619c69",
+   "file": "two-phase-commit.b403619c69.m4a",
+   "duration": 33.627,
+   "starts": [
+    0,
+    2.118,
+    5.369,
+    9.494,
+    18.373,
+    29.808
+   ]
+  },
+  {
+   "id": "in-doubt",
+   "title": "In doubt",
+   "hash": "1b00932f57",
+   "file": "in-doubt.1b00932f57.m4a",
+   "duration": 68.613,
+   "starts": [
+    0,
+    1.591,
+    4.695,
+    11.728,
+    20.865,
+    26.148,
+    34.04,
+    49.16,
+    64.365
+   ]
+  },
+  {
+   "id": "what-the-labs-show",
+   "title": "What the labs show",
+   "hash": "f59967af1b",
+   "file": "what-the-labs-show.f59967af1b.m4a",
+   "duration": 25.821,
+   "starts": [
+    0,
+    2.03,
+    10.841,
+    18.351
+   ]
+  }
+ ]
+}

@@ -1,0 +1,255 @@
+{
+ "version": 1,
+ "engine": "kokoro-onnx v1.0",
+ "voice": "bm_george",
+ "lang": "en-gb",
+ "speed": 1,
+ "generated": "2026-11-14",
+ "sections": [
+  {
+   "id": "data-sets-the-ceiling",
+   "title": "Data sets the ceiling",
+   "hash": "24955606c3",
+   "file": "data-sets-the-ceiling.24955606c3.m4a",
+   "duration": 45.252,
+   "starts": [
+    0,
+    2.318,
+    5.97,
+    11.839,
+    14.835,
+    22.003,
+    23.768,
+    31.686,
+    37.343
+   ]
+  },
+  {
+   "id": "data-curation",
+   "title": "Data curation",
+   "hash": "4594d9191f",
+   "file": "data-curation.4594d9191f.m4a",
+   "duration": 29.554,
+   "starts": [
+    0,
+    2.141,
+    7.154,
+    14.068,
+    18.177,
+    21.956,
+    25.988
+   ]
+  },
+  {
+   "id": "quality",
+   "title": "Quality",
+   "hash": "6d17eee874",
+   "file": "quality.6d17eee874.m4a",
+   "duration": 49.223,
+   "starts": [
+    0,
+    1.607,
+    6.139,
+    8.131,
+    11.336,
+    18.139,
+    22.411,
+    27.993,
+    32.758,
+    37.632,
+    41.627
+   ]
+  },
+  {
+   "id": "coverage",
+   "title": "Coverage",
+   "hash": "5e91b33fb9",
+   "file": "coverage.5e91b33fb9.m4a",
+   "duration": 23.898,
+   "starts": [
+    0,
+    1.488,
+    6.041,
+    18.266
+   ]
+  },
+  {
+   "id": "quantity",
+   "title": "Quantity",
+   "hash": "5f8662ca21",
+   "file": "quantity.5f8662ca21.m4a",
+   "duration": 47.39,
+   "starts": [
+    0,
+    1.649,
+    5.039,
+    10.257,
+    13.712,
+    17.543,
+    20.587,
+    24.93,
+    29.686,
+    33.592,
+    42.474
+   ]
+  },
+  {
+   "id": "acquiring-and-annotating-data",
+   "title": "Acquiring and annotating data",
+   "hash": "54d6504e0c",
+   "file": "acquiring-and-annotating-data.54d6504e0c.m4a",
+   "duration": 52.08,
+   "starts": [
+    0,
+    3.108,
+    10.589,
+    20.393,
+    27.009,
+    30.466,
+    40.021,
+    46.041
+   ]
+  },
+  {
+   "id": "augmentation-and-synthesis",
+   "title": "Augmentation and synthesis",
+   "hash": "a3ec1ac073",
+   "file": "augmentation-and-synthesis.a3ec1ac073.m4a",
+   "duration": 15.846,
+   "starts": [
+    0,
+    2.93,
+    6.345,
+    10.376
+   ]
+  },
+  {
+   "id": "why-generate-data",
+   "title": "Why generate data",
+   "hash": "94eca1fd40",
+   "file": "why-generate-data.94eca1fd40.m4a",
+   "duration": 26.14,
+   "starts": [
+    0,
+    2.335,
+    5.169,
+    14.469,
+    20.156
+   ]
+  },
+  {
+   "id": "traditional-techniques",
+   "title": "Traditional techniques",
+   "hash": "e5d35405c9",
+   "file": "traditional-techniques.e5d35405c9.m4a",
+   "duration": 28.579,
+   "starts": [
+    0,
+    2.199,
+    7.455,
+    15.06,
+    20.215
+   ]
+  },
+  {
+   "id": "generating-with-models",
+   "title": "Generating with models",
+   "hash": "872e5b096e",
+   "file": "generating-with-models.872e5b096e.m4a",
+   "duration": 28.42,
+   "starts": [
+    0,
+    2.622,
+    18.725
+   ]
+  },
+  {
+   "id": "verifying-what-was-generated",
+   "title": "Verifying what was generated",
+   "hash": "c3a4df1eb2",
+   "file": "verifying-what-was-generated.c3a4df1eb2.m4a",
+   "duration": 40.347,
+   "starts": [
+    0,
+    3.081,
+    10,
+    12.006,
+    17.317,
+    23.577,
+    31.583
+   ]
+  },
+  {
+   "id": "the-limits-of-generated-data",
+   "title": "The limits of generated data",
+   "hash": "2485355c0b",
+   "file": "the-limits-of-generated-data.2485355c0b.m4a",
+   "duration": 50.244,
+   "starts": [
+    0,
+    3.238,
+    8.897,
+    20.103,
+    32.899,
+    36.541
+   ]
+  },
+  {
+   "id": "distillation",
+   "title": "Distillation",
+   "hash": "ea4c83b9a1",
+   "file": "distillation.ea4c83b9a1.m4a",
+   "duration": 57.934,
+   "starts": [
+    0,
+    1.853,
+    7.84,
+    11.874,
+    18.23,
+    24.751,
+    34.877,
+    37.885,
+    43.28,
+    47.375
+   ]
+  },
+  {
+   "id": "data-processing",
+   "title": "Data processing",
+   "hash": "10d4c22280",
+   "file": "data-processing.10d4c22280.m4a",
+   "duration": 87.189,
+   "starts": [
+    0,
+    2.193,
+    6.815,
+    9.743,
+    15.804,
+    18.416,
+    24.162,
+    33.609,
+    37.119,
+    47.99,
+    50.912,
+    59.366,
+    63.227,
+    71.463,
+    79.645,
+    82.374
+   ]
+  },
+  {
+   "id": "what-the-labs-show",
+   "title": "What the labs show",
+   "hash": "17ccb77124",
+   "file": "what-the-labs-show.17ccb77124.m4a",
+   "duration": 31.167,
+   "starts": [
+    0,
+    2.03,
+    13.307,
+    21.214
+   ]
+  }
+ ]
+}
