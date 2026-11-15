@@ -1,0 +1,14 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import Base from '../layouts/Base.astro';
+import { ROOT } from '../lib/content.ts';
+import { renderMarkdown } from '../lib/markdown.ts';
+const html = await renderMarkdown(fs.readFileSync(path.join(ROOT, 'README.md'), 'utf8'));
+---
+<Base title="Setup">
+  <div class="panel-narrow" style="margin:0 auto">
+    <div class="crumbs"><a href="/">Shelf</a> · Setup</div>
+    <article class="prose" set:html={html} />
+  </div>
+</Base>

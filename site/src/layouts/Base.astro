@@ -1,0 +1,72 @@
+---
+import '../styles/global.css';
+import { loadCourseOrThrow } from '../lib/content.ts';
+import type { Accent } from '../lib/content.ts';
+
+interface Props { title?: string; book?: string; accent?: Accent }
+const { title, book, accent } = Astro.props;
+const site = loadCourseOrThrow().title;
+const iconColour = (accent?.light ?? '#8a2f24').replace('#', '%23');
+// A book page takes its accent colour from course.yaml; everything else uses the default from the stylesheet.
+// The selectors repeat :root so they outrank the stylesheet's own :root rules whatever order the two load in.
+const accentCss = accent
+  ? `:root:root{--accent:${accent.light};--accent-soft:color-mix(in srgb,${accent.light} 14%,var(--surface))}` +
+    `@media (prefers-color-scheme:dark){:root:root:not([data-theme="light"]){--accent:${accent.dark};--accent-soft:color-mix(in srgb,${accent.dark} 20%,var(--bg))}}` +
+    `:root:root[data-theme="dark"]{--accent:${accent.dark};--accent-soft:color-mix(in srgb,${accent.dark} 20%,var(--bg))}`
+  : '';
+---
+<!doctype html>
+<html lang="en" data-book={book}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title ? `${title} · ${site}` : site}</title>
+    <link rel="icon" href={`data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='5' fill='${iconColour}'/><text x='16' y='23.5' text-anchor='middle' font-family='Georgia,serif' font-size='21' font-weight='700' fill='%23fffdf7'>${site[0]}</text></svg>`} />
+    {accentCss && <style is:inline set:html={accentCss} />}
+    <script is:inline>
+      try {
+        const t = localStorage.getItem('sysdesign-labs-theme');
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+      } catch {}
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="/">{site}</a>
+        <nav>
+          <a href="/">Shelf</a>
+          <a href="/setup/">Setup</a>
+          <button class="btn-quiet" id="theme-toggle" type="button" aria-label="Switch between light and dark theme">Theme</button>
+        </nav>
+      </div>
+    </header>
+    <main><div class="wrap"><slot /></div></main>
+    <footer class="site-footer">
+      <div class="wrap"><slot name="footer"><span>Progress is saved in this browser only.</span></slot></div>
+    </footer>
+    <script>
+      const root = document.documentElement;
+      document.getElementById('theme-toggle')?.addEventListener('click', () => {
+        const dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        root.dataset.theme = dark ? 'light' : 'dark';
+        try {
+          localStorage.setItem('sysdesign-labs-theme', root.dataset.theme);
+        } catch {}
+      });
+      // Copy buttons on code blocks.
+      for (const pre of document.querySelectorAll<HTMLElement>('.prose pre:not(.mermaid)')) {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'copy';
+        b.textContent = 'Copy';
+        b.addEventListener('click', async () => {
+          await navigator.clipboard.writeText(pre.querySelector('code')?.textContent ?? '');
+          b.textContent = 'Copied';
+          setTimeout(() => (b.textContent = 'Copy'), 1200);
+        });
+        pre.append(b);
+      }
+    </script>
+  </body>
+</html>

@@ -14,3 +14,15 @@ __pycache__/
 *.parquet
 *.sqlite
 data/
+
+# course site
+site/node_modules/
+site/dist/
+site/.astro/
+
+# downloaded speech models
+.models/
+
+# your own cover images (the publishers own the artwork; keep them out of the repo)
+site/public/covers/*
+!site/public/covers/README.md

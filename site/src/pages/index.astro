@@ -1,0 +1,118 @@
+---
+import Base from '../layouts/Base.astro';
+import Cover from '../components/Cover.astro';
+import { loadCourseOrThrow } from '../lib/content.ts';
+import { loadManifest } from '../lib/audio.ts';
+
+const course = loadCourseOrThrow();
+const shelf = course.books.map((book) => {
+  const ready = book.chapters.filter((c) => c.meta.status === 'ready');
+  const seconds = ready.reduce((t, c) => t + (loadManifest(c.id)?.sections.reduce((s, x) => s + x.duration, 0) ?? 0), 0);
+  return {
+    book,
+    hours: seconds / 3600,
+    chapters: ready.map((c) => ({ id: c.id, title: c.meta.title, href: `/${c.book}/${c.slug}/`, labs: c.meta.labs.map((l) => l.file) })),
+  };
+});
+---
+<Base>
+  <section class="hero">
+    <h1>{course.title}</h1>
+    <p>Pick a book. For each chapter: read or listen to the lecture, take the quiz, run the labs.</p>
+  </section>
+
+  <section class="continue" id="continue" hidden>
+    <div>
+      <span class="label" data-continue-label>Continue</span>
+      <div class="what" data-continue-what></div>
+      <div class="where muted" data-continue-where></div>
+    </div>
+    <a class="btn-primary" data-continue-link href="/"></a>
+  </section>
+
+  <section class="shelf" aria-label="Books">
+    {shelf.map(({ book, hours, chapters }) => (
+      <a class="shelf-book" href={`/${book.id}/`} data-book-id={book.id} data-book-title={book.title} data-chapters={JSON.stringify(chapters)}>
+        <Cover book={book} />
+        <span class="shelf-title">{book.title}</span>
+        <span class="shelf-author">{book.authors}</span>
+        <span class="shelf-meta">
+          <span data-progress>{chapters.length} chapters</span>
+          {hours > 0 && <span>{hours >= 1 ? `${hours.toFixed(1)} hours` : `${Math.round(hours * 60)} min`} of narration</span>}
+        </span>
+        <span class="meter" aria-hidden="true"><span data-bar></span></span>
+      </a>
+    ))}
+    <div class="shelf-book shelf-add" aria-disabled="true">
+      <div class="cover cover-empty"><span>+</span></div>
+      <span class="shelf-title">Add a book</span>
+      <span class="shelf-author">Coming later: bring your own book and get the same lectures, quizzes and labs.</span>
+    </div>
+  </section>
+
+  <Fragment slot="footer">
+    <span>Progress is saved in this browser only.</span>
+    <button type="button" class="btn" id="export-progress">Export progress</button>
+    <button type="button" class="btn" id="import-progress">Import progress</button>
+    <input type="file" id="import-file" accept="application/json" hidden />
+  </Fragment>
+</Base>
+
+<script>
+  import { loadAll, nextStep, hasStarted, exportJson, importJson } from '../lib/progress.ts';
+
+  type Chapter = { id: string; title: string; href: string; labs: string[] };
+  const all = loadAll();
+  let pick: { book: string; chapter: Chapter; step: { hash: string; label: string }; started: boolean } | null = null;
+
+  for (const tile of document.querySelectorAll<HTMLElement>('[data-book-id]')) {
+    const chapters: Chapter[] = JSON.parse(tile.dataset.chapters!);
+    let complete = 0;
+    let started = false;
+    let firstOpen: { chapter: Chapter; step: { hash: string; label: string } } | null = null;
+    for (const ch of chapters) {
+      const p = all[ch.id] ?? {};
+      const step = nextStep(p, ch.labs);
+      if (hasStarted(p)) started = true;
+      if (!step) {
+        complete++;
+        tile.querySelector(`[data-tick="${ch.id}"]`)?.classList.add('is-done');
+      } else if (!firstOpen) firstOpen = { chapter: ch, step };
+    }
+    tile.querySelector('[data-progress]')!.textContent = complete ? `${complete} of ${chapters.length} chapters complete` : `${chapters.length} chapters`;
+    tile.querySelector<HTMLElement>('[data-bar]')!.style.width = `${(100 * complete) / Math.max(1, chapters.length)}%`;
+    // Continue with the first book the reader has started and not finished; otherwise the first book on the shelf.
+    if (firstOpen && (!pick || (started && !pick.started))) pick = { book: tile.dataset.bookTitle!, chapter: firstOpen.chapter, step: firstOpen.step, started };
+  }
+
+  const card = document.getElementById('continue')!;
+  if (pick) {
+    card.hidden = false;
+    card.querySelector('[data-continue-label]')!.textContent = pick.started ? 'Continue' : 'Start here';
+    card.querySelector('[data-continue-what]')!.textContent = pick.chapter.title;
+    card.querySelector('[data-continue-where]')!.textContent = pick.book;
+    const link = card.querySelector<HTMLAnchorElement>('[data-continue-link]')!;
+    link.href = pick.chapter.href + pick.step.hash;
+    link.textContent = `${pick.step.label} →`;
+  }
+
+  document.getElementById('export-progress')!.addEventListener('click', () => {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([exportJson()], { type: 'application/json' }));
+    a.download = 'booktern-progress.json';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  });
+  const file = document.getElementById('import-file') as HTMLInputElement;
+  document.getElementById('import-progress')!.addEventListener('click', () => file.click());
+  file.addEventListener('change', async () => {
+    const f = file.files?.[0];
+    if (!f) return;
+    try {
+      importJson(await f.text());
+      location.reload();
+    } catch (e) {
+      alert('Could not import: ' + (e as Error).message);
+    }
+  });
+</script>

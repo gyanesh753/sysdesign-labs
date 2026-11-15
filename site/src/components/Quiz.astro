@@ -1,0 +1,269 @@
+---
+import { renderMarkdown, renderInline } from '../lib/markdown.ts';
+import { sectionId } from '../lib/content.ts';
+import type { Quiz } from '../lib/schema.ts';
+
+interface Props { chapterId: string; quiz: Quiz }
+const { chapterId, quiz } = Astro.props;
+const letters = 'ABCDEF';
+const questions = await Promise.all(
+  quiz.questions.map(async (q) => ({
+    q,
+    prompt: await renderMarkdown(q.prompt, 'q-'),
+    explanation: await renderMarkdown(q.explanation, 'q-'),
+    options: q.type === 'numeric' ? [] : await Promise.all(q.options.map((o) => renderInline(o))),
+  })),
+);
+const key = quiz.questions.map((q) => ({ id: q.id, type: q.type, answer: q.answer, tolerance: q.type === 'numeric' ? q.tolerance : 0 }));
+---
+<div class="quiz" data-chapter={chapterId} data-key={JSON.stringify(key)}>
+  <div data-run>
+    <div class="qhead"><span class="label" data-qcount></span><ol class="dots" aria-hidden="true"></ol></div>
+
+    {questions.map(({ q, prompt, explanation, options }) => (
+      <section class="q" data-q={q.id} hidden>
+        <div class="qprompt" set:html={prompt} />
+        {q.type === 'multi' && <p class="qhint">Select every answer that applies, then check.</p>}
+        {q.type === 'numeric' && <p class="qhint">Type a number, then check.</p>}
+        {q.type !== 'numeric' && (
+          <div class="opts">
+            {options.map((html, j) => (
+              <button type="button" class="opt" data-v={letters[j]}><kbd>{letters[j]}</kbd><span set:html={html} /></button>
+            ))}
+          </div>
+        )}
+        {q.type === 'numeric' && (
+          <div class="numeric">
+            <input type="text" inputmode="decimal" autocomplete="off" aria-label="Your answer" />
+            {q.unit && <span class="muted">{q.unit}</span>}
+          </div>
+        )}
+        <div class="feedback" hidden>
+          <p class="verdict"></p>
+          <div class="prose" set:html={explanation} />
+          {q.section && <p><a href={`#${sectionId(q.section)}`} data-review>Review: {q.section}</a></p>}
+        </div>
+      </section>
+    ))}
+
+    <div class="qfoot">
+      <span data-hint></span>
+      <span style="display:flex;gap:.6rem">
+        <button type="button" class="btn" data-check hidden>Check</button>
+        <button type="button" class="btn-primary" data-next disabled>Next question →</button>
+      </span>
+    </div>
+  </div>
+
+  <div class="result" data-result hidden>
+    <span class="label" data-result-label>Your score</span>
+    <div class="big"><span data-score></span><small data-out-of></small></div>
+    <p class="verdict-line" data-line></p>
+    <div data-missed-wrap hidden>
+      <span class="label">Worth another look</span>
+      <ol class="missed"></ol>
+    </div>
+    <div class="next-step">
+      <a class="btn-primary" href="#labs">Next: run the labs →</a>
+      <button type="button" class="btn" data-retry hidden>Retry missed</button>
+      <button type="button" class="btn" data-restart>Start over</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { getChapter, updateChapter } from '../lib/progress.ts';
+
+  type Key = { id: string; type: 'single' | 'multi' | 'numeric'; answer: string | string[] | number; tolerance: number };
+  const PASS = 7;
+
+  for (const root of document.querySelectorAll<HTMLElement>('.quiz')) {
+    const chapter = root.dataset.chapter!;
+    const keys: Key[] = JSON.parse(root.dataset.key!);
+    const byId = new Map(keys.map((k) => [k.id, k]));
+    const $ = <T extends HTMLElement>(sel: string) => root.querySelector<T>(sel)!;
+    const box = (id: string) => $(`[data-q="${id}"]`);
+    const run = $('[data-run]');
+    const result = $('[data-result]');
+    const nextBtn = $<HTMLButtonElement>('[data-next]');
+    const checkBtn = $<HTMLButtonElement>('[data-check]');
+    const dots = $('.dots');
+    const parseNum = (s: string) => (s.trim() === '' ? NaN : Number(s.trim().replace(/,/g, '')));
+
+    let order: string[] = [];
+    let pos = 0;
+    let full = true;
+    let outcome = new Map<string, boolean>();
+    let answered = false;
+
+    function start(ids: string[], isFull: boolean) {
+      order = ids;
+      pos = 0;
+      full = isFull;
+      outcome = new Map();
+      run.hidden = false;
+      result.hidden = true;
+      show();
+    }
+
+    function show() {
+      const id = order[pos];
+      const k = byId.get(id)!;
+      answered = false;
+      for (const q of root.querySelectorAll<HTMLElement>('.q')) q.hidden = q.dataset.q !== id;
+      const q = box(id);
+      q.classList.remove('is-answered');
+      q.querySelector<HTMLElement>('.feedback')!.hidden = true;
+      for (const o of q.querySelectorAll('.opt')) o.classList.remove('is-correct', 'is-wrong', 'is-picked');
+      const input = q.querySelector<HTMLInputElement>('input');
+      if (input) {
+        input.value = '';
+        input.disabled = false;
+        if (root.offsetParent) input.focus();
+      }
+      $('[data-qcount]').textContent = `${full ? 'Question' : 'Second look'} ${pos + 1} of ${order.length}`;
+      dots.replaceChildren(
+        ...order.map((qid, n) => {
+          const li = document.createElement('li');
+          li.className = outcome.has(qid) ? (outcome.get(qid) ? 'ok' : 'miss') : n === pos ? 'cur' : '';
+          return li;
+        }),
+      );
+      const n = q.querySelectorAll('.opt').length;
+      $('[data-hint]').textContent = k.type === 'numeric' ? 'Enter to check' : `Press A to ${'ABCDEF'[n - 1]}${k.type === 'multi' ? ', then Enter to check' : ' to answer'}`;
+      checkBtn.hidden = k.type === 'single';
+      checkBtn.disabled = false;
+      nextBtn.disabled = true;
+      nextBtn.textContent = pos === order.length - 1 ? 'See your score →' : 'Next question →';
+    }
+
+    function settle(right: boolean, shown: string) {
+      const id = order[pos];
+      const q = box(id);
+      answered = true;
+      outcome.set(id, right);
+      q.classList.add('is-answered');
+      const fb = q.querySelector<HTMLElement>('.feedback')!;
+      fb.hidden = false;
+      fb.className = 'feedback ' + (right ? 'right' : 'wrong');
+      fb.querySelector('.verdict')!.textContent = right ? 'Correct.' : `Not quite. The answer is ${shown}.`;
+      dots.children[pos].className = right ? 'ok' : 'miss';
+      checkBtn.hidden = true;
+      nextBtn.disabled = false;
+      $('[data-hint]').textContent = 'Enter for next';
+      nextBtn.focus({ preventScroll: true });
+      fb.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    }
+
+    function gradeOptions(picked: string[]) {
+      const k = byId.get(order[pos])!;
+      const want = k.type === 'single' ? [k.answer as string] : (k.answer as string[]);
+      for (const o of box(k.id).querySelectorAll<HTMLElement>('.opt')) {
+        const v = o.dataset.v!;
+        o.classList.remove('is-picked');
+        o.classList.toggle('is-correct', want.includes(v));
+        o.classList.toggle('is-wrong', picked.includes(v) && !want.includes(v));
+      }
+      settle(picked.length === want.length && want.every((w) => picked.includes(w)), [...want].sort().join(', '));
+    }
+
+    function check() {
+      if (answered) return;
+      const k = byId.get(order[pos])!;
+      const q = box(k.id);
+      if (k.type === 'numeric') {
+        const input = q.querySelector<HTMLInputElement>('input')!;
+        const v = parseNum(input.value);
+        if (Number.isNaN(v)) {
+          $('[data-hint]').textContent = 'That is not a number yet';
+          return;
+        }
+        input.disabled = true;
+        settle(Math.abs(v - (k.answer as number)) <= k.tolerance + 1e-9, String(k.answer));
+      } else {
+        const picked = [...q.querySelectorAll<HTMLElement>('.opt.is-picked')].map((o) => o.dataset.v!);
+        if (!picked.length) {
+          $('[data-hint]').textContent = 'Pick at least one answer';
+          return;
+        }
+        gradeOptions(picked);
+      }
+    }
+
+    function choose(o: HTMLElement) {
+      if (answered) return;
+      const k = byId.get(order[pos])!;
+      if (k.type === 'single') gradeOptions([o.dataset.v!]);
+      else o.classList.toggle('is-picked');
+    }
+
+    function next() {
+      if (!answered) return;
+      if (pos < order.length - 1) {
+        pos++;
+        show();
+      } else finish();
+    }
+
+    function finish() {
+      const missed = order.filter((id) => !outcome.get(id));
+      const score = order.length - missed.length;
+      if (full) {
+        updateChapter(chapter, (c) => {
+          c.quizLast = score;
+          c.quizBest = Math.max(c.quizBest ?? 0, score);
+          c.quizMissed = missed;
+        });
+      } else updateChapter(chapter, (c) => (c.quizMissed = missed));
+      const best = getChapter(chapter).quizBest ?? 0;
+      $('[data-result-label]').textContent = full ? 'Your score' : 'Second look';
+      $('[data-score]').textContent = String(score);
+      $('[data-out-of]').textContent = ` / ${order.length}`;
+      $('[data-line]').textContent = full
+        ? `${score >= PASS ? 'Passed.' : `${PASS} or more to pass.`} Best so far: ${best} / ${keys.length}.`
+        : `${missed.length ? 'Some are still not sticking.' : 'All corrected.'} Your recorded best stays ${best} / ${keys.length}.`;
+      const list = $('.missed');
+      list.replaceChildren(
+        ...missed.map((id) => {
+          const li = document.createElement('li');
+          li.textContent = box(id).querySelector('.qprompt')!.textContent!.trim();
+          const link = box(id).querySelector<HTMLAnchorElement>('[data-review]');
+          if (link) li.append(link.cloneNode(true));
+          return li;
+        }),
+      );
+      $('[data-missed-wrap]').hidden = missed.length === 0;
+      const retry = $<HTMLButtonElement>('[data-retry]');
+      retry.hidden = missed.length === 0;
+      retry.textContent = `Retry the ${missed.length} missed`;
+      retry.onclick = () => start(missed, false);
+      run.hidden = true;
+      result.hidden = false;
+      document.dispatchEvent(new CustomEvent('progresschange'));
+      root.scrollIntoView({ block: 'nearest' });
+    }
+
+    root.addEventListener('click', (e) => {
+      const o = (e.target as HTMLElement).closest<HTMLElement>('.opt');
+      if (o) choose(o);
+    });
+    checkBtn.addEventListener('click', check);
+    nextBtn.addEventListener('click', next);
+    $('[data-restart]').addEventListener('click', () => start(keys.map((k) => k.id), true));
+    addEventListener('keydown', (e) => {
+      if (!root.offsetParent || run.hidden || e.metaKey || e.ctrlKey || e.altKey) return;
+      const inField = (e.target as HTMLElement).matches('input, textarea, select');
+      if (e.key === 'Enter') {
+        if ((e.target as HTMLElement).matches('button, a')) return;
+        e.preventDefault();
+        if (answered) next();
+        else check();
+      } else if (!inField && e.key.length === 1) {
+        const o = box(order[pos]).querySelector<HTMLElement>(`.opt[data-v="${e.key.toUpperCase()}"]`);
+        if (o) choose(o);
+      }
+    });
+
+    start(keys.map((k) => k.id), true);
+  }
+</script>

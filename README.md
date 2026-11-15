@@ -1,13 +1,16 @@
-# sysdesign-labs
+# Booktern
 
 Hands-on labs for *Designing Data-Intensive Applications* (2nd ed.) and *AI Engineering* (Chip Huyen).
 One folder per chapter. Commit after every lab with a short `NOTES.md` of what you observed.
 
 ```
-ddia/ch01-tradeoffs ... ch14-ethics      DDIA labs (Ch 1 and 2 scripts are already included)
-aie/ch01-intro ... ch10-architecture-feedback   AI Engineering labs
+ddia/ch01-tradeoffs ... ch14-ethics      DDIA chapters: lecture, quiz, lab brief and lab scripts for each
+aie/ch01-intro ... ch10-architecture-feedback   AI Engineering chapters: lecture, quiz, lab brief and lab scripts for each
 capstone/                                 the mini AI knowledge platform that grows each sprint
 _templates/NOTES.md                       the template already copied into every chapter folder
+_templates/chapter/                       skeleton files for writing a new chapter
+site/                                     the Booktern website (shelf, lectures, quizzes, lab checklists)
+course.yaml, CONTENT_FORMAT.md            list of books, and the format of each chapter's files
 docker-compose.yml                        Postgres, Redpanda (Kafka), S3-compatible store, Toxiproxy
 verify_setup.py                           checks everything below
 ```
@@ -103,6 +106,33 @@ git commit -m "Lab environment ready"
 Done when `verify_setup.py` ends with **All required checks passed.**
 
 Optional: create an empty repo named `sysdesign-labs` on github.com (private while learning), then copy the two `git remote add ...` / `git push ...` lines GitHub shows you.
+
+## The site
+
+Booktern shows each book as a cover on a shelf. Open a book to see its chapters; each chapter has a lecture you can read or listen to, a 10-question quiz and labs. Progress is remembered in the browser. The site lives in `site/` and needs Node 22.18 or newer.
+
+```bash
+cd site
+npm install
+npm run dev
+```
+
+Then open http://127.0.0.1:4321. Other commands, all run from `site/`:
+
+| Do this | Command |
+|---|---|
+| Validate every chapter's files | `npm run check` |
+| Run every lab and check its output | `npm run verify-labs` |
+| Run one chapter's labs | `npm run verify-labs -- ddia/ch02` |
+| Generate lecture audio (changed sections only) | `npm run audio` |
+| Shuffle a new quiz's options | `npm run shuffle-quiz -- ddia/ch03` |
+| Build a static copy into `site/dist` | `npm run build` |
+
+All 24 chapters are written: 14 for DDIA and 10 for AI Engineering, each with a lecture, narrated audio, a quiz and labs. To add or change one, see `CONTENT_FORMAT.md`.
+
+Each book gets a cover drawn in its own colour. To show your own cover image instead, put it in `site/public/covers/` named after the book, for example `ddia.jpg`. Images in that folder are not committed.
+
+Seven of the AI Engineering labs call a model running on your machine through Ollama: any chat model for chapters 1, 5 and 9, and `nomic-embed-text` for chapters 3, 6 and 10. They are marked "needs Ollama" on the site, and `npm run verify-labs` skips them when Ollama is not running.
 
 ## Daily commands
 

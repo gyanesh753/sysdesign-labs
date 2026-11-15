@@ -1,0 +1,261 @@
+---
+import Base from '../../layouts/Base.astro';
+import Quiz from '../../components/Quiz.astro';
+import { loadCourseOrThrow } from '../../lib/content.ts';
+import { renderMarkdown } from '../../lib/markdown.ts';
+import { lectureAudio } from '../../lib/audio.ts';
+
+export function getStaticPaths() {
+  return loadCourseOrThrow().books.flatMap((b) => b.chapters.map((c) => ({ params: { book: c.book, chapter: c.slug } })));
+}
+
+const course = loadCourseOrThrow();
+const book = course.books.find((b) => b.id === Astro.params.book)!;
+const index = book.chapters.findIndex((c) => c.slug === Astro.params.chapter);
+const ch = book.chapters[index];
+const prev = book.chapters[index - 1];
+const next = book.chapters[index + 1];
+const ready = ch.meta.status === 'ready';
+
+const lecture = ready && ch.lecture ? await lectureAudio(ch, course.audio, course.pronunciations) : null;
+const projectHtml = ready && ch.project ? await renderMarkdown(ch.project, 'project-') : null;
+const notesHtml = ch.notes ? await renderMarkdown(ch.notes, 'notes-') : null;
+const toc = lecture ? lecture.sections.filter((s) => s.id !== 'intro') : [];
+const labs = ch.meta.labs;
+const questions = ch.quiz?.questions.length ?? 0;
+---
+<Base title={ch.meta.title} book={ch.book} accent={book.accent}>
+  {ready && <div class="readbar" aria-hidden="true"><span id="readbar"></span></div>}
+  <div class="page">
+    <aside class="rail">
+      {toc.length > 0 && (
+        <nav class="toc" id="toc" aria-label="On this page">
+          <span class="label">On this page</span>
+          {toc.map((s) => <a href={`#${s.id}`} data-sec={s.id} class={`depth-${s.depth}`}>{s.title}</a>)}
+        </nav>
+      )}
+    </aside>
+
+    <div>
+      <div class="crumbs"><a href="/">Shelf</a> · <a href={`/${book.id}/`}>{book.title}</a> · Chapter {ch.number} of {book.chapters.length}</div>
+      <header class="chapter-head">
+        <h1>{ch.meta.title}</h1>
+        {ch.meta.summary && <p class="summary">{ch.meta.summary}</p>}
+        {ready && lecture && (
+          <div class="head-actions">
+            <button type="button" class="btn btn-accent" id="listen"><svg viewBox="0 0 16 16"><path d="M3 1.5v13l11-6.5z" /></svg><span id="listen-label">Listen · {lecture.playlist.minutes} min</span></button>
+            {lecture.playlist.mode === 'speech' && <span title="Run npm run audio to generate the narrated version">browser voice</span>}
+            {ch.meta.verified && <span title={ch.meta.verified.notes}>Fact-checked {ch.meta.verified.date}</span>}
+          </div>
+        )}
+      </header>
+
+      {!ready && (
+        <div class="empty">
+          <h2>This chapter has not been written yet</h2>
+          <p>Add <code>lecture.md</code>, <code>quiz.yaml</code> and <code>project.md</code> to <code>{ch.id}/</code>, set <code>status: ready</code> in its <code>chapter.yaml</code>, and run <code>npm run check</code>. The format is described in <code>CONTENT_FORMAT.md</code>.</p>
+        </div>
+      )}
+
+      {ready && lecture && (
+        <div id="chapter" data-chapter={ch.id} data-title={ch.meta.title} data-labs={labs.length} data-questions={questions}>
+          <ol class="steps" aria-label="Steps in this chapter">
+            <li><a href="#lecture" data-step="lecture"><span class="n">1.</span>Lecture<span class="m">{ch.meta.est_minutes ? `${ch.meta.est_minutes} min` : ''}</span></a></li>
+            <li><a href="#quiz" data-step="quiz"><span class="n">2.</span>Quiz<span class="m" data-quiz-meta>{questions} questions</span></a></li>
+            <li><a href="#labs" data-step="labs"><span class="n">3.</span>Labs<span class="m" data-labs-meta>{labs.length ? `0 of ${labs.length}` : ''}</span></a></li>
+            <li><a href="#notes" data-step="notes"><span class="n">4.</span>Notes<span class="m"></span></a></li>
+          </ol>
+
+          <section data-panel="lecture">
+            {toc.length > 0 && (
+              <details class="toc toc-mobile">
+                <summary class="label">On this page</summary>
+                {toc.map((s) => <a href={`#${s.id}`} data-sec={s.id} class={`depth-${s.depth}`}>{s.title}</a>)}
+              </details>
+            )}
+            {ch.meta.objectives.length > 0 && (
+              <div class="objectives">
+                <span class="label">After this chapter you can</span>
+                <ul>{ch.meta.objectives.map((o) => <li>{o}</li>)}</ul>
+              </div>
+            )}
+            <article class="prose" id="article" set:html={lecture.html} />
+            <div class="next-step">
+              <a class="btn-primary" href="#quiz" id="finish-lecture">Next: take the quiz →</a>
+              <span>{questions} questions, one at a time</span>
+              <button type="button" class="btn-quiet" id="unread" hidden>Mark lecture as unread</button>
+            </div>
+          </section>
+
+          <section data-panel="quiz" hidden>
+            {ch.quiz && <Quiz chapterId={ch.id} quiz={ch.quiz} />}
+          </section>
+
+          <section data-panel="labs" hidden>
+            <div class="panel-narrow">
+              {labs.length > 0 && (
+                <>
+                  <p class="muted">Run each lab from the chapter folder with the virtualenv active, then tick it off.</p>
+                  <ul class="labs">
+                    {labs.map((lab) => (
+                      <li>
+                        <input type="checkbox" id={`lab-${lab.file}`} data-lab={lab.file} />
+                        <label class="lab-title" for={`lab-${lab.file}`}>{lab.title}{lab.needs_services && <span class="label" style="margin-left:.6rem">needs Docker</span>}{lab.needs_ollama && <span class="label" style="margin-left:.6rem">needs Ollama</span>}</label>
+                        <code>cd {ch.id} &amp;&amp; python {lab.file}</code>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
+              <article class="prose" set:html={projectHtml} />
+              <div class="next-step"><a class="btn-primary" href="#notes">Next: write your notes →</a></div>
+            </div>
+          </section>
+
+          <section data-panel="notes" hidden>
+            <div class="panel-narrow">
+              <p class="notes-path">Your notes live in <code>{ch.id}/NOTES.md</code>. Edit that file in your editor; this page shows what is in it.</p>
+              {notesHtml ? <article class="prose" set:html={notesHtml} /> : <div class="empty">No NOTES.md in this chapter folder yet. Copy <code>_templates/NOTES.md</code>.</div>}
+              {next && <div class="next-step"><a class="btn-primary" href={`/${next.book}/${next.slug}/`}>Next chapter: {next.meta.title} →</a></div>}
+            </div>
+          </section>
+
+          <div class="player" id="player" role="region" aria-label="Listen to this lecture" hidden>
+            <button class="pbtn" data-prev aria-label="Previous sentence"><svg viewBox="0 0 16 16"><path d="M2 2h2v12H2zM14 2v12L5 8z" /></svg></button>
+            <button class="pbtn play" data-play aria-label="Play"><svg viewBox="0 0 16 16"><path d="M3 1.5v13l11-6.5z" /></svg></button>
+            <button class="pbtn" data-next aria-label="Next sentence"><svg viewBox="0 0 16 16"><path d="M12 2h2v12h-2zM2 2v12l9-6z" /></svg></button>
+            <div class="now"><div class="sec"><span data-sec></span><small data-note></small></div><div class="track"><span data-track></span></div></div>
+            <span class="count" data-count></span>
+            <select data-rate aria-label="Playback speed">
+              <option value="0.85">0.85×</option><option value="1">1×</option><option value="1.15">1.15×</option><option value="1.3">1.3×</option><option value="1.5">1.5×</option><option value="1.75">1.75×</option>
+            </select>
+            <button class="pbtn" data-close aria-label="Close player"><svg viewBox="0 0 16 16"><path d="M3.3 2.2 8 6.9l4.7-4.7 1.1 1.1L9.1 8l4.7 4.7-1.1 1.1L8 9.1l-4.7 4.7-1.1-1.1L6.9 8 2.2 3.3z" /></svg></button>
+          </div>
+          <script type="application/json" id="playlist" set:html={JSON.stringify(lecture.playlist)} />
+        </div>
+      )}
+
+      <nav class="pager">
+        <span>{prev && <a href={`/${prev.book}/${prev.slug}/`}>← {prev.meta.title}</a>}</span>
+        <span>{next && <a href={`/${next.book}/${next.slug}/`}>{next.meta.title} →</a>}</span>
+      </nav>
+    </div>
+  </div>
+</Base>
+
+<script>
+  import { getChapter, updateChapter } from '../../lib/progress.ts';
+  import { initPlayer } from '../../lib/player.ts';
+
+  const root = document.getElementById('chapter');
+  if (root) {
+    const id = root.dataset.chapter!;
+    const PASS = 7;
+    const PANELS = ['lecture', 'quiz', 'labs', 'notes'];
+    const panels = [...root.querySelectorAll<HTMLElement>('[data-panel]')];
+    const steps = [...root.querySelectorAll<HTMLAnchorElement>('[data-step]')];
+    const article = document.getElementById('article')!;
+    const toc = document.getElementById('toc');
+    const listenBtn = document.getElementById('listen')!;
+    let panel = 'lecture';
+
+    const player = initPlayer({
+      chapterId: id,
+      chapterTitle: root.dataset.title!,
+      article,
+      bar: document.getElementById('player')!,
+      playlist: JSON.parse(document.getElementById('playlist')!.textContent!),
+      onFinished: () => {
+        updateChapter(id, (c) => (c.lectureRead = true));
+        paint();
+      },
+    });
+    listenBtn.addEventListener('click', () => {
+      if (panel !== 'lecture') location.hash = '#lecture';
+      if (!player.isPlaying()) player.play();
+    });
+
+    async function drawDiagrams(el: HTMLElement) {
+      const nodes = [...el.querySelectorAll<HTMLElement>('pre.mermaid:not([data-processed])')];
+      if (!nodes.length) return;
+      const mermaid = (await import('mermaid')).default;
+      const dark = getComputedStyle(document.documentElement).colorScheme.includes('dark');
+      mermaid.initialize({ startOnLoad: false, theme: dark ? 'dark' : 'neutral', securityLevel: 'strict' });
+      await mermaid.run({ nodes });
+    }
+
+    function route(scrollTop: boolean) {
+      const hash = decodeURIComponent(location.hash.slice(1));
+      const target = hash && !PANELS.includes(hash) ? document.getElementById(hash) : null;
+      panel = PANELS.includes(hash) ? hash : (target?.closest<HTMLElement>('[data-panel]')?.dataset.panel ?? 'lecture');
+      for (const p of panels) p.hidden = p.dataset.panel !== panel;
+      if (toc) toc.hidden = panel !== 'lecture';
+      if (panel !== 'lecture') player.close();
+      drawDiagrams(panels.find((p) => p.dataset.panel === panel)!);
+      paint();
+      if (target) target.scrollIntoView();
+      else if (scrollTop) root!.querySelector('.steps')!.scrollIntoView({ block: 'start' });
+      onScroll();
+    }
+
+    const labBoxes = [...root.querySelectorAll<HTMLInputElement>('[data-lab]')];
+    function paint() {
+      const p = getChapter(id);
+      const labsDone = labBoxes.filter((b) => p.labs?.[b.dataset.lab!]).length;
+      const done: Record<string, boolean> = {
+        lecture: !!p.lectureRead,
+        quiz: (p.quizBest ?? 0) >= PASS,
+        labs: labBoxes.length > 0 && labsDone === labBoxes.length,
+        notes: false,
+      };
+      steps.forEach((a, k) => {
+        const name = a.dataset.step!;
+        if (name === panel) a.setAttribute('aria-current', 'step');
+        else a.removeAttribute('aria-current');
+        a.classList.toggle('is-done', done[name]);
+        a.querySelector('.n')!.textContent = done[name] ? '✓' : `${k + 1}.`;
+      });
+      root!.querySelector('[data-quiz-meta]')!.textContent = p.quizBest === undefined ? `${root!.dataset.questions} questions` : `best ${p.quizBest}/${root!.dataset.questions}`;
+      if (labBoxes.length) root!.querySelector('[data-labs-meta]')!.textContent = `${labsDone} of ${labBoxes.length}`;
+      for (const b of labBoxes) b.checked = !!p.labs?.[b.dataset.lab!];
+      document.getElementById('unread')!.hidden = !p.lectureRead;
+      if (!player.isActive()) document.getElementById('listen-label')!.textContent = (p.listenAt ?? 0) > 0 ? 'Resume listening' : document.getElementById('listen-label')!.textContent!;
+    }
+    document.getElementById('finish-lecture')!.addEventListener('click', () => updateChapter(id, (c) => (c.lectureRead = true)));
+    document.getElementById('unread')!.addEventListener('click', () => {
+      updateChapter(id, (c) => (c.lectureRead = false));
+      paint();
+    });
+    for (const b of labBoxes) {
+      b.addEventListener('change', () => {
+        updateChapter(id, (c) => ((c.labs ??= {})[b.dataset.lab!] = b.checked));
+        paint();
+      });
+    }
+    document.addEventListener('progresschange', paint);
+
+    // Reading progress and the current section in the side list.
+    const heads = [...article.querySelectorAll<HTMLElement>('h2[id], h3[id]')];
+    const readbar = document.getElementById('readbar')!;
+    function mark(secId: string | undefined) {
+      for (const a of document.querySelectorAll<HTMLElement>('.toc a')) a.classList.toggle('is-current', a.dataset.sec === secId);
+    }
+    function onScroll() {
+      if (panel !== 'lecture') {
+        readbar.style.width = '0';
+        return;
+      }
+      const r = article.getBoundingClientRect();
+      const done = Math.min(1, Math.max(0, (innerHeight * 0.6 - r.top) / r.height));
+      readbar.style.width = `${done * 100}%`;
+      if (!player.isPlaying()) mark(heads.findLast((h) => h.getBoundingClientRect().top < innerHeight * 0.3)?.id ?? heads[0]?.id);
+    }
+    addEventListener('scroll', onScroll, { passive: true });
+    document.addEventListener('player:section', (e) => {
+      if (player.isPlaying()) mark((e as CustomEvent).detail);
+    });
+
+    addEventListener('hashchange', () => route(true));
+    route(false);
+  }
+</script>

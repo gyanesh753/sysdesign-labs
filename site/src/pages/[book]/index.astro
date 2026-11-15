@@ -1,0 +1,110 @@
+---
+import Base from '../../layouts/Base.astro';
+import Cover from '../../components/Cover.astro';
+import { loadCourseOrThrow } from '../../lib/content.ts';
+import { loadManifest } from '../../lib/audio.ts';
+
+export function getStaticPaths() {
+  return loadCourseOrThrow().books.map((b) => ({ params: { book: b.id } }));
+}
+
+const course = loadCourseOrThrow();
+const book = course.books.find((b) => b.id === Astro.params.book)!;
+const written = book.chapters.filter((c) => c.meta.status === 'ready');
+const drafts = book.chapters.filter((c) => c.meta.status !== 'ready');
+const minutes = (id: string) => Math.round((loadManifest(id)?.sections.reduce((s, x) => s + x.duration, 0) ?? 0) / 60);
+const totalMinutes = written.reduce((t, c) => t + minutes(c.id), 0);
+const labCount = written.reduce((t, c) => t + c.meta.labs.length, 0);
+---
+<Base title={book.title} book={book.id} accent={book.accent}>
+  <div class="crumbs"><a href="/">Shelf</a> · {book.title}</div>
+
+  <header class="book-head">
+    <div class="book-cover"><Cover book={book} /></div>
+    <div class="book-info">
+      <h1>{book.title}</h1>
+      <p class="book-authors">{book.authors}</p>
+      {(book.tagline ?? book.blurb) && <p class="book-tagline">{book.tagline ?? book.blurb}</p>}
+      <p class="book-stats">
+        <span>{written.length} chapters</span>
+        {totalMinutes > 0 && <span>{totalMinutes >= 60 ? `${(totalMinutes / 60).toFixed(1)} hours` : `${totalMinutes} min`} of narration</span>}
+        {labCount > 0 && <span>{labCount} labs</span>}
+      </p>
+      <div class="meter" aria-hidden="true"><span id="book-bar"></span></div>
+      <p class="muted" id="book-progress">{written.length} chapters to work through.</p>
+      <a class="btn-primary" id="book-continue" href={written[0] ? `/${book.id}/${written[0].slug}/` : '#'}>Start with chapter 1 →</a>
+    </div>
+  </header>
+
+  {written.length > 0 && (
+    <ol class="chapters" id="chapters">
+      {written.map((ch) => (
+        <li>
+          <a class="chapter-row" href={`/${ch.book}/${ch.slug}/`} data-chapter={ch.id} data-title={ch.meta.title} data-labs={JSON.stringify(ch.meta.labs.map((l) => l.file))}>
+            <span class="num">{String(ch.number).padStart(2, '0')}</span>
+            <span class="title">{ch.meta.title}</span>
+            <span class="marks">{minutes(ch.id) > 0 && <span class="listen">{minutes(ch.id)} min</span>}</span>
+            {ch.meta.summary && <span class="sub">{ch.meta.summary}</span>}
+          </a>
+        </li>
+      ))}
+    </ol>
+  )}
+  {drafts.length > 0 && (
+    <details class="drafts">
+      <summary>{drafts.length} {written.length ? 'more ' : ''}chapters not written yet</summary>
+      <ol class="chapters">
+        {drafts.map((ch) => (
+          <li>
+            <a class="chapter-row is-draft" href={`/${ch.book}/${ch.slug}/`}>
+              <span class="num">{String(ch.number).padStart(2, '0')}</span>
+              <span class="title">{ch.meta.title}</span>
+              <span class="marks"></span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </details>
+  )}
+</Base>
+
+<script>
+  import { loadAll, labsDone, nextStep, hasStarted, PASS_MARK } from '../../lib/progress.ts';
+
+  const all = loadAll();
+  const rows = [...document.querySelectorAll<HTMLAnchorElement>('[data-chapter]')];
+  let complete = 0;
+  let started = false;
+  let next: { row: HTMLAnchorElement; step: { hash: string; label: string }; n: number } | null = null;
+  rows.forEach((row, n) => {
+    const p = all[row.dataset.chapter!] ?? {};
+    const labs: string[] = JSON.parse(row.dataset.labs ?? '[]');
+    const done = labsDone(p, labs);
+    const marks = row.querySelector('.marks')!;
+    const add = (text: string, ok: boolean) => {
+      const s = document.createElement('span');
+      s.textContent = text;
+      if (ok) s.className = 'done';
+      marks.prepend(s);
+    };
+    if (labs.length && done) add(`Labs ${done}/${labs.length}`, done === labs.length);
+    if (p.quizBest !== undefined) add(`Quiz ${p.quizBest}/10`, p.quizBest >= PASS_MARK);
+    if (p.lectureRead) add('Lecture ✓', true);
+    if (hasStarted(p)) started = true;
+    const step = nextStep(p, labs);
+    if (!step) {
+      complete++;
+      row.classList.add('is-complete');
+      document.querySelector(`[data-tick="${row.dataset.chapter}"]`)?.classList.add('is-done');
+    } else if (!next) next = { row, step, n };
+  });
+  const total = rows.length;
+  document.getElementById('book-bar')!.style.width = `${(100 * complete) / Math.max(1, total)}%`;
+  document.getElementById('book-progress')!.textContent = complete === total && total ? 'Every chapter complete.' : complete ? `${complete} of ${total} chapters complete.` : `${total} chapters to work through.`;
+  const btn = document.getElementById('book-continue') as HTMLAnchorElement;
+  if (next) {
+    const { row, step, n } = next as { row: HTMLAnchorElement; step: { hash: string; label: string }; n: number };
+    btn.href = row.getAttribute('href')! + step.hash;
+    btn.textContent = started ? `Continue: ${row.dataset.title} →` : `Start with chapter ${n + 1} →`;
+  } else if (total) btn.hidden = true;
+</script>
