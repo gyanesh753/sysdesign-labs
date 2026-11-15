@@ -1,0 +1,24 @@
+title: "Introduction to Building AI Applications with Foundation Models"
+status: ready
+summary: "What a foundation model is, why building on one is a different job from training one, and how to decide whether an AI product is worth building."
+est_minutes: 25
+objectives:
+  - Explain how a language model is trained without labelled data and how it generates text
+  - Say what a token is and why models use tokens instead of words or characters
+  - Describe what makes a foundation model different from a task-specific model
+  - Weigh whether to build an AI application, and what to measure once you do
+  - Name the three layers of the AI engineering stack and how the work differs from traditional ML engineering
+labs:
+  - file: lab1_language_model.py
+    title: "A language model built by counting"
+    expect: ["PART A", "PART C", "PART D", "free training example"]
+  - file: lab2_tokens.py
+    title: "Train a tiny subword tokenizer"
+    expect: ["merges", "never seen", "Subword tokens"]
+  - file: lab3_first_call.py
+    title: "A real model behind an API: sampling and token counts"
+    needs_ollama: true
+    expect: ["PART A", "PART B", "PART C", "PART D"]
+verified:
+  date: "2026-11-11"
+  notes: "Topic coverage and terminology checked against AI Engineering chapter 1. All three labs run; lab 3 was run against a local model through Ollama."

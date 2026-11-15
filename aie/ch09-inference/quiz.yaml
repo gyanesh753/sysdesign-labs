@@ -1,0 +1,116 @@
+questions:
+  - id: phases
+    type: single
+    prompt: "Why is writing the output slower per token than reading the input?"
+    options:
+      - "Input tokens can be processed in parallel, while output tokens are produced one at a time, each depending on the previous ones"
+      - "The input is cached on disk"
+      - "Output tokens are longer words"
+      - "The model uses a different vocabulary for output"
+    answer: A
+    explanation: "Reading the prompt parallelizes well. Generation is sequential, which is also why providers price output tokens higher than input tokens."
+    section: "Where the time goes"
+
+  - id: batch-api
+    type: single
+    prompt: "You need to classify two million archived documents, with no deadline this week. Which kind of API fits?"
+    options:
+      - "Neither; this cannot be done with an API"
+      - "An online API with the highest rate limit"
+      - "An online API with streaming"
+      - "A batch API, which trades a delay of hours for a much lower price"
+    answer: D
+    explanation: "Nobody is waiting for each result, so there is no reason to pay for low latency. Batch APIs let the provider schedule the work cheaply."
+    section: "Online and batch APIs"
+
+  - id: ttft
+    type: single
+    prompt: "What mainly determines time to first token?"
+    options:
+      - "The length of the input, plus any time spent queueing"
+      - "The temperature"
+      - "The length of the output"
+      - "The number of output tokens per second"
+    answer: A
+    explanation: "The model must read the whole input before it can produce anything. Output length affects total time, not how soon the first token appears."
+    section: "Measuring performance"
+
+  - id: goodput
+    type: numeric
+    prompt: "A service completes 200 requests per second, but only 70% of them finish within the latency target. What is its goodput in requests per second?"
+    answer: 140
+    unit: "requests per second"
+    explanation: "Goodput counts only requests that meet the target: 200 times 0.7 is 140. Throughput alone would overstate how much useful work is being done."
+    section: "Measuring performance"
+
+  - id: hardware
+    type: multi
+    prompt: "Which properties of an accelerator matter for inference?"
+    options:
+      - "The colour of its casing"
+      - "How many operations per second it can perform"
+      - "How much power it draws"
+      - "How much memory it has and how fast data moves in and out of it"
+    answer: [ B, C, D ]
+    explanation: "Compute, memory size and bandwidth, and power are the three. Memory size is often the first limit reached, since the model has to fit."
+    section: "Hardware"
+
+  - id: speculative
+    type: single
+    prompt: "How does speculative decoding speed up generation without changing the output?"
+    options:
+      - "It lowers the temperature"
+      - "A small model drafts several tokens ahead, and the large model verifies the draft in one parallel pass, keeping what it agrees with"
+      - "It skips every second token"
+      - "It shortens the prompt"
+    answer: B
+    explanation: "Verification of several tokens can be done in parallel, unlike generation. When the draft model is usually right, most tokens are accepted cheaply."
+    section: "The autoregressive bottleneck"
+
+  - id: kv-cache
+    type: single
+    prompt: "What does the KV cache store, and why?"
+    options:
+      - "The model's weights in compressed form"
+      - "Past user conversations, for personalization"
+      - "The attention keys and values of earlier tokens, so they are not recomputed for every new token"
+      - "Answers to frequent questions"
+    answer: C
+    explanation: "Earlier tokens' representations do not change as generation proceeds. Keeping them avoids redoing the same work at every step, at the cost of memory that grows with context length."
+    section: "Attention and the KV cache"
+
+  - id: static-batching
+    type: single
+    prompt: "What is the weakness of static batching when traffic is light?"
+    options:
+      - "Batches are too large for the hardware"
+      - "It cannot be implemented"
+      - "It makes responses shorter"
+      - "Early requests wait a long time for the batch to fill"
+    answer: D
+    explanation: "A fixed batch size means waiting for enough requests to arrive. Dynamic batching bounds that wait with a time window."
+    section: "Batching"
+
+  - id: continuous
+    type: single
+    prompt: "What problem does continuous batching solve for language models?"
+    options:
+      - "It prevents prompt injection"
+      - "It makes all responses the same length"
+      - "It removes the need for a KV cache"
+      - "Responses in a batch finish at different times; it returns each as soon as it is done and admits a new request in its place"
+    answer: D
+    explanation: "Without it, a short answer waits for the longest answer in its batch. Continuous batching keeps the hardware full and lets short requests leave early."
+    section: "Batching"
+
+  - id: prompt-caching
+    type: single
+    prompt: "When does prompt caching save the most?"
+    options:
+      - "When outputs are very long"
+      - "When every request is completely different"
+      - "When the temperature is high"
+      - "When many requests share a long identical beginning and differ only in a short ending"
+    answer: D
+    explanation: "The cache reuses the processing of a shared prefix. A long system prompt or document followed by a short question is the ideal case; fully unique prompts gain nothing."
+    section: "Prompt caching"

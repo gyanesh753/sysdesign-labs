@@ -1,0 +1,24 @@
+title: "Evaluate AI Systems"
+status: ready
+summary: "Turning evaluation methods into decisions: what to measure for your application, how to choose a model, and how to build an evaluation pipeline you can trust."
+est_minutes: 30
+objectives:
+  - Define evaluation criteria for an application before building it
+  - Distinguish local from global factual consistency and name ways to check each
+  - Run a model selection process that separates hard requirements from trade-offs
+  - Weigh using a model API against hosting a model yourself
+  - Read public benchmark results critically, including the risk of data contamination
+  - Design an evaluation pipeline with clear guidelines, sliced data and enough examples
+labs:
+  - file: lab1_eval_pipeline.py
+    title: "Slices, a misleading average, and how many examples you need"
+    expect: ["PART A", "PART B", "PART C", "Always look at the slices"]
+  - file: lab2_model_selection.py
+    title: "Choosing a model: requirements, trade-offs and the bill"
+    expect: ["STEP 1", "STEP 2", "STEP 3", "Break-even"]
+  - file: lab3_contamination.py
+    title: "A leaderboard score inflated by memorized test questions"
+    expect: ["flagged as seen in training", "not found in training", "learned nothing"]
+verified:
+  date: "2026-11-11"
+  notes: "Topic coverage and terminology checked against AI Engineering chapter 4. All three labs run and their output matches the lab brief. Prices and scores in lab 2 are invented."

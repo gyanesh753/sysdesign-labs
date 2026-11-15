@@ -1,0 +1,120 @@
+questions:
+  - id: start-simple
+    type: single
+    prompt: "What is the recommended approach to adding components around a model?"
+    options:
+      - "Never add anything beyond the model call"
+      - "Add every available component before launch"
+      - "Start with agents and remove components later"
+      - "Start with the simplest design and add a component when you can name the problem it solves"
+    answer: D
+    explanation: "Each component adds latency, cost and failure modes. It should earn its place by solving a specific, observed problem."
+    section: "From a model call to a system"
+
+  - id: input-guardrail
+    type: single
+    prompt: "A user's message contains a customer's phone number, and your application calls an external model API. What does an input guardrail typically do?"
+    options:
+      - "Replace the number with a placeholder before the request is sent, and restore it in the response"
+      - "Ask the model to forget the number"
+      - "Reject every message containing digits"
+      - "Send the message unchanged and delete it afterwards"
+    answer: A
+    explanation: "Masking keeps the sensitive value inside your system while the model still gets a usable request. Asking a model to forget something protects nothing."
+    section: "Add guardrails"
+
+  - id: guardrail-streaming
+    type: single
+    prompt: "Why does streaming the response make output guardrails harder?"
+    options:
+      - "Streaming disables the cache"
+      - "Streamed text cannot be logged"
+      - "Parts of the response are shown to the user before the whole response can be checked"
+      - "Streaming changes the model's answer"
+    answer: C
+    explanation: "A check that needs the full response cannot run until generation ends, by which time the user has already seen most of it."
+    section: "Add guardrails"
+
+  - id: router
+    type: single
+    prompt: "What is the main benefit of a router?"
+    options:
+      - "It removes the need for evaluation"
+      - "It makes every model more accurate"
+      - "It encrypts the prompt"
+      - "It sends each request to an appropriate model or pipeline, so simple requests do not pay for the most expensive model"
+    answer: D
+    explanation: "Most traffic is simple. Classifying intent first lets cheap models handle it and reserves expensive ones for requests that need them."
+    section: "Add a router and a gateway"
+
+  - id: gateway
+    type: multi
+    prompt: "Which of these does a model gateway provide?"
+    options:
+      - "Fallback to another provider when one fails"
+      - "A guarantee that answers are factually correct"
+      - "A place to enforce access control and spending limits"
+      - "One consistent interface to several model providers"
+    answer: [ A, C, D ]
+    explanation: "A gateway unifies access, centralizes control and enables fallback. It has no influence on the correctness of what a model says."
+    section: "Add a router and a gateway"
+
+  - id: semantic-cache
+    type: single
+    prompt: "What is the main risk of a semantic cache compared with an exact cache?"
+    options:
+      - "It only works for identical requests"
+      - "A question that is similar in wording but needs a different answer can be served the wrong stored response"
+      - "It uses no memory"
+      - "It never produces a hit"
+    answer: B
+    explanation: "Similarity of wording is not equivalence of meaning. A wrong hit gives the user a confident answer to a different question, which is worse than a miss."
+    section: "Add caches"
+
+  - id: cache-privacy
+    type: single
+    prompt: "Which response should never be placed in a cache shared by all users?"
+    options:
+      - "The company's public opening hours"
+      - "The product's return policy"
+      - "An answer containing one user's account balance"
+      - "A definition of a common term"
+    answer: C
+    explanation: "A shared cache can hand one user's stored response to another. Anything specific to a user must be kept out of it, or cached per user."
+    section: "Add caches"
+
+  - id: observability
+    type: single
+    prompt: "How does observability differ from monitoring?"
+    options:
+      - "Monitoring requires traces and observability does not"
+      - "Observability only concerns cost"
+      - "They are identical"
+      - "Monitoring tracks known signals; observability means the system records enough to diagnose problems nobody anticipated"
+    answer: D
+    explanation: "Monitoring answers questions you thought to ask in advance. An observable system lets you investigate new questions from the records it already keeps."
+    section: "Monitoring and observability"
+
+  - id: implicit
+    type: multi
+    prompt: "Which of these are implicit feedback signals that an answer was unsatisfactory?"
+    options:
+      - "The user asks for the answer to be regenerated"
+      - "The user's next message begins \"No, I meant...\""
+      - "The user copies the answer and moves on"
+      - "The user stops the response partway through"
+    answer: [ A, B, D ]
+    explanation: "Stopping, correcting and regenerating all suggest a problem. Copying the answer and continuing is a positive signal."
+    section: "Reading conversations"
+
+  - id: feedback-loop
+    type: single
+    prompt: "A system always promotes the items that received the most clicks. What is the danger?"
+    options:
+      - "The system forgets old items"
+      - "Items get clicks because they are shown, which earns them more showing, so an early lead is reinforced whether or not it reflects quality"
+      - "Users stop clicking entirely"
+      - "Clicks become more expensive"
+    answer: B
+    explanation: "This is a degenerate feedback loop: the system's output shapes the data it then learns from. Some exploration, and evidence other than clicks, is needed to break it."
+    section: "The limits of feedback"

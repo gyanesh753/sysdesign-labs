@@ -1,0 +1,117 @@
+questions:
+  - id: why-rag
+    type: multi
+    prompt: "Models now accept very long prompts. Why retrieve relevant pieces instead of pasting in every document?"
+    options:
+      - "A model given a lot of irrelevant material tends to answer worse"
+      - "Every token costs money and time on every request"
+      - "Long prompts are rejected by all models"
+      - "There is usually more data than fits, however large the limit"
+    answer: [ A, B, D ]
+    explanation: "Capacity, cost and focus are the three reasons. Long prompts are accepted; they are just expensive and often less accurate."
+    section: "The architecture"
+
+  - id: term-strength
+    type: single
+    prompt: "For which kind of query is term-based retrieval typically at its best?"
+    options:
+      - "Questions in another language"
+      - "Queries about images"
+      - "Questions phrased in different words from the documents"
+      - "Queries containing exact identifiers such as an error code or a product number"
+    answer: D
+    explanation: "Matching on the literal string is what keyword search does. Its weakness is the opposite case, where query and document use different vocabulary."
+    section: "Term-based retrieval"
+
+  - id: embedding-retrieval
+    type: single
+    prompt: "What allows embedding-based retrieval to find a document that shares no words with the query?"
+    options:
+      - "It ignores the query"
+      - "Query and documents are mapped to vectors, and texts with similar meaning are close together"
+      - "It searches for synonyms in a dictionary"
+      - "It reads every document in full for each query"
+    answer: B
+    explanation: "Closeness in the embedding space stands in for similarity of meaning, so wording does not have to match."
+    section: "Embedding-based retrieval"
+
+  - id: precision-recall
+    type: single
+    prompt: "A retriever returns ten chunks, of which two are relevant. There were four relevant chunks in the collection. What are its context precision and context recall?"
+    options:
+      - "Precision 20%, recall 20%"
+      - "Precision 50%, recall 20%"
+      - "Precision 20%, recall 50%"
+      - "Precision 40%, recall 40%"
+    answer: C
+    explanation: "Precision is relevant retrieved over all retrieved: 2 of 10. Recall is relevant retrieved over all relevant: 2 of 4."
+    section: "Comparing and combining"
+
+  - id: chunking
+    type: single
+    prompt: "What is the main risk of using very small chunks?"
+    options:
+      - "A fact can be separated from the surrounding sentences that give it meaning"
+      - "The index becomes too small"
+      - "Retrieval becomes impossible"
+      - "The model receives too many tokens"
+    answer: A
+    explanation: "A sentence such as \"it must be serviced monthly\" is useless without the sentence naming the machine. Larger chunks or overlap keep related sentences together."
+    section: "Getting more out of retrieval"
+
+  - id: query-rewrite
+    type: single
+    prompt: "In a conversation, the user asks \"and what does the larger one cost?\" Why rewrite this before retrieving?"
+    options:
+      - "To translate it"
+      - "To make it shorter"
+      - "Without the earlier turns it does not say what \"the larger one\" refers to, so retrieval would match on almost nothing"
+      - "To remove the question mark"
+    answer: C
+    explanation: "Retrieval sees only the query it is given. Rewriting the follow-up into a complete, self-contained question lets the retriever find the right material."
+    section: "Getting more out of retrieval"
+
+  - id: write-actions
+    type: single
+    prompt: "Why do write actions need more safeguards than tools that only read?"
+    options:
+      - "They change something in the world, and the change may be impossible to undo"
+      - "They are slower"
+      - "Models cannot call them"
+      - "They use more tokens"
+    answer: A
+    explanation: "A wrong read can be ignored or repeated. A wrong payment, deletion or message has consequences, so permissions are limited and approval is required where it matters."
+    section: "Tools"
+
+  - id: plan-validate
+    type: single
+    prompt: "Why separate generating a plan from executing it?"
+    options:
+      - "To hide the plan from the user"
+      - "To use more tokens"
+      - "So the plan can be checked, for example for tools that do not exist, before any action is taken"
+      - "Because models cannot plan and act in the same response"
+    answer: C
+    explanation: "Validating a plan is cheap. Discovering halfway through execution that it was invalid wastes work and may leave things half done."
+    section: "Planning"
+
+  - id: compound
+    type: numeric
+    prompt: "An agent is right 95% of the time at each step. Roughly what percentage of 10-step tasks does it complete with no mistakes? Round to the nearest whole number."
+    answer: 60
+    tolerance: 1
+    unit: "%"
+    explanation: "0.95 to the power of 10 is about 0.599. Small per-step error rates multiply across a task, which is why long agent runs are hard to make reliable."
+    section: "How agents fail"
+
+  - id: memory
+    type: single
+    prompt: "A conversation has grown beyond the model's context. Which approach best preserves important early information?"
+    options:
+      - "Drop the oldest messages"
+      - "Summarize older messages and keep the summary in the context"
+      - "Restart the model"
+      - "Drop the newest messages"
+    answer: B
+    explanation: "Dropping the oldest messages is simple but can discard an early instruction that still matters. A summary keeps the gist in far fewer tokens."
+    section: "Memory"

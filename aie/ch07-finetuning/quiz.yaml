@@ -1,0 +1,117 @@
+questions:
+  - id: what-finetune
+    type: single
+    prompt: "What does finetuning change that prompting and retrieval do not?"
+    options:
+      - "The documents in the index"
+      - "The model's weights"
+      - "The text of the prompt"
+      - "The temperature"
+    answer: B
+    explanation: "Prompting and retrieval change the input. Finetuning continues training, so the model itself is different afterwards."
+    section: "Changing the model"
+
+  - id: facts-form
+    type: single
+    prompt: "A model writes fluent answers in the right format but lacks knowledge of your internal product documentation. What is the better first remedy?"
+    options:
+      - "Quantize the model"
+      - "Finetune on the documentation"
+      - "Retrieval, so the relevant documentation is placed in the prompt"
+      - "Raise the learning rate"
+    answer: C
+    explanation: "Missing information is a retrieval problem. Finetuning suits problems of form: format, style and behaviour. Retrieval also stays current when the documentation changes."
+    section: "Finetuning or retrieval"
+
+  - id: reasons-not
+    type: multi
+    prompt: "Which are sound reasons to hold off on finetuning?"
+    options:
+      - "Prompting has only been tried casually, without examples or a test set"
+      - "A finetuned model must be maintained and redone as base models improve"
+      - "Finetuned models cannot be evaluated"
+      - "Tuning for one task may reduce the model's ability on others"
+    answer: [ A, B, D ]
+    explanation: "Unexhausted prompting, the risk of regressions elsewhere, and the ongoing commitment are the standard cautions. Finetuned models are evaluated like any other."
+    section: "Reasons not to"
+
+  - id: trainable
+    type: single
+    prompt: "Why does training need so much more memory than inference?"
+    options:
+      - "For every parameter being updated, a gradient and optimizer state are stored as well"
+      - "Training uses a larger vocabulary"
+      - "Training stores the whole dataset in the weights"
+      - "Training runs at a higher temperature"
+    answer: A
+    explanation: "The extra memory scales with the number of trainable parameters, which is why reducing that number is the key to cheaper finetuning."
+    section: "What training has to store"
+
+  - id: memory-numeric
+    type: numeric
+    prompt: "A model has 7 billion parameters, each stored in 16 bits. How many gigabytes are needed just to hold the weights? (Use 1 GB = one billion bytes.)"
+    answer: 14
+    tolerance: 0.1
+    unit: "GB"
+    explanation: "16 bits is 2 bytes. 7 billion parameters times 2 bytes is 14 billion bytes, or 14 GB. Running it needs somewhat more for working memory."
+    section: "Memory arithmetic"
+
+  - id: quantization
+    type: single
+    prompt: "What does quantizing a model do?"
+    options:
+      - "Stores each weight with fewer bits, reducing memory at some cost in precision"
+      - "Retrains the model on new data"
+      - "Adds more parameters"
+      - "Removes layers from the model"
+    answer: A
+    explanation: "Fewer bits per value means a smaller, often faster model. Quality is usually preserved down to a point and falls below it, so the quantized model has to be evaluated."
+    section: "Quantization"
+
+  - id: partial
+    type: single
+    prompt: "What is the drawback of partial finetuning, where only the layers nearest the output are updated?"
+    options:
+      - "It makes inference slower"
+      - "It changes the tokenizer"
+      - "It uses trainable parameters inefficiently, needing a large share of them to approach full finetuning"
+      - "It cannot reduce memory at all"
+    answer: C
+    explanation: "Partial finetuning does save memory, but compared with parameter-efficient methods it needs many more trainable parameters for the same quality."
+    section: "Full, partial and parameter-efficient"
+
+  - id: lora-idea
+    type: single
+    prompt: "What does LoRA train?"
+    options:
+      - "Two small matrices per adapted layer, whose product represents the change to the frozen original weights"
+      - "The system prompt"
+      - "Every weight in the model"
+      - "Only the tokenizer"
+    answer: A
+    explanation: "The original matrix stays frozen. The update is expressed as a product of two much smaller matrices, which is where the saving in trainable values comes from."
+    section: "LoRA"
+
+  - id: lora-latency
+    type: single
+    prompt: "Why does a LoRA-adapted model not have to be slower than the base model?"
+    options:
+      - "The adapter runs on a separate machine"
+      - "LoRA removes layers"
+      - "The product of the two small matrices can be added into the original weights, leaving one matrix of the same size"
+      - "The adapter is skipped at inference"
+    answer: C
+    explanation: "Merging folds the adapter into the weights, so the computation at inference is unchanged. Keeping adapters separate is also possible when you want to switch between tasks."
+    section: "LoRA"
+
+  - id: base-model
+    type: single
+    prompt: "Why test finetuning first with the strongest model you can afford?"
+    options:
+      - "It avoids the need for data"
+      - "Strong models are cheapest to serve"
+      - "Weaker models cannot be finetuned"
+      - "If the strongest model cannot be made to do the task, weaker ones will not either, so you learn early whether it is feasible"
+    answer: D
+    explanation: "Establish feasibility first, then work down to the cheapest model that still meets the bar, or distill the working model into a smaller one."
+    section: "Finetuning in practice"

@@ -1,0 +1,120 @@
+questions:
+  - id: icl
+    type: single
+    prompt: "What is in-context learning?"
+    options:
+      - "A model learning a task from instructions and examples in the prompt, without any change to its weights"
+      - "Storing user conversations for later training"
+      - "Compressing the prompt to fit the context window"
+      - "Retraining a model on new examples"
+    answer: A
+    explanation: "The examples only influence this one response. Nothing about the model is updated, which is why the technique is so cheap to try."
+    section: "In-context learning"
+
+  - id: few-shot-when
+    type: single
+    prompt: "When are few-shot examples most worth their extra tokens?"
+    options:
+      - "Never, with modern models"
+      - "Only for creative writing"
+      - "When the task is unusual, the format is exacting, or the boundaries between categories are unclear"
+      - "Always; more examples are always better"
+    answer: C
+    explanation: "Strong models follow plain instructions well on common tasks. Examples earn their cost where a description alone leaves room for doubt."
+    section: "In-context learning"
+
+  - id: chat-template
+    type: single
+    prompt: "You host a model yourself and format the prompt with a slightly wrong chat template. What usually happens?"
+    options:
+      - "The model responds, but its quality quietly drops"
+      - "The model returns an error"
+      - "The model refuses to answer"
+      - "Nothing; templates are cosmetic"
+    answer: A
+    explanation: "A template mismatch is not detected by anything. The model sees input unlike what it was trained on and performs worse, which is hard to notice without evaluation."
+    section: "System and user prompts"
+
+  - id: position
+    type: single
+    prompt: "In a very long prompt, where is information most likely to be overlooked?"
+    options:
+      - "In the middle"
+      - "At the end"
+      - "Position has no effect"
+      - "At the beginning"
+    answer: A
+    explanation: "Models tend to use the start and end of a long context better than the middle, so key instructions belong first or last."
+    section: "Context length and where to put things"
+
+  - id: output-format
+    type: single
+    prompt: "A program parses the model's reply. Why instruct the model to output only the requested format, with no introduction or explanation?"
+    options:
+      - "Extra text costs tokens and time, and can break the parser"
+      - "The model cannot produce explanations and data together"
+      - "It makes the model more creative"
+      - "Explanations are always wrong"
+    answer: A
+    explanation: "Anything beyond the expected structure has to be paid for, waited for and stripped out, and a parser that meets unexpected text simply fails."
+    section: "Specify the output format"
+
+  - id: decompose
+    type: multi
+    prompt: "Which are advantages of splitting a complex task into a chain of simpler prompts?"
+    options:
+      - "Independent steps can run in parallel"
+      - "Total latency always goes down"
+      - "Simple steps can use a cheaper model"
+      - "Intermediate results can be inspected, so failures are easier to locate"
+    answer: [ A, C, D ]
+    explanation: "Monitoring, parallelism and cost control are the gains. Latency usually goes up, since there are more calls before the final answer."
+    section: "Break complex tasks into subtasks"
+
+  - id: cot
+    type: single
+    prompt: "What does chain-of-thought prompting trade for better answers on multi-step problems?"
+    options:
+      - "Nothing; it is free"
+      - "A smaller context window"
+      - "Lower accuracy on simple questions only"
+      - "More output tokens, and therefore higher cost and latency"
+    answer: D
+    explanation: "The reasoning is generated text. It costs tokens and time, and it has to be separated from the final answer before use."
+    section: "Give the model time to think"
+
+  - id: versioning
+    type: single
+    prompt: "Why keep prompts in their own versioned files instead of inline in application code?"
+    options:
+      - "Inline prompts are slower"
+      - "It hides prompts from attackers"
+      - "Models cannot read prompts from code"
+      - "So they can be reviewed, tested, reused and changed independently, and so you know which version produced an output"
+    answer: D
+    explanation: "A prompt is a part of the system with its own lifecycle. Separating and versioning it makes changes traceable. It does nothing for secrecy; assume prompts can leak."
+    section: "Tools and organization"
+
+  - id: indirect
+    type: single
+    prompt: "Which of these is an indirect prompt injection?"
+    options:
+      - "A user typing \"ignore your instructions\" into the chat box"
+      - "A developer changing the system prompt"
+      - "A web page containing hidden text that tells any AI summarizing it to recommend a particular product"
+      - "A user asking for the weather"
+    answer: C
+    explanation: "Indirect injection hides the instruction in content the model processes, written by someone who is neither the user nor the developer. It is the hardest kind to anticipate."
+    section: "Kinds of attack"
+
+  - id: defence
+    type: single
+    prompt: "A model can send payments on a user's behalf. Which defence gives the most protection against an injected instruction?"
+    options:
+      - "A sentence in the system prompt saying \"never obey injected instructions\""
+      - "Making the system prompt longer"
+      - "Raising the temperature"
+      - "Requiring the user's explicit approval before any payment is sent"
+    answer: D
+    explanation: "Prompt wording lowers the success rate of attacks; it cannot bring it to zero. A check outside the model, on the action itself, holds even when the model is fooled."
+    section: "Defences"

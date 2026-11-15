@@ -1,0 +1,24 @@
+title: "Dataset Engineering"
+status: ready
+summary: "The data you train on sets the ceiling for a finetuned model: how to curate it, how to generate more of it, and how to clean what you have."
+est_minutes: 25
+objectives:
+  - Explain why data is where most of the leverage is when models are widely available
+  - Assess a dataset for quality, coverage and quantity
+  - Describe ways to acquire and annotate data, and why guidelines are the hard part
+  - Compare rule-based and model-generated synthetic data, and say how to verify it
+  - Name the risks of training on generated data
+  - Carry out the basic processing steps of inspecting, deduplicating, cleaning and formatting
+labs:
+  - file: lab1_dedup.py
+    title: "Finding copies and near-copies, and the cost of a loose threshold"
+    expect: ["planted copies found", "originals wrongly removed", "MinHash"]
+  - file: lab2_quality_vs_quantity.py
+    title: "More data against cleaner data"
+    expect: ["PART A", "PART B", "learns the mistake"]
+  - file: lab3_synthesis.py
+    title: "Templates, verification, and training on your own output"
+    expect: ["PART A", "PART B", "PART C", "wrong answers remaining"]
+verified:
+  date: "2026-11-14"
+  notes: "Topic coverage and terminology checked against AI Engineering chapter 8. All three labs run and their output matches the lab brief."

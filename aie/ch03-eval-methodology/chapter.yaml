@@ -1,0 +1,24 @@
+title: "Evaluation Methodology"
+status: ready
+summary: "How to tell whether a model's output is any good: metrics from language modelling, exact checks, comparison with references, models as judges, and head-to-head ranking."
+est_minutes: 30
+objectives:
+  - Explain why open-ended output makes evaluation hard
+  - Interpret cross entropy and perplexity, and say what perplexity can be used for
+  - Compare functional correctness, exact match, lexical similarity and semantic similarity
+  - Design an evaluation that uses a model as the judge, and name its main failure modes
+  - Explain how comparative evaluation ranks models and what a ranking cannot tell you
+labs:
+  - file: lab1_perplexity.py
+    title: "Entropy, cross entropy and perplexity on a tiny model"
+    expect: ["PART A", "PART B", "PART C", "perplexity"]
+  - file: lab2_similarity.py
+    title: "Exact match, word overlap and embedding similarity on five answers"
+    needs_ollama: true
+    expect: ["embedding cosine", "same meaning, other words", "negated"]
+  - file: lab3_comparative_eval.py
+    title: "Ranking models from pairwise votes, with a biased judge"
+    expect: ["PART A", "PART C", "biased judge"]
+verified:
+  date: "2026-11-11"
+  notes: "Topic coverage and terminology checked against AI Engineering chapter 3. All three labs run; lab 2 was run against a local embedding model through Ollama."

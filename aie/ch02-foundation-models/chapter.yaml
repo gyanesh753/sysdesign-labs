@@ -1,0 +1,23 @@
+title: "Understanding Foundation Models"
+status: ready
+summary: "Four things decide how a model behaves: what it was trained on, how it is built, how it was tuned afterwards, and how its output is sampled."
+est_minutes: 30
+objectives:
+  - Explain how a model's training data limits what it is good at
+  - Describe what attention does and what a model's size numbers mean
+  - Distinguish pre-training from supervised finetuning and preference finetuning
+  - Explain temperature, top-k and top-p, and choose settings for a task
+  - Explain why models are inconsistent and why they state false things, and what reduces each
+labs:
+  - file: lab1_sampling.py
+    title: "Temperature, top-k, top-p and log probabilities"
+    expect: ["PART A", "PART B", "PART D", "PART E"]
+  - file: lab2_attention.py
+    title: "Self-attention by hand, and counting parameters"
+    expect: ["PART A", "PART C", "Each row adds up to 1"]
+  - file: lab3_test_time_compute.py
+    title: "Test-time compute: voting and checking"
+    expect: ["PART A", "PART B", "PART C"]
+verified:
+  date: "2026-11-11"
+  notes: "Topic coverage and terminology checked against AI Engineering chapter 2. All three labs run and their output matches the lab brief."

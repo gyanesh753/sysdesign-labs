@@ -1,0 +1,24 @@
+title: "Finetuning"
+status: ready
+summary: "Changing the model itself: when it is worth it, why memory is the constraint, and the techniques that make it affordable."
+est_minutes: 30
+objectives:
+  - Decide whether a problem calls for finetuning, retrieval, or better prompting
+  - Estimate the memory needed to run and to finetune a model of a given size
+  - Explain what quantization does and what it costs
+  - Describe how LoRA adapts a model by training a small number of values
+  - Explain what model merging is for
+  - Name the main choices to make when running a finetuning job
+labs:
+  - file: lab1_memory_math.py
+    title: "Will it fit? Memory for inference and for training"
+    expect: ["PART A", "PART B", "PART C", "fits"]
+  - file: lab2_quantization.py
+    title: "Accuracy against bits per weight"
+    expect: ["bits per weight", "test accuracy", "evaluated again"]
+  - file: lab3_lora.py
+    title: "Low-rank adaptation of one layer"
+    expect: ["full finetuning", "LoRA, rank 4", "identical outputs: True"]
+verified:
+  date: "2026-11-14"
+  notes: "Topic coverage and terminology checked against AI Engineering chapter 7. All three labs run and their output matches the lab brief."
