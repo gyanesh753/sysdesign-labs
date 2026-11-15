@@ -1,0 +1,306 @@
+{
+ "version": 1,
+ "engine": "kokoro-onnx v1.0",
+ "voice": "bm_george",
+ "lang": "en-gb",
+ "speed": 1,
+ "generated": "2026-11-10",
+ "sections": [
+  {
+   "id": "the-strongest-guarantee",
+   "title": "The strongest guarantee",
+   "hash": "7517a9e3a2",
+   "file": "the-strongest-guarantee.7517a9e3a2.m4a",
+   "duration": 33.715,
+   "starts": [
+    0,
+    2.618,
+    10.661,
+    16.863,
+    19.836,
+    25.373
+   ]
+  },
+  {
+   "id": "linearizability",
+   "title": "Linearizability",
+   "hash": "fd6c6cc2f7",
+   "file": "linearizability.fd6c6cc2f7.m4a",
+   "duration": 2.228,
+   "starts": [
+    0
+   ]
+  },
+  {
+   "id": "what-it-means",
+   "title": "What it means",
+   "hash": "b6fadf5b31",
+   "file": "what-it-means.b6fadf5b31.m4a",
+   "duration": 50,
+   "starts": [
+    0,
+    1.746,
+    13.937,
+    16.616,
+    26.327,
+    29.244,
+    34.9,
+    41.046,
+    45.871
+   ]
+  },
+  {
+   "id": "linearizability-is-not-serializability",
+   "title": "Linearizability is not serializability",
+   "hash": "cbd45940a9",
+   "file": "linearizability-is-not-serializability.cbd45940a9.m4a",
+   "duration": 39.637,
+   "starts": [
+    0,
+    3.901,
+    7.163,
+    12.177,
+    18.166,
+    28.749,
+    32.055
+   ]
+  },
+  {
+   "id": "where-you-need-it",
+   "title": "Where you need it",
+   "hash": "f56de57b58",
+   "file": "where-you-need-it.f56de57b58.m4a",
+   "duration": 34.919,
+   "starts": [
+    0,
+    1.833,
+    6.246,
+    10.676,
+    18.413,
+    27.013
+   ]
+  },
+  {
+   "id": "which-replication-methods-provide-it",
+   "title": "Which replication methods provide it",
+   "hash": "dde5434ff0",
+   "file": "which-replication-methods-provide-it.dde5434ff0.m4a",
+   "duration": 28.141,
+   "starts": [
+    0,
+    3.137,
+    9.741,
+    15.936,
+    23.924
+   ]
+  },
+  {
+   "id": "the-cost",
+   "title": "The cost",
+   "hash": "0753e130c5",
+   "file": "the-cost.0753e130c5.m4a",
+   "duration": 46.602,
+   "starts": [
+    0,
+    1.562,
+    6.016,
+    9.898,
+    17.83,
+    24.218,
+    31.556,
+    35.089,
+    40.822
+   ]
+  },
+  {
+   "id": "logical-clocks-and-id-generators",
+   "title": "Logical clocks and ID generators",
+   "hash": "7de5fa0e2d",
+   "file": "logical-clocks-and-id-generators.7de5fa0e2d.m4a",
+   "duration": 3.523,
+   "starts": [
+    0
+   ]
+  },
+  {
+   "id": "generating-ids",
+   "title": "Generating IDs",
+   "hash": "57e44056f0",
+   "file": "generating-ids.57e44056f0.m4a",
+   "duration": 46.84,
+   "starts": [
+    0,
+    2.472,
+    9.408,
+    13.179,
+    16.776,
+    22.386,
+    27.459,
+    32.6,
+    35.272
+   ]
+  },
+  {
+   "id": "lamport-timestamps",
+   "title": "Lamport timestamps",
+   "hash": "5b62591302",
+   "file": "lamport-timestamps.5b62591302.m4a",
+   "duration": 52.292,
+   "starts": [
+    0,
+    2.352,
+    6.792,
+    11.04,
+    20.471,
+    24.109,
+    28.211,
+    36.231,
+    38.404,
+    47.723
+   ]
+  },
+  {
+   "id": "hybrid-logical-clocks",
+   "title": "Hybrid logical clocks",
+   "hash": "119bac682c",
+   "file": "hybrid-logical-clocks.119bac682c.m4a",
+   "duration": 25.355,
+   "starts": [
+    0,
+    2.5,
+    6.649,
+    19.5
+   ]
+  },
+  {
+   "id": "what-they-cannot-decide",
+   "title": "What they cannot decide",
+   "hash": "d710e5e072",
+   "file": "what-they-cannot-decide.d710e5e072.m4a",
+   "duration": 66.61,
+   "starts": [
+    0,
+    2.454,
+    6.925,
+    10.788,
+    22.71,
+    26.057,
+    33.546,
+    35.64,
+    41.752,
+    45.828,
+    51.224,
+    59.329
+   ]
+  },
+  {
+   "id": "consensus",
+   "title": "Consensus",
+   "hash": "603f321abc",
+   "file": "consensus.603f321abc.m4a",
+   "duration": 1.777,
+   "starts": [
+    0
+   ]
+  },
+  {
+   "id": "the-problem-and-why-it-is-hard",
+   "title": "The problem and why it is hard",
+   "hash": "7ec84f1d42",
+   "file": "the-problem-and-why-it-is-hard.7ec84f1d42.m4a",
+   "duration": 48.833,
+   "starts": [
+    0,
+    3.069,
+    7.346,
+    21.175,
+    25.995,
+    35.55,
+    40.395
+   ]
+  },
+  {
+   "id": "many-faces-of-one-problem",
+   "title": "Many faces of one problem",
+   "hash": "82a4002301",
+   "file": "many-faces-of-one-problem.82a4002301.m4a",
+   "duration": 48.614,
+   "starts": [
+    0,
+    2.974,
+    10.294,
+    16.261,
+    22.369,
+    25.994,
+    28.16,
+    32.388,
+    36.937,
+    42.142
+   ]
+  },
+  {
+   "id": "how-it-works-in-practice",
+   "title": "How it works in practice",
+   "hash": "a356a14275",
+   "file": "how-it-works-in-practice.a356a14275.m4a",
+   "duration": 60.19,
+   "starts": [
+    0,
+    2.377,
+    8.146,
+    11.817,
+    16.805,
+    24.096,
+    27.363,
+    34.762,
+    38.272,
+    49.257,
+    56.638
+   ]
+  },
+  {
+   "id": "what-it-costs",
+   "title": "What it costs",
+   "hash": "85a79ee269",
+   "file": "what-it-costs.85a79ee269.m4a",
+   "duration": 26.455,
+   "starts": [
+    0,
+    1.748,
+    9.02,
+    12.874,
+    17.193
+   ]
+  },
+  {
+   "id": "coordination-services",
+   "title": "Coordination services",
+   "hash": "9f8314af5e",
+   "file": "coordination-services.9f8314af5e.m4a",
+   "duration": 49.373,
+   "starts": [
+    0,
+    2.486,
+    6.112,
+    17.472,
+    24.73,
+    31.795,
+    37.394,
+    42.753
+   ]
+  },
+  {
+   "id": "what-the-labs-show",
+   "title": "What the labs show",
+   "hash": "de4b374f5a",
+   "file": "what-the-labs-show.de4b374f5a.m4a",
+   "duration": 28.484,
+   "starts": [
+    0,
+    2.03,
+    11.036,
+    20.157
+   ]
+  }
+ ]
+}

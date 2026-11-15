@@ -1,0 +1,221 @@
+{
+ "version": 1,
+ "engine": "kokoro-onnx v1.0",
+ "voice": "bm_george",
+ "lang": "en-gb",
+ "speed": 1,
+ "generated": "2026-11-10",
+ "sections": [
+  {
+   "id": "change-is-the-normal-state",
+   "title": "Change is the normal state",
+   "hash": "c37de3b3f2",
+   "file": "change-is-the-normal-state.c37de3b3f2.m4a",
+   "duration": 71.293,
+   "starts": [
+    0,
+    2.7,
+    9.821,
+    14.63,
+    21.669,
+    25.756,
+    32.446,
+    37.094,
+    41.816,
+    47.467,
+    53.038,
+    60.49
+   ]
+  },
+  {
+   "id": "formats-for-encoding-data",
+   "title": "Formats for encoding data",
+   "hash": "d8b19d2a4b",
+   "file": "formats-for-encoding-data.d8b19d2a4b.m4a",
+   "duration": 21.085,
+   "starts": [
+    0,
+    2.721,
+    7.327,
+    14.58
+   ]
+  },
+  {
+   "id": "language-specific-formats",
+   "title": "Language-specific formats",
+   "hash": "f3b58b4737",
+   "file": "language-specific-formats.f3b58b4737.m4a",
+   "duration": 20.851,
+   "starts": [
+    0,
+    2.599,
+    7.186,
+    12.132
+   ]
+  },
+  {
+   "id": "json-xml-and-csv",
+   "title": "JSON, XML and CSV",
+   "hash": "aede772f1b",
+   "file": "json-xml-and-csv.aede772f1b.m4a",
+   "duration": 39.26,
+   "starts": [
+    0,
+    3.27,
+    11.933,
+    14.604,
+    24.216,
+    27.658,
+    35.519
+   ]
+  },
+  {
+   "id": "binary-formats-with-field-tags",
+   "title": "Binary formats with field tags",
+   "hash": "fd6cf4361e",
+   "file": "binary-formats-with-field-tags.fd6cf4361e.m4a",
+   "duration": 79.888,
+   "starts": [
+    0,
+    3.153,
+    10.144,
+    17.175,
+    22.538,
+    27.383,
+    31.903,
+    37.89,
+    45.311,
+    49.968,
+    57.244,
+    62.86,
+    65.66,
+    67.49,
+    72.909
+   ]
+  },
+  {
+   "id": "the-writers-schema-and-the-readers-schema",
+   "title": "The writer's schema and the reader's schema",
+   "hash": "d66053e66a",
+   "file": "the-writers-schema-and-the-readers-schema.d66053e66a.m4a",
+   "duration": 69.699,
+   "starts": [
+    0,
+    3.391,
+    8.19,
+    13.174,
+    20.521,
+    29.737,
+    39.919,
+    42.962,
+    45.191,
+    48.211,
+    54.422,
+    59.436
+   ]
+  },
+  {
+   "id": "why-schemas-are-worth-it",
+   "title": "Why schemas are worth it",
+   "hash": "eefcd07a4c",
+   "file": "why-schemas-are-worth-it.eefcd07a4c.m4a",
+   "duration": 19.592,
+   "starts": [
+    0,
+    2.613,
+    9.623,
+    15.267
+   ]
+  },
+  {
+   "id": "how-data-flows-between-processes",
+   "title": "How data flows between processes",
+   "hash": "2e1cf4c515",
+   "file": "how-data-flows-between-processes.2e1cf4c515.m4a",
+   "duration": 13.797,
+   "starts": [
+    0,
+    3.406,
+    10.008
+   ]
+  },
+  {
+   "id": "through-a-database",
+   "title": "Through a database",
+   "hash": "2bb57820d6",
+   "file": "through-a-database.2bb57820d6.m4a",
+   "duration": 44.65,
+   "starts": [
+    0,
+    2.213,
+    10.36,
+    14.69,
+    22.739,
+    24.993,
+    31.127,
+    37.562,
+    41.539
+   ]
+  },
+  {
+   "id": "through-services",
+   "title": "Through services",
+   "hash": "e93c1035fa",
+   "file": "through-services.e93c1035fa.m4a",
+   "duration": 90.196,
+   "starts": [
+    0,
+    1.903,
+    11.108,
+    22.615,
+    29.526,
+    32.69,
+    42.117,
+    52.875,
+    56.727,
+    65.443,
+    70.934,
+    77.746
+   ]
+  },
+  {
+   "id": "through-durable-workflows",
+   "title": "Through durable workflows",
+   "hash": "b8c562fde9",
+   "file": "through-durable-workflows.b8c562fde9.m4a",
+   "duration": 38.842,
+   "starts": [
+    0,
+    2.5,
+    20.744,
+    30.929
+   ]
+  },
+  {
+   "id": "through-message-brokers",
+   "title": "Through message brokers",
+   "hash": "14f81e1d1b",
+   "file": "through-message-brokers.14f81e1d1b.m4a",
+   "duration": 32.59,
+   "starts": [
+    0,
+    2.43,
+    5.747,
+    10.659,
+    24.109
+   ]
+  },
+  {
+   "id": "what-the-labs-show",
+   "title": "What the labs show",
+   "hash": "5473b7c955",
+   "file": "what-the-labs-show.5473b7c955.m4a",
+   "duration": 19.397,
+   "starts": [
+    0,
+    2.03,
+    9.465
+   ]
+  }
+ ]
+}

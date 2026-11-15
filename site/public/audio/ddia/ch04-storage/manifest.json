@@ -1,0 +1,224 @@
+{
+ "version": 1,
+ "engine": "kokoro-onnx v1.0",
+ "voice": "bm_george",
+ "lang": "en-gb",
+ "speed": 1,
+ "generated": "2026-11-10",
+ "sections": [
+  {
+   "id": "why-look-inside-the-engine",
+   "title": "Why look inside the engine",
+   "hash": "80f213011d",
+   "file": "why-look-inside-the-engine.80f213011d.m4a",
+   "duration": 50.847,
+   "starts": [
+    0,
+    2.622,
+    8.45,
+    17.856,
+    29.115,
+    32.162,
+    39.006,
+    45.954
+   ]
+  },
+  {
+   "id": "log-structured-storage",
+   "title": "Log-structured storage",
+   "hash": "470ef1bd3c",
+   "file": "log-structured-storage.470ef1bd3c.m4a",
+   "duration": 2.466,
+   "starts": [
+    0
+   ]
+  },
+  {
+   "id": "the-simplest-database",
+   "title": "The simplest database",
+   "hash": "3391b39bc5",
+   "file": "the-simplest-database.3391b39bc5.m4a",
+   "duration": 28.365,
+   "starts": [
+    0,
+    2.594,
+    7.369,
+    11.963,
+    18.858
+   ]
+  },
+  {
+   "id": "sstables-and-the-lsm-tree",
+   "title": "SSTables and the LSM-tree",
+   "hash": "c27f260f64",
+   "file": "sstables-and-the-lsm-tree.c27f260f64.m4a",
+   "duration": 60.133,
+   "starts": [
+    0,
+    3.293,
+    8.247,
+    17.108,
+    19.718,
+    22.94,
+    32.395,
+    39.714,
+    46.801,
+    54.831
+   ]
+  },
+  {
+   "id": "bloom-filters",
+   "title": "Bloom filters",
+   "hash": "3d42bbf035",
+   "file": "bloom-filters.3d42bbf035.m4a",
+   "duration": 24.483,
+   "starts": [
+    0,
+    1.978,
+    8.812,
+    17.802
+   ]
+  },
+  {
+   "id": "compaction",
+   "title": "Compaction",
+   "hash": "84ff941c71",
+   "file": "compaction.84ff941c71.m4a",
+   "duration": 61.998,
+   "starts": [
+    0,
+    1.706,
+    13.74,
+    16.051,
+    23.373,
+    35.054,
+    43.685,
+    46.728,
+    50.387,
+    56.484
+   ]
+  },
+  {
+   "id": "b-trees",
+   "title": "B-trees",
+   "hash": "8efa468405",
+   "file": "b-trees.8efa468405.m4a",
+   "duration": 56.563,
+   "starts": [
+    0,
+    1.674,
+    7.456,
+    13.336,
+    20.54,
+    24.795,
+    33.343,
+    37.887,
+    41.353,
+    46.18
+   ]
+  },
+  {
+   "id": "comparing-the-two",
+   "title": "Comparing the two",
+   "hash": "2eddce41fb",
+   "file": "comparing-the-two.2eddce41fb.m4a",
+   "duration": 66.293,
+   "starts": [
+    0,
+    2.255,
+    10.62,
+    19.826,
+    26.06,
+    35.277,
+    45.24,
+    46.881,
+    54.572
+   ]
+  },
+  {
+   "id": "storage-for-analytics",
+   "title": "Storage for analytics",
+   "hash": "ed79cfebb3",
+   "file": "storage-for-analytics.ed79cfebb3.m4a",
+   "duration": 2.376,
+   "starts": [
+    0
+   ]
+  },
+  {
+   "id": "column-oriented-storage",
+   "title": "Column-oriented storage",
+   "hash": "8dcb917f3d",
+   "file": "column-oriented-storage.8dcb917f3d.m4a",
+   "duration": 29.536,
+   "starts": [
+    0,
+    2.356,
+    7.802,
+    12.916,
+    25.302
+   ]
+  },
+  {
+   "id": "compression-and-sort-order",
+   "title": "Compression and sort order",
+   "hash": "98654c6c7c",
+   "file": "compression-and-sort-order.98654c6c7c.m4a",
+   "duration": 44.497,
+   "starts": [
+    0,
+    2.78,
+    9.763,
+    13.953,
+    19.622,
+    25.568,
+    30.945
+   ]
+  },
+  {
+   "id": "running-queries-fast",
+   "title": "Running queries fast",
+   "hash": "8968b180b5",
+   "file": "running-queries-fast.8968b180b5.m4a",
+   "duration": 51.667,
+   "starts": [
+    0,
+    2.506,
+    19.502,
+    32.132,
+    43.617
+   ]
+  },
+  {
+   "id": "full-text-and-vector-search",
+   "title": "Full-text and vector search",
+   "hash": "46de1f8387",
+   "file": "full-text-and-vector-search.46de1f8387.m4a",
+   "duration": 57.709,
+   "starts": [
+    0,
+    2.764,
+    5.781,
+    15.784,
+    33.847,
+    39.294,
+    43.857,
+    49.454,
+    54.967
+   ]
+  },
+  {
+   "id": "what-the-labs-show",
+   "title": "What the labs show",
+   "hash": "74d2b3df12",
+   "file": "what-the-labs-show.74d2b3df12.m4a",
+   "duration": 25.276,
+   "starts": [
+    0,
+    2.03,
+    11.461,
+    18.613
+   ]
+  }
+ ]
+}

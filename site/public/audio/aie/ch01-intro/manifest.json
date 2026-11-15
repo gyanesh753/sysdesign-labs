@@ -1,0 +1,285 @@
+{
+ "version": 1,
+ "engine": "kokoro-onnx v1.0",
+ "voice": "bm_george",
+ "lang": "en-gb",
+ "speed": 1,
+ "generated": "2026-11-14",
+ "sections": [
+  {
+   "id": "what-changed",
+   "title": "What changed",
+   "hash": "71070f2c96",
+   "file": "what-changed.71070f2c96.m4a",
+   "duration": 52.639,
+   "starts": [
+    0,
+    1.814,
+    7.267,
+    15.138,
+    17.99,
+    21.128,
+    29.585,
+    37.356,
+    42.614
+   ]
+  },
+  {
+   "id": "from-language-models-to-foundation-models",
+   "title": "From language models to foundation models",
+   "hash": "737a6f5dea",
+   "file": "from-language-models-to-foundation-models.737a6f5dea.m4a",
+   "duration": 3.549,
+   "starts": [
+    0
+   ]
+  },
+  {
+   "id": "what-a-language-model-does",
+   "title": "What a language model does",
+   "hash": "b5dff2e0df",
+   "file": "what-a-language-model-does.b5dff2e0df.m4a",
+   "duration": 76.201,
+   "starts": [
+    0,
+    2.704,
+    10.723,
+    16.253,
+    18.215,
+    23.625,
+    37.006,
+    48.76,
+    51.439,
+    58.565,
+    63.736,
+    68.57
+   ]
+  },
+  {
+   "id": "tokens",
+   "title": "Tokens",
+   "hash": "3d455d759d",
+   "file": "tokens.3d455d759d.m4a",
+   "duration": 57.076,
+   "starts": [
+    0,
+    1.611,
+    4.969,
+    11.964,
+    16.336,
+    18.625,
+    23.657,
+    31.574,
+    40.479,
+    45.931
+   ]
+  },
+  {
+   "id": "self-supervision",
+   "title": "Self-supervision",
+   "hash": "a05bc496d3",
+   "file": "self-supervision.a05bc496d3.m4a",
+   "duration": 64.2,
+   "starts": [
+    0,
+    2.001,
+    8.298,
+    10.676,
+    20.252,
+    22.231,
+    35.625,
+    40.801,
+    45.225,
+    51.386,
+    56.922
+   ]
+  },
+  {
+   "id": "beyond-text",
+   "title": "Beyond text",
+   "hash": "afc1edc37a",
+   "file": "beyond-text.afc1edc37a.m4a",
+   "duration": 29.738,
+   "starts": [
+    0,
+    2.046,
+    12.665,
+    22.266,
+    26.646
+   ]
+  },
+  {
+   "id": "why-this-became-an-engineering-discipline",
+   "title": "Why this became an engineering discipline",
+   "hash": "ac6135ead8",
+   "file": "why-this-became-an-engineering-discipline.ac6135ead8.m4a",
+   "duration": 40.193,
+   "starts": [
+    0,
+    3.673,
+    5.825,
+    11.188,
+    14.767,
+    27,
+    32.758
+   ]
+  },
+  {
+   "id": "what-people-build",
+   "title": "What people build",
+   "hash": "f5b2d8a36f",
+   "file": "what-people-build.f5b2d8a36f.m4a",
+   "duration": 65.61,
+   "starts": [
+    0,
+    1.942,
+    6.112,
+    11.011,
+    16.654,
+    21.941,
+    26.542,
+    31.389,
+    37.405,
+    43.696,
+    49.954,
+    57.601
+   ]
+  },
+  {
+   "id": "planning-an-ai-application",
+   "title": "Planning an AI application",
+   "hash": "c079c2a1e4",
+   "file": "planning-an-ai-application.c079c2a1e4.m4a",
+   "duration": 3.043,
+   "starts": [
+    0
+   ]
+  },
+  {
+   "id": "should-you-build-it",
+   "title": "Should you build it",
+   "hash": "4d7c3eb519",
+   "file": "should-you-build-it.4d7c3eb519.m4a",
+   "duration": 83.581,
+   "starts": [
+    0,
+    1.876,
+    5.765,
+    7.288,
+    12.614,
+    16.597,
+    19.918,
+    23.476,
+    27.036,
+    34.165,
+    38.298,
+    43.896,
+    51.217,
+    57.891,
+    63.117,
+    66.462,
+    73.998
+   ]
+  },
+  {
+   "id": "setting-expectations",
+   "title": "Setting expectations",
+   "hash": "99bd6bb64c",
+   "file": "setting-expectations.99bd6bb64c.m4a",
+   "duration": 22.74,
+   "starts": [
+    0,
+    2.313,
+    5.939,
+    15.622
+   ]
+  },
+  {
+   "id": "the-last-mile",
+   "title": "The last mile",
+   "hash": "d363853562",
+   "file": "the-last-mile.d363853562.m4a",
+   "duration": 29.718,
+   "starts": [
+    0,
+    1.933,
+    4.932,
+    7.84,
+    22.981
+   ]
+  },
+  {
+   "id": "maintenance",
+   "title": "Maintenance",
+   "hash": "512a1602a3",
+   "file": "maintenance.512a1602a3.m4a",
+   "duration": 26.354,
+   "starts": [
+    0,
+    1.672,
+    4.722,
+    13.066,
+    17.463,
+    19.846
+   ]
+  },
+  {
+   "id": "the-ai-engineering-stack",
+   "title": "The AI engineering stack",
+   "hash": "6dadedc910",
+   "file": "the-ai-engineering-stack.6dadedc910.m4a",
+   "duration": 2.873,
+   "starts": [
+    0
+   ]
+  },
+  {
+   "id": "three-layers",
+   "title": "Three layers",
+   "hash": "88ef6c22ac",
+   "file": "three-layers.88ef6c22ac.m4a",
+   "duration": 33.152,
+   "starts": [
+    0,
+    1.788,
+    9.183,
+    15.803,
+    18.908,
+    27.349
+   ]
+  },
+  {
+   "id": "how-it-differs-from-ml-engineering",
+   "title": "How it differs from ML engineering",
+   "hash": "9c099b7538",
+   "file": "how-it-differs-from-ml-engineering.9c099b7538.m4a",
+   "duration": 71.717,
+   "starts": [
+    0,
+    3.41,
+    9.567,
+    12.956,
+    17.463,
+    24.081,
+    31.414,
+    37.151,
+    44.238,
+    50.307,
+    59.623
+   ]
+  },
+  {
+   "id": "what-the-labs-show",
+   "title": "What the labs show",
+   "hash": "d5249fec9b",
+   "file": "what-the-labs-show.d5249fec9b.m4a",
+   "duration": 28.617,
+   "starts": [
+    0,
+    2.03,
+    12.8,
+    21.165
+   ]
+  }
+ ]
+}

@@ -1,0 +1,281 @@
+{
+ "version": 1,
+ "engine": "kokoro-onnx v1.0",
+ "voice": "bm_george",
+ "lang": "en-gb",
+ "speed": 1,
+ "generated": "2026-11-14",
+ "sections": [
+  {
+   "id": "why-look-inside",
+   "title": "Why look inside",
+   "hash": "0191472c1b",
+   "file": "why-look-inside.0191472c1b.m4a",
+   "duration": 28.228,
+   "starts": [
+    0,
+    2.103,
+    6.915,
+    22.267
+   ]
+  },
+  {
+   "id": "training-data",
+   "title": "Training data",
+   "hash": "7b6a72cc12",
+   "file": "training-data.7b6a72cc12.m4a",
+   "duration": 82.033,
+   "starts": [
+    0,
+    1.991,
+    6.195,
+    13.159,
+    17.199,
+    26.264,
+    29.531,
+    34.677,
+    41.538,
+    46.874,
+    52.208,
+    66.594,
+    72.627,
+    75.755
+   ]
+  },
+  {
+   "id": "architecture-and-size",
+   "title": "Architecture and size",
+   "hash": "9d0e6b2a6f",
+   "file": "architecture-and-size.9d0e6b2a6f.m4a",
+   "duration": 2.724,
+   "starts": [
+    0
+   ]
+  },
+  {
+   "id": "the-transformer-and-attention",
+   "title": "The transformer and attention",
+   "hash": "02d13fb757",
+   "file": "the-transformer-and-attention.02d13fb757.m4a",
+   "duration": 78.709,
+   "starts": [
+    0,
+    2.869,
+    7.577,
+    20.051,
+    23.513,
+    30.791,
+    44.377,
+    47.176,
+    55.272,
+    58.835,
+    66.076,
+    72.606
+   ]
+  },
+  {
+   "id": "three-numbers-for-size",
+   "title": "Three numbers for size",
+   "hash": "8153d39809",
+   "file": "three-numbers-for-size.8153d39809.m4a",
+   "duration": 43.818,
+   "starts": [
+    0,
+    2.581,
+    6.012,
+    11.883,
+    15.862,
+    20.988,
+    29.346,
+    32.039,
+    40.445
+   ]
+  },
+  {
+   "id": "post-training",
+   "title": "Post-training",
+   "hash": "bbca7ab0ab",
+   "file": "post-training.bbca7ab0ab.m4a",
+   "duration": 25.483,
+   "starts": [
+    0,
+    1.765,
+    6.573,
+    9.832,
+    15.67,
+    22.678
+   ]
+  },
+  {
+   "id": "supervised-finetuning",
+   "title": "Supervised finetuning",
+   "hash": "c0b03a040b",
+   "file": "supervised-finetuning.c0b03a040b.m4a",
+   "duration": 23.564,
+   "starts": [
+    0,
+    2.562,
+    9.859,
+    16.23
+   ]
+  },
+  {
+   "id": "preference-finetuning",
+   "title": "Preference finetuning",
+   "hash": "aa05f24b89",
+   "file": "preference-finetuning.aa05f24b89.m4a",
+   "duration": 44.524,
+   "starts": [
+    0,
+    2.268,
+    8.763,
+    16.577,
+    26.972,
+    32.896,
+    35.418
+   ]
+  },
+  {
+   "id": "sampling",
+   "title": "Sampling",
+   "hash": "6e8159a864",
+   "file": "sampling.6e8159a864.m4a",
+   "duration": 1.573,
+   "starts": [
+    0
+   ]
+  },
+  {
+   "id": "from-scores-to-probabilities",
+   "title": "From scores to probabilities",
+   "hash": "48df72642a",
+   "file": "from-scores-to-probabilities.48df72642a.m4a",
+   "duration": 39.264,
+   "starts": [
+    0,
+    2.869,
+    10,
+    15.948,
+    20.999,
+    28.535,
+    33.545
+   ]
+  },
+  {
+   "id": "temperature-top-k-and-top-p",
+   "title": "Temperature, top-k and top-p",
+   "hash": "2101471e28",
+   "file": "temperature-top-k-and-top-p.2101471e28.m4a",
+   "duration": 54.903,
+   "starts": [
+    0,
+    2.993,
+    6.067,
+    9.693,
+    16.876,
+    22.597,
+    27.745,
+    32.116,
+    37.616,
+    45.78,
+    51.032
+   ]
+  },
+  {
+   "id": "stopping",
+   "title": "Stopping",
+   "hash": "e2895586bb",
+   "file": "stopping.e2895586bb.m4a",
+   "duration": 19.152,
+   "starts": [
+    0,
+    1.5,
+    11.893
+   ]
+  },
+  {
+   "id": "test-time-compute",
+   "title": "Test time compute",
+   "hash": "0d66ee9b8e",
+   "file": "test-time-compute.0d66ee9b8e.m4a",
+   "duration": 30.572,
+   "starts": [
+    0,
+    2.204,
+    7.005,
+    16.745,
+    26.325
+   ]
+  },
+  {
+   "id": "structured-outputs",
+   "title": "Structured outputs",
+   "hash": "4e2cfbf739",
+   "file": "structured-outputs.4e2cfbf739.m4a",
+   "duration": 26.268,
+   "starts": [
+    0,
+    2.126,
+    7.383
+   ]
+  },
+  {
+   "id": "the-consequences-of-sampling",
+   "title": "The consequences of sampling",
+   "hash": "8b5969c450",
+   "file": "the-consequences-of-sampling.8b5969c450.m4a",
+   "duration": 2.943,
+   "starts": [
+    0
+   ]
+  },
+  {
+   "id": "inconsistency",
+   "title": "Inconsistency",
+   "hash": "8042928da0",
+   "file": "inconsistency.8042928da0.m4a",
+   "duration": 29.901,
+   "starts": [
+    0,
+    2.163,
+    10.594,
+    12.938,
+    24.254
+   ]
+  },
+  {
+   "id": "hallucination",
+   "title": "Hallucination",
+   "hash": "e25a7af4c8",
+   "file": "hallucination.e25a7af4c8.m4a",
+   "duration": 81.039,
+   "starts": [
+    0,
+    1.898,
+    7.12,
+    13.876,
+    16.868,
+    28.033,
+    36.663,
+    38.685,
+    49.416,
+    55.669,
+    60.371,
+    74.881
+   ]
+  },
+  {
+   "id": "what-the-labs-show",
+   "title": "What the labs show",
+   "hash": "ce46174366",
+   "file": "what-the-labs-show.ce46174366.m4a",
+   "duration": 27.348,
+   "starts": [
+    0,
+    2.03,
+    9.608,
+    18.741
+   ]
+  }
+ ]
+}

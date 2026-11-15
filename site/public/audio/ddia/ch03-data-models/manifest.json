@@ -1,0 +1,206 @@
+{
+ "version": 1,
+ "engine": "kokoro-onnx v1.0",
+ "voice": "bm_george",
+ "lang": "en-gb",
+ "speed": 1,
+ "generated": "2026-11-10",
+ "sections": [
+  {
+   "id": "why-the-data-model-matters",
+   "title": "Why the data model matters",
+   "hash": "93a1b059a5",
+   "file": "why-the-data-model-matters.93a1b059a5.m4a",
+   "duration": 47.578,
+   "starts": [
+    0,
+    2.927,
+    8.335,
+    17.807,
+    22.261,
+    27.72,
+    30.537,
+    37.65
+   ]
+  },
+  {
+   "id": "relational-versus-document",
+   "title": "Relational versus document",
+   "hash": "641bdc1ca4",
+   "file": "relational-versus-document.641bdc1ca4.m4a",
+   "duration": 2.944,
+   "starts": [
+    0
+   ]
+  },
+  {
+   "id": "the-object-relational-mismatch",
+   "title": "The object-relational mismatch",
+   "hash": "dd3e8b302c",
+   "file": "the-object-relational-mismatch.dd3e8b302c.m4a",
+   "duration": 33.829,
+   "starts": [
+    0,
+    3.036,
+    10.728,
+    18.588,
+    23.787
+   ]
+  },
+  {
+   "id": "one-to-many-where-documents-fit",
+   "title": "One-to-many: where documents fit",
+   "hash": "ba994b3a92",
+   "file": "one-to-many-where-documents-fit.ba994b3a92.m4a",
+   "duration": 30.408,
+   "starts": [
+    0,
+    2.932,
+    10.016,
+    14.373,
+    21.953
+   ]
+  },
+  {
+   "id": "many-to-one-and-many-to-many-where-they-strain",
+   "title": "Many-to-one and many-to-many: where they strain",
+   "hash": "07850a1c92",
+   "file": "many-to-one-and-many-to-many-where-they-strain.07850a1c92.m4a",
+   "duration": 75.311,
+   "starts": [
+    0,
+    3.674,
+    8.166,
+    9.878,
+    17.962,
+    21.052,
+    24.725,
+    27.072,
+    30.095,
+    32.967,
+    40.284,
+    42.712,
+    49.235,
+    54.196,
+    62.975,
+    66.226
+   ]
+  },
+  {
+   "id": "schema-on-read-schema-on-write",
+   "title": "Schema on read, schema on write",
+   "hash": "4bf2f429cd",
+   "file": "schema-on-read-schema-on-write.4bf2f429cd.m4a",
+   "duration": 72.156,
+   "starts": [
+    0,
+    3.109,
+    8.01,
+    11.934,
+    21.496,
+    27.19,
+    30.344,
+    33.221,
+    40.021,
+    44.426,
+    51.438,
+    53.855,
+    57.425,
+    58.793,
+    66.229
+   ]
+  },
+  {
+   "id": "graph-models",
+   "title": "Graph models",
+   "hash": "0d92a2f806",
+   "file": "graph-models.0d92a2f806.m4a",
+   "duration": 20.298,
+   "starts": [
+    0,
+    1.85,
+    12.634
+   ]
+  },
+  {
+   "id": "property-graphs",
+   "title": "Property graphs",
+   "hash": "048e3a3ca2",
+   "file": "property-graphs.048e3a3ca2.m4a",
+   "duration": 32.084,
+   "starts": [
+    0,
+    1.857,
+    7.43,
+    15.601,
+    25.802
+   ]
+  },
+  {
+   "id": "querying-a-graph",
+   "title": "Querying a graph",
+   "hash": "e157337fab",
+   "file": "querying-a-graph.e157337fab.m4a",
+   "duration": 84.364,
+   "starts": [
+    0,
+    1.985,
+    7.88,
+    15.156,
+    22.087,
+    34.649,
+    42.802,
+    46.541,
+    50.313,
+    57.037,
+    64.757,
+    69.595,
+    76.954
+   ]
+  },
+  {
+   "id": "event-sourcing-and-cqrs",
+   "title": "Event sourcing and CQRS",
+   "hash": "e4551567a5",
+   "file": "event-sourcing-and-cqrs.e4551567a5.m4a",
+   "duration": 68.667,
+   "starts": [
+    0,
+    3.083,
+    6.687,
+    9.702,
+    20.163,
+    23.335,
+    25.931,
+    36.372,
+    41.838,
+    55.035
+   ]
+  },
+  {
+   "id": "dataframes-and-arrays",
+   "title": "DataFrames and arrays",
+   "hash": "51a87d415d",
+   "file": "dataframes-and-arrays.51a87d415d.m4a",
+   "duration": 33.932,
+   "starts": [
+    0,
+    2.886,
+    14.849,
+    24.748
+   ]
+  },
+  {
+   "id": "what-the-labs-show",
+   "title": "What the labs show",
+   "hash": "2ccc08f32e",
+   "file": "what-the-labs-show.2ccc08f32e.m4a",
+   "duration": 23.418,
+   "starts": [
+    0,
+    2.03,
+    14.779
+   ]
+  }
+ ]
+}

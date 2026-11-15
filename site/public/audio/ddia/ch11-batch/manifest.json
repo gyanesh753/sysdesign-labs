@@ -1,0 +1,224 @@
+{
+ "version": 1,
+ "engine": "kokoro-onnx v1.0",
+ "voice": "bm_george",
+ "lang": "en-gb",
+ "speed": 1,
+ "generated": "2026-11-10",
+ "sections": [
+  {
+   "id": "three-kinds-of-system",
+   "title": "Three kinds of system",
+   "hash": "63e4eb31d5",
+   "file": "three-kinds-of-system.63e4eb31d5.m4a",
+   "duration": 47.061,
+   "starts": [
+    0,
+    2.156,
+    5.679,
+    12.425,
+    22.034,
+    27.434,
+    29.638,
+    41.291
+   ]
+  },
+  {
+   "id": "batch-processing-with-unix-tools",
+   "title": "Batch processing with Unix tools",
+   "hash": "9e31dd9a83",
+   "file": "batch-processing-with-unix-tools.9e31dd9a83.m4a",
+   "duration": 61.673,
+   "starts": [
+    0,
+    3.078,
+    8.351,
+    22.102,
+    26.676,
+    30.818,
+    36.592,
+    44.882,
+    49.981,
+    54.733
+   ]
+  },
+  {
+   "id": "sorting-or-hashing",
+   "title": "Sorting or hashing",
+   "hash": "4df389acc9",
+   "file": "sorting-or-hashing.4df389acc9.m4a",
+   "duration": 54.354,
+   "starts": [
+    0,
+    2.245,
+    6.015,
+    15.809,
+    19.422,
+    24.504,
+    37.122,
+    39.301,
+    46.368,
+    50.531
+   ]
+  },
+  {
+   "id": "storage-for-large-batches",
+   "title": "Storage for large batches",
+   "hash": "8c251eff94",
+   "file": "storage-for-large-batches.8c251eff94.m4a",
+   "duration": 48.639,
+   "starts": [
+    0,
+    2.672,
+    8.639,
+    10.388,
+    20.827,
+    29.045,
+    37.458,
+    43.617
+   ]
+  },
+  {
+   "id": "running-jobs-on-many-machines",
+   "title": "Running jobs on many machines",
+   "hash": "a2b4e450b4",
+   "file": "running-jobs-on-many-machines.a2b4e450b4.m4a",
+   "duration": 26.7,
+   "starts": [
+    0,
+    3.176,
+    9.262
+   ]
+  },
+  {
+   "id": "handling-faults",
+   "title": "Handling faults",
+   "hash": "6eacd7aaee",
+   "file": "handling-faults.6eacd7aaee.m4a",
+   "duration": 90.55,
+   "starts": [
+    0,
+    1.924,
+    6.661,
+    9.439,
+    20.619,
+    27.122,
+    33.377,
+    43.48,
+    47.788,
+    51.488,
+    57.067,
+    59.314,
+    64.536,
+    71.431,
+    75.031,
+    81.174
+   ]
+  },
+  {
+   "id": "batch-processing-models",
+   "title": "Batch processing models",
+   "hash": "2a9a348c0a",
+   "file": "batch-processing-models.2a9a348c0a.m4a",
+   "duration": 2.446,
+   "starts": [
+    0
+   ]
+  },
+  {
+   "id": "mapreduce",
+   "title": "MapReduce",
+   "hash": "6a1b547091",
+   "file": "mapreduce.6a1b547091.m4a",
+   "duration": 55.428,
+   "starts": [
+    0,
+    1.913,
+    7.047,
+    11.545,
+    14.728,
+    19.936,
+    25.616,
+    33.643,
+    35.984,
+    43.222
+   ]
+  },
+  {
+   "id": "dataflow-engines",
+   "title": "Dataflow engines",
+   "hash": "f03488d289",
+   "file": "dataflow-engines.f03488d289.m4a",
+   "duration": 28.081,
+   "starts": [
+    0,
+    2.302,
+    6.377,
+    14.741,
+    19.09,
+    24.296
+   ]
+  },
+  {
+   "id": "joins-and-grouping",
+   "title": "Joins and grouping",
+   "hash": "1585b226ef",
+   "file": "joins-and-grouping.1585b226ef.m4a",
+   "duration": 32.114,
+   "starts": [
+    0,
+    2.38,
+    6.888,
+    8.43,
+    13.703,
+    16.856,
+    25.474,
+    27.744
+   ]
+  },
+  {
+   "id": "query-languages-and-dataframes",
+   "title": "Query languages and DataFrames",
+   "hash": "e56ca541d3",
+   "file": "query-languages-and-dataframes.e56ca541d3.m4a",
+   "duration": 34.497,
+   "starts": [
+    0,
+    3.342,
+    8.09,
+    16.073,
+    22.298
+   ]
+  },
+  {
+   "id": "batch-use-cases",
+   "title": "Batch use cases",
+   "hash": "2a3181dcf5",
+   "file": "batch-use-cases.2a3181dcf5.m4a",
+   "duration": 68.199,
+   "starts": [
+    0,
+    2.254,
+    11.529,
+    18.742,
+    26.746,
+    37.191,
+    41.818,
+    54.248,
+    64.338
+   ]
+  },
+  {
+   "id": "what-the-labs-show",
+   "title": "What the labs show",
+   "hash": "fedb8ccbd6",
+   "file": "what-the-labs-show.fedb8ccbd6.m4a",
+   "duration": 24.593,
+   "starts": [
+    0,
+    2.03,
+    14.055
+   ]
+  }
+ ]
+}

@@ -1,0 +1,281 @@
+{
+ "version": 1,
+ "engine": "kokoro-onnx v1.0",
+ "voice": "bm_george",
+ "lang": "en-gb",
+ "speed": 1,
+ "generated": "2026-11-10",
+ "sections": [
+  {
+   "id": "putting-the-pieces-together",
+   "title": "Putting the pieces together",
+   "hash": "6e8f33c0e1",
+   "file": "putting-the-pieces-together.6e8f33c0e1.m4a",
+   "duration": 36.184,
+   "starts": [
+    0,
+    2.556,
+    10.455,
+    17.541,
+    22.449
+   ]
+  },
+  {
+   "id": "integrating-data-by-deriving-it",
+   "title": "Integrating data by deriving it",
+   "hash": "f9a515bc52",
+   "file": "integrating-data-by-deriving-it.f9a515bc52.m4a",
+   "duration": 22.247,
+   "starts": [
+    0,
+    3.303,
+    14.41
+   ]
+  },
+  {
+   "id": "one-log-many-consumers",
+   "title": "One log, many consumers",
+   "hash": "a69425dc7c",
+   "file": "one-log-many-consumers.a69425dc7c.m4a",
+   "duration": 56.491,
+   "starts": [
+    0,
+    2.703,
+    7.18,
+    11.898,
+    15.872,
+    20.833,
+    27.501,
+    30.21,
+    38.258,
+    47.865
+   ]
+  },
+  {
+   "id": "where-a-single-order-runs-out",
+   "title": "Where a single order runs out",
+   "hash": "d5edbd22d9",
+   "file": "where-a-single-order-runs-out.d5edbd22d9.m4a",
+   "duration": 39.065,
+   "starts": [
+    0,
+    2.873,
+    10.141,
+    22.998,
+    29.509
+   ]
+  },
+  {
+   "id": "batch-and-stream-are-the-same-idea",
+   "title": "Batch and stream are the same idea",
+   "hash": "6654a56393",
+   "file": "batch-and-stream-are-the-same-idea.6654a56393.m4a",
+   "duration": 49.689,
+   "starts": [
+    0,
+    3.206,
+    10.62,
+    13.757,
+    17.475,
+    22.018,
+    29.008,
+    33.131,
+    42.735,
+    46.822
+   ]
+  },
+  {
+   "id": "unbundling-the-database",
+   "title": "Unbundling the database",
+   "hash": "a487575dd0",
+   "file": "unbundling-the-database.a487575dd0.m4a",
+   "duration": 2.651,
+   "starts": [
+    0
+   ]
+  },
+  {
+   "id": "a-database-does-many-jobs",
+   "title": "A database does many jobs",
+   "hash": "029ddedc75",
+   "file": "a-database-does-many-jobs.029ddedc75.m4a",
+   "duration": 40.831,
+   "starts": [
+    0,
+    3.035,
+    6.806,
+    10.236,
+    13.849,
+    17.156,
+    31.431
+   ]
+  },
+  {
+   "id": "composing-specialized-systems",
+   "title": "Composing specialized systems",
+   "hash": "5ccc255519",
+   "file": "composing-specialized-systems.5ccc255519.m4a",
+   "duration": 57.114,
+   "starts": [
+    0,
+    2.89,
+    15.001,
+    16.964,
+    23.575,
+    31.304,
+    41.677,
+    45.82,
+    51.325
+   ]
+  },
+  {
+   "id": "application-code-as-a-derivation",
+   "title": "Application code as a derivation",
+   "hash": "32ee806077",
+   "file": "application-code-as-a-derivation.32ee806077.m4a",
+   "duration": 48.452,
+   "starts": [
+    0,
+    3.398,
+    10.804,
+    12.982,
+    18.343,
+    24.003,
+    30.842,
+    40.444
+   ]
+  },
+  {
+   "id": "the-write-path-and-the-read-path",
+   "title": "The write path and the read path",
+   "hash": "50bd9d8dbb",
+   "file": "the-write-path-and-the-read-path.50bd9d8dbb.m4a",
+   "duration": 47.611,
+   "starts": [
+    0,
+    2.855,
+    5.842,
+    11.43,
+    15.578,
+    24.21,
+    31.438,
+    34.293
+   ]
+  },
+  {
+   "id": "aiming-for-correctness",
+   "title": "Aiming for correctness",
+   "hash": "5a7b693ec2",
+   "file": "aiming-for-correctness.5a7b693ec2.m4a",
+   "duration": 2.199,
+   "starts": [
+    0
+   ]
+  },
+  {
+   "id": "the-end-to-end-argument",
+   "title": "The end-to-end argument",
+   "hash": "6e25a223f9",
+   "file": "the-end-to-end-argument.6e25a223f9.m4a",
+   "duration": 121.887,
+   "starts": [
+    0,
+    2.645,
+    6.662,
+    8.353,
+    11.303,
+    15.886,
+    19.304,
+    21.969,
+    26.023,
+    29.258,
+    39.061,
+    49.455,
+    65.899,
+    74.464,
+    86.531,
+    95.067,
+    98.357,
+    102.963,
+    114.79
+   ]
+  },
+  {
+   "id": "enforcing-constraints-without-distributed-transactions",
+   "title": "Enforcing constraints without distributed transactions",
+   "hash": "23612a03b0",
+   "file": "enforcing-constraints-without-distributed-transactions.23612a03b0.m4a",
+   "duration": 69.311,
+   "starts": [
+    0,
+    4.573,
+    14.986,
+    18.452,
+    21.198,
+    28.714,
+    34.842,
+    40.013,
+    45.171,
+    56.794,
+    64.195
+   ]
+  },
+  {
+   "id": "timeliness-and-integrity",
+   "title": "Timeliness and integrity",
+   "hash": "5a70010328",
+   "file": "timeliness-and-integrity.5a70010328.m4a",
+   "duration": 71.355,
+   "starts": [
+    0,
+    2.816,
+    6.294,
+    9.731,
+    13.81,
+    18.678,
+    23.662,
+    26.19,
+    29.956,
+    32.964,
+    44.315,
+    50.163,
+    56.22,
+    63.656
+   ]
+  },
+  {
+   "id": "trust-but-verify",
+   "title": "Trust, but verify",
+   "hash": "63ec45560b",
+   "file": "trust-but-verify.63ec45560b.m4a",
+   "duration": 61.103,
+   "starts": [
+    0,
+    2.264,
+    6.194,
+    9.857,
+    11.782,
+    15.543,
+    20.544,
+    22.8,
+    29.518,
+    39.177,
+    48.254,
+    50.684
+   ]
+  },
+  {
+   "id": "what-the-labs-show",
+   "title": "What the labs show",
+   "hash": "ef5b129d8e",
+   "file": "what-the-labs-show.ef5b129d8e.m4a",
+   "duration": 27.496,
+   "starts": [
+    0,
+    2.03,
+    12.684,
+    22
+   ]
+  }
+ ]
+}
